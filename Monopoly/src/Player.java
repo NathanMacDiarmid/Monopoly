@@ -37,6 +37,9 @@ public class Player {
         property.setOwner(this);
         this.money -= property.getCost();
     }
+    public void rent(Property property){
+        this.money -= property.getRent();
+    }
 
     @Override
     public String toString() {
