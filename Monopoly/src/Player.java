@@ -33,9 +33,15 @@ public class Player {
         this.money += money;
     }
 
-    public void buy(Property property) {
-        property.setOwner(this);
-        this.money -= property.getCost();
+    public boolean buy(Property property) {
+        if(property.getCost() > this.money){
+            return false;
+        }
+        else {
+            property.setOwner(this);
+            this.money -= property.getCost();
+            return true;
+        }
     }
     public void rent(Property property){
         this.money -= property.getRent();

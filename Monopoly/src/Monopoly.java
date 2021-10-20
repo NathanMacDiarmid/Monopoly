@@ -6,11 +6,13 @@ public class Monopoly {
     private Board board;
     private List<Player> players;
     private Dice die;
+    int playerTurn;
 
     public Monopoly() {
         this.board = new Board();
         this.die = new Dice();
         this.players = new ArrayList<>();
+        this.playerTurn = 0;
     }
 
     public void addPlayers(Player player) {
@@ -18,39 +20,43 @@ public class Monopoly {
     }
 
     // removePlayer needs more code
-    public void removePlayers(Player player) { this.players.remove(player);}
-
-    public Player getPlayer(String name) {
-        for (Player value : players) {
-            if (value.getName().equals(name)) {
-                return value;
-            }
-        }
-        return null;
-    }
+    public void removePlayer() { this.players.remove(playerTurn);}
 
     public int roll() {
         return this.die.roll();
     }
 
-    public Board getBoard() {
-        return this.board;
+    public Player getPlayer(){
+        return this.players.get(playerTurn);
     }
 
-    public void checkAvailable(Property property, Player player) {
-        if (property.getOwner() == null) {
-            player.buy(property);
-        }
-        else {
-            property.getOwner().addMoney(property.getRent());
-            player.removeMoney(property.getRent());
-        }
+    public String getPropertyInfo(){
+        return this.board.getProperty(this.players.get(playerTurn).getPosition()).toString();
+    }
+
+    public Player getPropertyOwner(){
+        return this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner();
+    }
+
+    public boolean playerBuy(){
+        return this.players.get(playerTurn).buy(this.board.getProperty(this.players.get(playerTurn).getPosition()));
+    }
+
+    public void playerRent(){
+        this.players.get(playerTurn).rent(this.board.getProperty(this.players.get(playerTurn).getPosition()));
+    }
+
+    public void payRent(){
+        this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner().addMoney(this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent());
+    }
+
+    public int getRent(){
+        return this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent();
     }
 
     public void play(){
         boolean running = true;
         int diceValue;
-        int playerTurn = 0;
 
         //Check to make sure there are at least 2 players
         if(this.players.size() < 2){
@@ -62,7 +68,7 @@ public class Monopoly {
         }
 
         while(running){
-            System.out.println(this.players.get(playerTurn).getName() + " it is your turn");
+            System.out.println(this.getPlayer().getName() + " it is your turn");
 
             //Get user input
             Scanner rollInput = new Scanner(System.in);
@@ -71,15 +77,15 @@ public class Monopoly {
 
             //Check user input
             if(input.equals("roll")){
-                diceValue = this.die.roll();
+                diceValue = this.roll();
                 System.out.println("You rolled a " + diceValue);
-                players.get(playerTurn).addPosition(diceValue);
+                this.getPlayer().addPosition(diceValue);
 
-                System.out.println("You landed on " + this.board.getProperty(this.players.get(playerTurn).getPosition()).toString());
+                System.out.println("You landed on " + getPropertyInfo());
 
                 // check if property is not owned
-                if(this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner() == null){
-                    System.out.println("Would you like to buy this property?\t Enter 'yes' to Buy or 'no' to continue playing");
+                if(this.getPropertyOwner() == null){
+                    System.out.println("Would you like to buy this property? You currently have $" + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
 
                     //Get user input
                     Scanner buyInput = new Scanner(System.in);
@@ -88,20 +94,24 @@ public class Monopoly {
                     //Check user input
                     if(inputBuy.equals("yes")){
                         //give option to buy property
-                        this.players.get(playerTurn).buy(this.board.getProperty(this.players.get(playerTurn).getPosition()));
-                        System.out.println("You bought the Property!\n");
+                        if(this.playerBuy()) {
+                            System.out.println("You bought the Property!");
+                        }
+                        else{
+                            System.out.println("You do not have enough money to buy this property");
+                        }
                     }
                     else if(inputBuy.equals("no")){
-                        System.out.println("You did not buy the Property!\n");
+                        System.out.println("You did not buy the Property!");
                     }
                 }
                 else{
-                    // if this player is not the now
-                    if(this.players.get(playerTurn) != this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner()) {
+                    // if this player is not the owner
+                    if(this.getPlayer() != this.getPropertyOwner()) {
                         //pay rent
-                        this.players.get(playerTurn).rent(this.board.getProperty(this.players.get(playerTurn).getPosition()));
-                        this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner().addMoney(this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent());
-                        System.out.println("You paid rent to " + this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner().getName());
+                        this.playerRent();
+                        this.payRent();
+                        System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
                     }
                 }
 
@@ -115,7 +125,16 @@ public class Monopoly {
                 continue;
             }
 
-
+            //Check to see if the current player has run out of money
+            if(getPlayer().getMoney() <= 0 ){
+                this.removePlayer();
+                //Check to see if there is only one player left, as if there is they've won
+                if(this.players.size() == 1){
+                    System.out.println("Game over " + this.players.get(0).getName() + " has won");
+                    running = false;
+                    continue;
+                }
+            }
 
             playerTurn = (playerTurn + 1) % players.size();
         }
