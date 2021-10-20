@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Monopoly {
     private Board board;
@@ -43,41 +44,58 @@ public class Monopoly {
         }
     }
 
+    public void play(){
+        boolean running = true;
+        int diceValue = 0;
+        int playerTurn = 0;
+
+        //Check to make sure there are at least 2 players
+        if(this.players.size() < 2){
+            System.out.println("Game was not initialized with enough players, EXITING");
+            return;
+        }
+        else{
+            System.out.println("Welcome to Monopoly, let's play");
+        }
+
+        while(running){
+            System.out.println(this.players.get(playerTurn).getName() + " it is your turn");
+
+            //Get user input
+            Scanner rollInput = new Scanner(System.in);
+            System.out.println("Enter 'roll' to roll the Dice or 'quit' to quit the game");
+            String input = rollInput.nextLine();
+
+            //Check user input
+            if(input.equals("roll")){
+                diceValue = this.die.roll();
+                System.out.println("You rolled a " + diceValue);
+                players.get(playerTurn).addPosition(diceValue);
+            }
+            else if(input.equals("quit")){
+                running = false;
+                continue;
+            }
+            else{
+                System.out.println("Command not recognized");
+                continue;
+            }
+
+            System.out.println("You landed on " + this.board.getProperty(this.players.get(playerTurn).getPosition()).toString());
+
+            playerTurn = (playerTurn + 1) % players.size();
+        }
+    }
+
     public static void main(String[] args) {
 
         Monopoly monopoly = new Monopoly();
-
         Player p1 = new Player("Nathan");
         Player p2 = new Player("Tao");
-
         monopoly.addPlayers(p1);
         monopoly.addPlayers(p2);
 
-        p1.addPosition(monopoly.roll());
-        p2.addPosition(monopoly.roll());
-        p2.addPosition(monopoly.roll());
-
-        System.out.println(p1.getPosition());
-        System.out.println(p2.getPosition());
-
-
-        p1.addPosition(monopoly.roll());
-
-        System.out.println(p1.getPosition());
-
-        System.out.println(monopoly.board.getProperty(p1.getPosition()));
-
-        monopoly.checkAvailable(monopoly.board.getProperty(p1.getPosition()), p1);
-
-        System.out.println(monopoly.board.getProperty(p1.getPosition()));
-
-        p1.addPosition(monopoly.roll());
-
-        System.out.println(p1.getPosition());
-
-        p1.addPosition(monopoly.roll());
-
-        System.out.println(p1.getPosition());
+        monopoly.play();
 
     }
 }

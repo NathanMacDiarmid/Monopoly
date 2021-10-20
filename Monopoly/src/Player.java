@@ -18,12 +18,7 @@ public class Player {
     }
 
     public void addPosition(int position) {
-        if (this.position + position > 22) {
-                this.position += position - 23;
-        }
-        else {
-            this.position += position;
-        }
+            this.position = (this.position + position) % 23;
     }
 
     public int getMoney() {
