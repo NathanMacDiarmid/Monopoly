@@ -53,7 +53,7 @@ public class Monopoly {
 
     /**
      * This method is used to get a string representation of the Player whose turn it is
-     * @param playerTurn
+     * @param playerTurn the players turn of type int
      * @return a string representation of the current Player
      *
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
@@ -196,7 +196,7 @@ public class Monopoly {
                     if (this.getPropertyOwner() == null) {
                         // check if lands on Go
                         if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
-                            continue;
+                            break;
                         }
                         System.out.println("Would you like to buy this property? You currently have $"
                                 + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
@@ -224,6 +224,7 @@ public class Monopoly {
                             this.playerRent();
                             this.payRent();
                             System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
+                            System.out.println("You now have $" + this.getPlayer().getMoney());
                         }
                     }
 
