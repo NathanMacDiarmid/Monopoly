@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     /**
     This is the Player class.
@@ -10,10 +13,12 @@ public class Player {
     @attribute  money is the amount of money the Player has
     money is initialized to $1500 always
     @attribute position is where the Player is on the board
+     @attribute propertiesOwned is a List of properties owned by this player
      */
     private String name;
     private int money;
     private int position;
+    private List<Property> propertiesOwned;
 
     /**
      * Default constructor for Player
@@ -25,6 +30,7 @@ public class Player {
         this.name = name;
         this.money = 1500;
         this.position = 0;
+        this.propertiesOwned = new ArrayList<>();
     }
 
     /**
@@ -86,6 +92,7 @@ public class Player {
         }
         else {
             property.setOwner(this);
+            this.propertiesOwned.add(property);
             this.money -= property.getCost();
             return true;
         }
@@ -103,6 +110,19 @@ public class Player {
     }
 
     /**
+     * This method returns a String representation of all the properties this Player owns
+     * @return String of all the name of the properties this player owns
+     */
+    public String getProperties(){
+        String s = "Properties owned: ";
+
+        for(int i = 0; i < this.propertiesOwned.size(); i++){
+            s += "\n" + this.propertiesOwned.get(i).getName();
+        }
+        return s ;
+    }
+
+    /**
      * Overrides the toString() default method to output Player
      * attributes and and class type
      * @return String of Player attributes
@@ -111,7 +131,7 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "Player{" +
+       return "Player{" +
                 "name='" + name + '\'' +
                 ", money=" + money +
                 ", position=" + position +

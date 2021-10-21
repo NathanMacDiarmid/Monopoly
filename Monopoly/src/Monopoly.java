@@ -52,17 +52,6 @@ public class Monopoly {
     }
 
     /**
-     * This method is used to get a string representation of the Player whose turn it is
-     * @param playerTurn the players turn of type int
-     * @return a string representation of the current Player
-     *
-     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
-     */
-    public String getPlayerInfo(int playerTurn) {
-        return this.players.get(playerTurn).toString();
-    }
-
-    /**
      * This method returns a string representation of the property that the Player is currently on
      * @return string representation of a Property
      *
@@ -244,8 +233,9 @@ public class Monopoly {
 
                     break;
                 case "info":
-                    System.out.println(this.getPlayerInfo(playerTurn));
-                    System.out.println(this.getPropertyInfo());
+                    System.out.println(this.getPlayer().toString());
+                    System.out.println(this.getPlayer().getProperties());
+                    System.out.println("You are currently on " + this.getPropertyInfo());
                     continue;
                 case "quit":
                     running = false;
