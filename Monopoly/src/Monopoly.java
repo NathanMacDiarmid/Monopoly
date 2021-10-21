@@ -41,38 +41,91 @@ public class Monopoly {
         return this.die.roll();
     }
 
+    /**
+     * This method is used to get the player whose turn it is
+     * @return the current Player object
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public Player getPlayer(){
         return this.players.get(playerTurn);
     }
 
+    /**
+     * This method is used to get a string representation of the Player whose turn it is
+     * @param playerTurn
+     * @return a string representation of the current Player
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public String getPlayerInfo(int playerTurn) {
         return this.players.get(playerTurn).toString();
     }
 
+    /**
+     * This method returns a string representation of the property that the Player is currently on
+     * @return string representation of a Property
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public String getPropertyInfo(){
         return this.board.getProperty(this.players.get(playerTurn).getPosition()).toString();
     }
 
+    /**
+     * This method returns the owner (which is a Player object) of the Property the Player is currently on
+     * @return Player object
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public Player getPropertyOwner(){
         return this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner();
     }
 
+    /**
+     * This method calls the current Player's buy method and passes the property they are currently on as a parameter
+     * @return a boolean to indicate whether the buy was successful or not
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public boolean playerBuy(){
         return this.players.get(playerTurn).buy(this.board.getProperty(this.players.get(playerTurn).getPosition()));
     }
 
+    /**
+     * This method calls the current Player's rent method and passes the property they are currently on as a parameter
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public void playerRent(){
         this.players.get(playerTurn).rent(this.board.getProperty(this.players.get(playerTurn).getPosition()));
     }
 
+    /**
+     * This method adds money to the Player the rent is being paid too. This is done by getting the Player who owns the
+     * property the current Player is on and then calling the addMoney() method on the Player owning the property.
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public void payRent(){
         this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner().addMoney(this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent());
     }
 
+    /**
+     * This method will return the rent amount of the Property the current Player is on
+     * @return rent value in the form of an int
+     *
+     * Created and documented by Matthew Belanger - 101144323 and Tao - STUDENT ID
+     */
     public int getRent(){
         return this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent();
     }
 
+    /**
+     * WAIT UNTIL METHOD IS COMPLETELY DONE BEFORE DOCUMENTING
+     *
+     * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - STUDENT ID
+     */
     public void play(){
         boolean running = true;
         int diceValue;

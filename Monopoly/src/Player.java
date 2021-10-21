@@ -52,7 +52,7 @@ public class Player {
      * @param position the integer returned from the Dice.roll() method
      *
      * Created and documented by Nathan MacDiarmid - 101098993
-     * Edited and enhanced by WHOEVER PUT IN MODULUS PLEASE TYPE HERE
+     * Edited and enhanced by Matthew Belanger - 101144323
      */
     public void addPosition(int position) {
             this.position = (this.position + position) % 23;
@@ -72,6 +72,14 @@ public class Player {
         this.money += money;
     }
 
+    /**
+     * This method first checks that the player has enough money to buy the Property, if they do then the
+     * Property's owner is set to this Player and the cost of the Property us subtracted from the Player's money
+     * @param property
+     * @return boolean which indicates whether the buy was successful or not
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public boolean buy(Property property) {
         if(property.getCost() > this.money){
             return false;
