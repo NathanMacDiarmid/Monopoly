@@ -159,7 +159,7 @@ public class Monopoly {
                 case "info":
                     System.out.println(this.getPlayerInfo(playerTurn));
                     System.out.println(this.getPropertyInfo());
-                    break;
+                    continue;
                 case "quit":
                     running = false;
                     continue;
