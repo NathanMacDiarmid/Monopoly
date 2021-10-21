@@ -1,4 +1,3 @@
-import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,10 +15,6 @@ public class Monopoly {
         this.playerTurn = 0;
     }
 
-    public void addPlayers(Player player) {
-        this.players.add(player);
-    }
-
     // removePlayer needs more code
     public void removePlayer() { this.players.remove(playerTurn);}
 
@@ -29,6 +24,10 @@ public class Monopoly {
 
     public Player getPlayer(){
         return this.players.get(playerTurn);
+    }
+
+    public String getPlayerInfo(int playerTurn) {
+        return this.players.get(playerTurn).toString();
     }
 
     public String getPropertyInfo(){
@@ -108,64 +107,65 @@ public class Monopoly {
 
             //Get user input
             Scanner rollInput = new Scanner(System.in);
-            System.out.println("Enter 'roll' to roll the Dice or 'quit' to quit the game");
+            System.out.println("Enter 'roll' to roll the Dice, 'info' to show player info or 'quit' to quit the game");
             System.out.print(">>> ");
             String input = rollInput.nextLine();
 
             //Check user input
-            if(input.equals("roll")){
-                diceValue = this.roll();
-                System.out.println("You rolled a " + diceValue);
-                this.getPlayer().addPosition(diceValue);
+            switch (input) {
+                case "roll":
+                    diceValue = this.roll();
+                    System.out.println("You rolled a " + diceValue);
+                    this.getPlayer().addPosition(diceValue);
 
-                System.out.println("You landed on " + getPropertyInfo());
+                    System.out.println("You landed on " + getPropertyInfo());
 
-                // check if property is not owned
-                if(this.getPropertyOwner() == null){
-                    // check if lands on Go
-                    if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
-                        continue;
-                    }
-                    System.out.println("Would you like to buy this property? You currently have $"
-                            + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
-                    System.out.print(">>> ");
-
-                    //Get user input
-                    Scanner buyInput = new Scanner(System.in);
-                    String inputBuy = buyInput.nextLine();
-
-                    //Check user input
-                    if(inputBuy.equals("yes")){
-                        //give option to buy property
-                        if(this.playerBuy()) {
-                            System.out.println("You bought the Property!");
+                    // check if property is not owned
+                    if (this.getPropertyOwner() == null) {
+                        // check if lands on Go
+                        if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
+                            continue;
                         }
-                        else{
-                            System.out.println("You do not have enough money to buy this property");
+                        System.out.println("Would you like to buy this property? You currently have $"
+                                + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                        System.out.print(">>> ");
+
+                        //Get user input
+                        Scanner buyInput = new Scanner(System.in);
+                        String inputBuy = buyInput.nextLine();
+
+                        //Check user input
+                        if (inputBuy.equals("yes")) {
+                            //give option to buy property
+                            if (this.playerBuy()) {
+                                System.out.println("You bought the Property!");
+                            } else {
+                                System.out.println("You do not have enough money to buy this property");
+                            }
+                        } else if (inputBuy.equals("no")) {
+                            System.out.println("You did not buy the Property!");
+                        }
+                    } else {
+                        // if this player is not the owner
+                        if (this.getPlayer() != this.getPropertyOwner()) {
+                            //pay rent
+                            this.playerRent();
+                            this.payRent();
+                            System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
                         }
                     }
-                    else if(inputBuy.equals("no")){
-                        System.out.println("You did not buy the Property!");
-                    }
-                }
-                else{
-                    // if this player is not the owner
-                    if(this.getPlayer() != this.getPropertyOwner()) {
-                        //pay rent
-                        this.playerRent();
-                        this.payRent();
-                        System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
-                    }
-                }
 
-            }
-            else if(input.equals("quit")){
-                running = false;
-                continue;
-            }
-            else{
-                System.out.println("Command not recognized");
-                continue;
+                    break;
+                case "info":
+                    System.out.println(this.getPlayerInfo(playerTurn));
+                    System.out.println(this.getPropertyInfo());
+                    break;
+                case "quit":
+                    running = false;
+                    continue;
+                default:
+                    System.out.println("Command not recognized");
+                    continue;
             }
 
             //Check to see if the current player has run out of money
