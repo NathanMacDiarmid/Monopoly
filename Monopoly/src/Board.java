@@ -1,10 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
-    private CircularLinkedList list;
+    // declared as final as the board is constant
+    private final List<Property> properties;
 
     public Board() {
 
-        this.list = new CircularLinkedList();
+        this.properties = new ArrayList<>();
 
         Property Go = new Property("Go", 0, 0);
 
@@ -38,49 +42,42 @@ public class Board {
         Property Nicol = new Property("Nicol Building", 350, 35);
         Property Minto = new Property("Minto CASE", 400, 50);
 
-        list.addNode(0, Go);
+        this.properties.add(Go);
 
-        list.addNode(1, Loeb);
-        list.addNode(2, Southam);
+        this.properties.add(Loeb);
+        this.properties.add(Southam);
 
-        list.addNode(3, Paterson);
-        list.addNode(4, Nesbitt);
-        list.addNode(5, Mackenzie);
+        this.properties.add(Paterson);
+        this.properties.add(Nesbitt);
+        this.properties.add(Mackenzie);
 
-        list.addNode(6, Azreli);
-        list.addNode(7, Steacie);
-        list.addNode(8, Tory);
+        this.properties.add(Azreli);
+        this.properties.add(Steacie);
+        this.properties.add(Tory);
 
-        list.addNode(9, Robertson);
-        list.addNode(10, Architecture);
-        list.addNode(11, Canal);
+        this.properties.add(Robertson);
+        this.properties.add(Architecture);
+        this.properties.add(Canal);
 
-        list.addNode(12, Glengarry);
-        list.addNode(13, Lennox);
-        list.addNode(14, Renfrew);
+        this.properties.add(Glengarry);
+        this.properties.add(Lennox);
+        this.properties.add(Renfrew);
 
-        list.addNode(15, Lanark);
-        list.addNode(16, Grenville);
-        list.addNode(17, Dundas);
+        this.properties.add(Lanark);
+        this.properties.add(Grenville);
+        this.properties.add(Dundas);
 
-        list.addNode(18, Prescott);
-        list.addNode(19, Frontenac);
-        list.addNode(20, Leeds);
+        this.properties.add(Prescott);
+        this.properties.add(Frontenac);
+        this.properties.add(Leeds);
 
-        list.addNode(21, Nicol);
-        list.addNode(22, Minto);
+        this.properties.add(Nicol);
+        this.properties.add(Minto);
 
     }
 
     public Property getProperty(int position) {
-        Node current = list.getHead();
-        for (int i = 0; i < list.getSize(); i++) {
-             if (current.position == position) {
-                 return current.property;
-             }
-             current = current.next;
-         }
-        return null;
+        return this.properties.get(position);
     }
 
 }

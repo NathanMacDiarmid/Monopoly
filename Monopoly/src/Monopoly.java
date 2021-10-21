@@ -1,9 +1,10 @@
+import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Monopoly {
-    private Board board;
+    private final Board board;
     private List<Player> players;
     private Dice die;
     int playerTurn;
@@ -58,6 +59,40 @@ public class Monopoly {
         boolean running = true;
         int diceValue;
 
+        while (running) {
+            if (this.players.size() >= 4) {
+                System.out.println("Sorry, max is 4 players");
+                break;
+            }
+            System.out.println("Please input your name:");
+            System.out.print(">>> ");
+
+            Scanner playerInput = new Scanner(System.in);
+            String name = playerInput.nextLine();
+
+            this.players.add(new Player(name));
+
+            System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
+            System.out.print(">>> ");
+
+            Scanner morePlayers = new Scanner(System.in);
+            String addPlayers = morePlayers.nextLine();
+
+            switch (addPlayers) {
+                case "yes":
+                    System.out.println("Great! Lets add some friends!");
+                    break;
+                case "no":
+                    running = false;
+                    break;
+                case "quit":
+                    return;
+                default:
+                    System.out.println("Command not recognized");
+                    break;
+            }
+        }
+
         //Check to make sure there are at least 2 players
         if(this.players.size() < 2){
             System.out.println("Game was not initialized with enough players, EXITING");
@@ -65,6 +100,7 @@ public class Monopoly {
         }
         else{
             System.out.println("Welcome to Monopoly, let's play");
+            running = true;
         }
 
         while(running){
@@ -73,6 +109,7 @@ public class Monopoly {
             //Get user input
             Scanner rollInput = new Scanner(System.in);
             System.out.println("Enter 'roll' to roll the Dice or 'quit' to quit the game");
+            System.out.print(">>> ");
             String input = rollInput.nextLine();
 
             //Check user input
@@ -85,7 +122,13 @@ public class Monopoly {
 
                 // check if property is not owned
                 if(this.getPropertyOwner() == null){
-                    System.out.println("Would you like to buy this property? You currently have $" + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                    // check if lands on Go
+                    if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
+                        continue;
+                    }
+                    System.out.println("Would you like to buy this property? You currently have $"
+                            + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                    System.out.print(">>> ");
 
                     //Get user input
                     Scanner buyInput = new Scanner(System.in);
@@ -143,10 +186,6 @@ public class Monopoly {
     public static void main(String[] args) {
 
         Monopoly monopoly = new Monopoly();
-        Player p1 = new Player("Nathan");
-        Player p2 = new Player("Tao");
-        monopoly.addPlayers(p1);
-        monopoly.addPlayers(p2);
 
         monopoly.play();
 
