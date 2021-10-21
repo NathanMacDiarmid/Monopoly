@@ -90,6 +90,14 @@ public class Player {
             return true;
         }
     }
+
+    /**
+     * This method subtracts rent amount from the player
+     *
+     * @param property
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
     public void rent(Property property){
         this.money -= property.getRent();
     }
