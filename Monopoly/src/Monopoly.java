@@ -127,6 +127,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153
      */
     public void play(){
+        boolean validCommand = false;
         boolean running = true;
         int diceValue;
 
@@ -143,24 +144,29 @@ public class Monopoly {
 
             this.players.add(new Player(name));
 
-            System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
-            System.out.print(">>> ");
+            validCommand = false;
+            while(!validCommand) {
+                System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
+                System.out.print(">>> ");
 
-            Scanner morePlayers = new Scanner(System.in);
-            String addPlayers = morePlayers.nextLine();
+                Scanner morePlayers = new Scanner(System.in);
+                String addPlayers = morePlayers.nextLine();
 
-            switch (addPlayers) {
-                case "yes":
-                    System.out.println("Great! Lets add some friends!");
-                    break;
-                case "no":
-                    running = false;
-                    break;
-                case "quit":
-                    return;
-                default:
-                    System.out.println("Command not recognized");
-                    break;
+                switch (addPlayers) {
+                    case "yes":
+                        System.out.println("Great! Lets add some friends!");
+                        validCommand = true;
+                        break;
+                    case "no":
+                        running = false;
+                        validCommand = true;
+                        break;
+                    case "quit":
+                        return;
+                    default:
+                        System.out.println("Command not recognized");
+                        break;
+                }
             }
         }
 
@@ -198,24 +204,32 @@ public class Monopoly {
                         if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
                             break;
                         }
-                        System.out.println("Would you like to buy this property? You currently have $"
-                                + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
-                        System.out.print(">>> ");
 
-                        //Get user input
-                        Scanner buyInput = new Scanner(System.in);
-                        String inputBuy = buyInput.nextLine();
+                        validCommand = false;
+                        while(!validCommand) {
+                            System.out.println("Would you like to buy this property? You currently have $"
+                                    + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                            System.out.print(">>> ");
 
-                        //Check user input
-                        if (inputBuy.equals("yes")) {
-                            //give option to buy property
-                            if (this.playerBuy()) {
-                                System.out.println("You bought the Property!");
+                            //Get user input
+                            Scanner buyInput = new Scanner(System.in);
+                            String inputBuy = buyInput.nextLine();
+
+                            //Check user input
+                            if (inputBuy.equals("yes")) {
+                                //give option to buy property
+                                if (this.playerBuy()) {
+                                    System.out.println("You bought the Property!");
+                                } else {
+                                    System.out.println("You do not have enough money to buy this property");
+                                }
+                                validCommand = true;
+                            } else if (inputBuy.equals("no")) {
+                                System.out.println("You did not buy the Property!");
+                                validCommand = true;
                             } else {
-                                System.out.println("You do not have enough money to buy this property");
+                                System.out.println("Not a valid command");
                             }
-                        } else if (inputBuy.equals("no")) {
-                            System.out.println("You did not buy the Property!");
                         }
                     } else {
                         // if this player is not the owner
