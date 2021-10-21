@@ -3,13 +3,28 @@ import java.util.List;
 
 public class Board {
 
-    // declared as final as the board is constant
+    /**
+     * This is the Board class
+     *
+     * Since it is constant and only one will be used,
+     * there is one final @attribute that contains properties.
+     *
+     * There is no ability to add properties.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     private final List<Property> properties;
 
+    /**
+     * Default constructor for Board class
+     *
+     * All properties are based on Carleton Buildings
+     */
     public Board() {
 
         this.properties = new ArrayList<>();
 
+        // Initializes properties
         // Cost of properties is 10% of property cost
 
         Property Go = new Property("Go", 0, 0);
@@ -43,6 +58,8 @@ public class Board {
 
         Property Nicol = new Property("Nicol Building", 350, 35);
         Property Minto = new Property("Minto CASE", 400, 40);
+
+        // adds properties to property list
 
         this.properties.add(Go);
 
@@ -78,6 +95,11 @@ public class Board {
 
     }
 
+    /**
+     * Default getter for a specific property in property list
+     * @param position the int index of a property
+     * @return information on Property of type Property
+     */
     public Property getProperty(int position) {
         return this.properties.get(position);
     }
