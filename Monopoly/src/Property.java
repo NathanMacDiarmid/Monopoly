@@ -10,17 +10,18 @@ public class Property {
      * @attribute owner is the Player owner of the Property (ie who receives rent)
      *
      * Created and documented by Nathan MacDiarmid - 101098993
+     * Further formatted,assessed code and documentation edited by Mehedi Mostofa - 101154128
      */
-    private String name;
-    private int cost;
-    private int rent;
+    private final String name;
+    private final int cost;
+    private final int rent;
     private Player owner;
 
     /**
      * Default constructor for
-     * @param name the String name of the Property
-     * @param cost the int cost of the Property
-     * @param rent the int rent cost of the Property
+     * @param name is the String name of the Property
+     * @param cost is the int cost of the Property
+     * @param rent is the int rent cost of the Property
      */
     public Property(String name, int cost, int rent) {
         this.name = name;
@@ -38,7 +39,7 @@ public class Property {
     }
 
     /**
-     * Default getter for owner attribute
+     * Default getter method for owner attribute
      * @return the Player that currently owns the Property
      */
     public Player getOwner() {
@@ -46,7 +47,7 @@ public class Property {
     }
 
     /**
-     * Default getter for cost attribute
+     * Default getter method for cost attribute
      * @return the int cost of the Property
      */
     public int getCost() {
@@ -54,7 +55,7 @@ public class Property {
     }
 
     /**
-     * Default getter for rent attribute
+     * Default getter method for rent attribute
      * @return the int rent of the Property
      */
     public int getRent() {
@@ -62,7 +63,7 @@ public class Property {
     }
 
     /**
-     * Overriden toString() method
+     * Override toString() method
      * Displays Property information in String format
      * @return Property information including attributes and class type
      */
