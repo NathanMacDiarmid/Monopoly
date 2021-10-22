@@ -28,7 +28,7 @@ public class Player {
      */
     public Player(String name) {
         this.name = name;
-        this.money = 1500;
+        this.money = 500;
         this.position = 0;
         this.propertiesOwned = new ArrayList<>();
     }
@@ -113,6 +113,17 @@ public class Player {
      */
     public void rent(Property property){
         this.money -= property.getRent();
+    }
+
+    /**
+     * This method will remove the current player's ownership from all properties they own
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void removeProperties(){
+        for(int i = 0; i < this.propertiesOwned.size(); i++){
+            this.propertiesOwned.get(i).setOwner(null);
+        }
     }
 
     /**

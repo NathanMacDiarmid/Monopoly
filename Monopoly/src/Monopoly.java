@@ -28,8 +28,16 @@ public class Monopoly {
         this.playerTurn = 0;
     }
 
-    // removePlayer needs more code
-    public void removePlayer() { this.players.remove(playerTurn);}
+    /**
+     * This method is called if a player goes bankrupt, it first removes all the players ownerships and
+     * then removes the player from the game.
+     *
+     * Created and documented by Matthew Belanger
+     */
+    public void removePlayer() {
+        this.players.get(this.playerTurn).removeProperties();
+        this.players.remove(this.playerTurn);
+    }
 
     /**
      * Roll() method rolls the dice
