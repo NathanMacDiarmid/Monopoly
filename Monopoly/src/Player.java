@@ -74,6 +74,12 @@ public class Player {
         return money;
     }
 
+    /**
+     * This method adds the given amount to the Player's money
+     * @param money
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void addMoney(int money) {
         this.money += money;
     }
@@ -112,6 +118,8 @@ public class Player {
     /**
      * This method returns a String representation of all the properties this Player owns
      * @return String of all the name of the properties this player owns
+     *
+     * Created and documented by Matthew Belanger - 101144323
      */
     public String getProperties(){
         String s = "Properties owned: ";

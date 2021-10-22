@@ -133,6 +133,7 @@ public class Monopoly {
 
             this.players.add(new Player(name));
 
+            //Loop until a valid command is entered
             validCommand = false;
             while(!validCommand) {
                 System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
@@ -194,6 +195,7 @@ public class Monopoly {
                             break;
                         }
 
+                        //Loop until the player enters a valid command, this way they don't lose their chance to buy
                         validCommand = false;
                         while(!validCommand) {
                             System.out.println("Would you like to buy this property? You currently have $"
@@ -247,6 +249,7 @@ public class Monopoly {
 
             //Check to see if the current player has run out of money
             if(getPlayer().getMoney() <= 0 ){
+                System.out.println(this.getPlayer().getName() + " has gone bankrupt and is eliminated from the game!");
                 this.removePlayer();
                 //Check to see if there is only one player left, as if there is they've won
                 if(this.players.size() == 1){
@@ -256,7 +259,8 @@ public class Monopoly {
                 }
             }
 
-            playerTurn = (playerTurn + 1) % players.size();
+            //Increase playerTurn to pass the turn to the next player
+            this.playerTurn = (this.playerTurn + 1) % this.players.size();
         }
     }
 
