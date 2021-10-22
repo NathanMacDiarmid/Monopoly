@@ -66,7 +66,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public String getPropertyInfo(){
-        return this.board.getProperty(this.players.get(playerTurn).getPosition()).toString();
+        return this.board.getProperty(this.getPlayer().getPosition()).toString();
     }
 
     /**
@@ -76,7 +76,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public Player getPropertyOwner(){
-        return this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner();
+        return this.board.getProperty(this.getPlayer().getPosition()).getOwner();
     }
 
     /**
@@ -86,7 +86,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public boolean playerBuy(){
-        return this.players.get(playerTurn).buy(this.board.getProperty(this.players.get(playerTurn).getPosition()));
+        return this.getPlayer().buy(this.board.getProperty(this.getPlayer().getPosition()));
     }
 
     /**
@@ -95,7 +95,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public void playerRent(){
-        this.players.get(playerTurn).rent(this.board.getProperty(this.players.get(playerTurn).getPosition()));
+        this.getPlayer().rent(this.board.getProperty(this.getPlayer().getPosition()));
     }
 
     /**
@@ -105,7 +105,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public void payRent(){
-        this.board.getProperty(this.players.get(playerTurn).getPosition()).getOwner().addMoney(this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent());
+        this.board.getProperty(this.getPlayer().getPosition()).getOwner().addMoney(this.board.getProperty(this.getPlayer().getPosition()).getRent());
     }
 
     /**
@@ -115,11 +115,18 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      */
     public int getRent(){
-        return this.board.getProperty(this.players.get(playerTurn).getPosition()).getRent();
+        return this.board.getProperty(this.getPlayer().getPosition()).getRent();
     }
 
     /**
-     * WAIT UNTIL METHOD IS COMPLETELY DONE BEFORE DOCUMENTING
+     * This is the method that actually runs the game, it starts by getting names for every player in the game and adding them to the list
+     * of players. Next it runs a loop that will loop until only one player remains, this loop starts by getting the player whose turn
+     * it is to roll the dice. The value they roll will be added to their current position, they will then move the corresponding amount of
+     * spaces on the board landing on a property space. If the property is unowned they will be prompted to buy said property, if another
+     * player owns the property they will pay this player the rent of the property. The players turn then ends, the player's money is then checked
+     * to see if they are bankrupt, if they are then they are removed from the game. If a player is removed from the game then the list of players
+     * is checked to see if only one player remains, if only one player remains then the game is over and this player wins. Finally at the end of the loop
+     * the playerTurn counter is increased so that the game knows it is the next players turn.
      *
      * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153
      */
