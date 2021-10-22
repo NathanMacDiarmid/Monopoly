@@ -10,8 +10,9 @@ public class Player {
     @attribute  money is the amount of money the Player has
     money is initialized to $1500 always
     @attribute position is where the Player is on the board
+     Code assessed and reformatted by Mehedi Mostofa - 101154128
      */
-    private String name;
+    private final String name;
     private int money;
     private int position;
 

@@ -17,8 +17,8 @@ public class Monopoly {
      * @attribute playerTurn type int is used to determine whos turn it is
      */
     private final Board board;
-    private List<Player> players;
-    private Dice die;
+    private final List<Player> players;
+    private final Dice die;
     int playerTurn;
 
     public Monopoly() {
@@ -53,7 +53,6 @@ public class Monopoly {
 
     /**
      * This method is used to get a string representation of the Player whose turn it is
-     * @param playerTurn
      * @return a string representation of the current Player
      *
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
@@ -185,11 +184,10 @@ public class Monopoly {
 
             //Check user input
             switch (input) {
-                case "roll":
+                case "roll" -> {
                     diceValue = this.roll();
                     System.out.println("You rolled a " + diceValue);
                     this.getPlayer().addPosition(diceValue);
-
                     System.out.println("You landed on " + getPropertyInfo());
 
                     // check if property is not owned
@@ -226,18 +224,20 @@ public class Monopoly {
                             System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
                         }
                     }
-
-                    break;
-                case "info":
+                }
+                case "info" -> {
                     System.out.println(this.getPlayerInfo(playerTurn));
                     System.out.println(this.getPropertyInfo());
                     continue;
-                case "quit":
+                }
+                case "quit" -> {
                     running = false;
                     continue;
-                default:
+                }
+                default -> {
                     System.out.println("Command not recognized");
                     continue;
+                }
             }
 
             //Check to see if the current player has run out of money
