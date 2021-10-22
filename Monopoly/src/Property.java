@@ -63,6 +63,14 @@ public class Property {
     }
 
     /**
+     * Default getter method for name attribute
+     * @return name of property
+     */
+    public String getName(){
+        return this.name;
+    }
+
+    /**
      * Override toString() method
      * Displays Property information in String format
      * @return Property information including attributes and class type

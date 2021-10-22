@@ -17,8 +17,8 @@ public class Monopoly {
      * @attribute playerTurn type int is used to determine whos turn it is
      */
     private final Board board;
-    private final List<Player> players;
-    private final Dice die;
+    private List<Player> players;
+    private Dice die;
     int playerTurn;
 
     public Monopoly() {
@@ -28,8 +28,16 @@ public class Monopoly {
         this.playerTurn = 0;
     }
 
-    // removePlayer needs more code
-    public void removePlayer() { this.players.remove(playerTurn);}
+    /**
+     * This method is called if a player goes bankrupt, it first removes all the players ownerships and
+     * then removes the player from the game.
+     *
+     * Created and documented by Matthew Belanger
+     */
+    public void removePlayer() {
+        this.players.get(this.playerTurn).removeProperties();
+        this.players.remove(this.playerTurn);
+    }
 
     /**
      * Roll() method rolls the dice
@@ -49,16 +57,6 @@ public class Monopoly {
      */
     public Player getPlayer(){
         return this.players.get(playerTurn);
-    }
-
-    /**
-     * This method is used to get a string representation of the Player whose turn it is
-     * @return a string representation of the current Player
-     *
-     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
-     */
-    public String getPlayerInfo(int playerTurn) {
-        return this.players.get(playerTurn).toString();
     }
 
     /**
@@ -126,6 +124,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153
      */
     public void play(){
+        boolean validCommand = false;
         boolean running = true;
         int diceValue;
 
@@ -142,24 +141,30 @@ public class Monopoly {
 
             this.players.add(new Player(name));
 
-            System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
-            System.out.print(">>> ");
+            //Loop until a valid command is entered
+            validCommand = false;
+            while(!validCommand) {
+                System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
+                System.out.print(">>> ");
 
-            Scanner morePlayers = new Scanner(System.in);
-            String addPlayers = morePlayers.nextLine();
+                Scanner morePlayers = new Scanner(System.in);
+                String addPlayers = morePlayers.nextLine();
 
-            switch (addPlayers) {
-                case "yes":
-                    System.out.println("Great! Lets add some friends!");
-                    break;
-                case "no":
-                    running = false;
-                    break;
-                case "quit":
-                    return;
-                default:
-                    System.out.println("Command not recognized");
-                    break;
+                switch (addPlayers) {
+                    case "yes":
+                        System.out.println("Great! Lets add some friends!");
+                        validCommand = true;
+                        break;
+                    case "no":
+                        running = false;
+                        validCommand = true;
+                        break;
+                    case "quit":
+                        return;
+                    default:
+                        System.out.println("Command not recognized");
+                        break;
+                }
             }
         }
 
@@ -184,36 +189,46 @@ public class Monopoly {
 
             //Check user input
             switch (input) {
-                case "roll" -> {
+                case "roll":
                     diceValue = this.roll();
                     System.out.println("You rolled a " + diceValue);
                     this.getPlayer().addPosition(diceValue);
+
                     System.out.println("You landed on " + getPropertyInfo());
 
                     // check if property is not owned
                     if (this.getPropertyOwner() == null) {
                         // check if lands on Go
                         if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
-                            continue;
+                            break;
                         }
-                        System.out.println("Would you like to buy this property? You currently have $"
-                                + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
-                        System.out.print(">>> ");
 
-                        //Get user input
-                        Scanner buyInput = new Scanner(System.in);
-                        String inputBuy = buyInput.nextLine();
+                        //Loop until the player enters a valid command, this way they don't lose their chance to buy
+                        validCommand = false;
+                        while(!validCommand) {
+                            System.out.println("Would you like to buy this property? You currently have $"
+                                    + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                            System.out.print(">>> ");
 
-                        //Check user input
-                        if (inputBuy.equals("yes")) {
-                            //give option to buy property
-                            if (this.playerBuy()) {
-                                System.out.println("You bought the Property!");
+                            //Get user input
+                            Scanner buyInput = new Scanner(System.in);
+                            String inputBuy = buyInput.nextLine();
+
+                            //Check user input
+                            if (inputBuy.equals("yes")) {
+                                //give option to buy property
+                                if (this.playerBuy()) {
+                                    System.out.println("You bought the Property!");
+                                } else {
+                                    System.out.println("You do not have enough money to buy this property");
+                                }
+                                validCommand = true;
+                            } else if (inputBuy.equals("no")) {
+                                System.out.println("You did not buy the Property!");
+                                validCommand = true;
                             } else {
-                                System.out.println("You do not have enough money to buy this property");
+                                System.out.println("Not a valid command");
                             }
-                        } else if (inputBuy.equals("no")) {
-                            System.out.println("You did not buy the Property!");
                         }
                     } else {
                         // if this player is not the owner
@@ -222,26 +237,27 @@ public class Monopoly {
                             this.playerRent();
                             this.payRent();
                             System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
+                            System.out.println("You now have $" + this.getPlayer().getMoney());
                         }
                     }
-                }
-                case "info" -> {
-                    System.out.println(this.getPlayerInfo(playerTurn));
-                    System.out.println(this.getPropertyInfo());
+
+                    break;
+                case "info":
+                    System.out.println(this.getPlayer().toString());
+                    System.out.println(this.getPlayer().getProperties());
+                    System.out.println("You are currently on " + this.getPropertyInfo());
                     continue;
-                }
-                case "quit" -> {
+                case "quit":
                     running = false;
                     continue;
-                }
-                default -> {
+                default:
                     System.out.println("Command not recognized");
                     continue;
-                }
             }
 
             //Check to see if the current player has run out of money
             if(getPlayer().getMoney() <= 0 ){
+                System.out.println(this.getPlayer().getName() + " has gone bankrupt and is eliminated from the game!");
                 this.removePlayer();
                 //Check to see if there is only one player left, as if there is they've won
                 if(this.players.size() == 1){
@@ -251,7 +267,8 @@ public class Monopoly {
                 }
             }
 
-            playerTurn = (playerTurn + 1) % players.size();
+            //Increase playerTurn to pass the turn to the next player
+            this.playerTurn = (this.playerTurn + 1) % this.players.size();
         }
     }
 

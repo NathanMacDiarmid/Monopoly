@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     /**
     This is the Player class.
@@ -10,11 +13,12 @@ public class Player {
     @attribute  money is the amount of money the Player has
     money is initialized to $1500 always
     @attribute position is where the Player is on the board
-     Code assessed and reformatted by Mehedi Mostofa - 101154128
+     @attribute propertiesOwned is a List of properties owned by this player
      */
-    private final String name;
+    private String name;
     private int money;
     private int position;
+    private List<Property> propertiesOwned;
 
     /**
      * Default constructor for Player
@@ -24,8 +28,9 @@ public class Player {
      */
     public Player(String name) {
         this.name = name;
-        this.money = 1500;
+        this.money = 500;
         this.position = 0;
+        this.propertiesOwned = new ArrayList<>();
     }
 
     /**
@@ -69,6 +74,12 @@ public class Player {
         return money;
     }
 
+    /**
+     * This method adds the given amount to the Player's money
+     * @param money
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void addMoney(int money) {
         this.money += money;
     }
@@ -87,6 +98,7 @@ public class Player {
         }
         else {
             property.setOwner(this);
+            this.propertiesOwned.add(property);
             this.money -= property.getCost();
             return true;
         }
@@ -104,6 +116,32 @@ public class Player {
     }
 
     /**
+     * This method will remove the current player's ownership from all properties they own
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void removeProperties(){
+        for(int i = 0; i < this.propertiesOwned.size(); i++){
+            this.propertiesOwned.get(i).setOwner(null);
+        }
+    }
+
+    /**
+     * This method returns a String representation of all the properties this Player owns
+     * @return String of all the name of the properties this player owns
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public String getProperties(){
+        String s = "Properties owned: ";
+
+        for(int i = 0; i < this.propertiesOwned.size(); i++){
+            s += "\n" + this.propertiesOwned.get(i).getName();
+        }
+        return s ;
+    }
+
+    /**
      * Overrides the toString() default method to output Player
      * attributes and and class type
      * @return String of Player attributes
@@ -112,7 +150,7 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "Player{" +
+       return "Player{" +
                 "name='" + name + '\'' +
                 ", money=" + money +
                 ", position=" + position +
