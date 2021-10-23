@@ -11,7 +11,6 @@ the player has to pay rent to the owner.
 
 The team plans to implement additional features like: hotels, and special properties and squares such as: jail, “Go”, railroad, utility. Also, the ability to play against a number of “AI” players.
 
-
 Usage:
 ______
 
