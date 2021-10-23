@@ -14,7 +14,7 @@ public class Monopoly {
      * @attribute players type ArrayList<Player> contains the list
      * players that are currently playing
      * @attribute die type Dice is the die that will be used for the game
-     * @attribute playerTurn type int is used to determine whos turn it is
+     * @attribute playerTurn type int is used to determine whose turn it is
      */
     private final Board board;
     private List<Player> players;
