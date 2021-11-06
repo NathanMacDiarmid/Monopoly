@@ -44,6 +44,8 @@ public class Board {
         Property Architecture = new Property("Architecture Building", 180, 18);
         Property Canal = new Property("Canal Building", 200, 20);
 
+        Property FreeParking = new Property("Free Parking", 0, 0);
+
         Property Glengarry = new Property("Glengarry House", 220, 22);
         Property Lennox = new Property("Lennox & Addington House", 220, 22);
         Property Renfrew = new Property("Renfrew House", 240, 24);
@@ -77,6 +79,8 @@ public class Board {
         this.properties.add(Robertson);
         this.properties.add(Architecture);
         this.properties.add(Canal);
+
+        this.properties.add(FreeParking);
 
         this.properties.add(Glengarry);
         this.properties.add(Lennox);

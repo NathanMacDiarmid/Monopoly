@@ -199,6 +199,20 @@ public class Monopoly {
     }
 
     /**
+     * Handles the empty properties that don't do anything at the moment.
+     * Current empties: Go and Free Parking
+     * @return boolean value whether a player landed on one of these properties.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public boolean handleEmptyProperties() {
+        if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
+            return true;
+        }
+        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(12));
+    }
+
+    /**
      * This is the method that actually runs the game, it starts by getting names for every player in the game and adding them to the list
      * of players. Next it runs a loop that will loop until only one player remains, this loop starts by getting the player whose turn
      * it is to roll the dice. The value they roll will be added to their current position, they will then move the corresponding amount of
@@ -245,7 +259,7 @@ public class Monopoly {
                     // check if property is not owned
                     if (this.getPropertyOwner() == null) {
                         // check if lands on Go
-                        if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
+                        if (handleEmptyProperties()) {
                             break;
                         }
 
