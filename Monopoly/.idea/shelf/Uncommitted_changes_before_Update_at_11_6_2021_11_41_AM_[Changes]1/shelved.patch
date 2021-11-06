@@ -1,0 +1,73 @@
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1636212471831)
++++ b/.idea/.name	(date 1636212471831)
+@@ -0,0 +1,1 @@
++Monopoly.java
+\ No newline at end of file
+Index: .idea/codeStyles/codeStyleConfig.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+new file mode 100644
+--- /dev/null	(date 1636212472273)
++++ b/.idea/codeStyles/codeStyleConfig.xml	(date 1636212472273)
+@@ -0,0 +1,5 @@
++<component name="ProjectCodeStyleConfiguration">
++  <state>
++    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
++  </state>
++</component>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1636212472281)
++++ b/.idea/runConfigurations.xml	(date 1636212472281)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/codeStyles/Project.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+new file mode 100644
+--- /dev/null	(date 1636212472264)
++++ b/.idea/codeStyles/Project.xml	(date 1636212472264)
+@@ -0,0 +1,13 @@
++<component name="ProjectCodeStyleConfiguration">
++  <code_scheme name="Project" version="173">
++    <JetCodeStyleSettings>
++      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
++    </JetCodeStyleSettings>
++    <ScalaCodeStyleSettings>
++      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
++    </ScalaCodeStyleSettings>
++    <codeStyleSettings language="kotlin">
++      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
++    </codeStyleSettings>
++  </code_scheme>
++</component>
+\ No newline at end of file
