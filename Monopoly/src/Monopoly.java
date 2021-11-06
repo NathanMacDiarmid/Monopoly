@@ -122,7 +122,10 @@ public class Monopoly {
     }
 
     /**
+     * This method is the logic is the logic behind adding players to the list
+     * of players.
      *
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
     public void addPlayerCommand() {
         while (running) {
