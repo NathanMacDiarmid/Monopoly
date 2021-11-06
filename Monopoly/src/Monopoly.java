@@ -83,13 +83,38 @@ public class Monopoly {
     }
 
     /**
-     * This method calls the current Player's buy method and passes the property they are currently on as a parameter
-     * @return a boolean to indicate whether the buy was successful or not
+     * This method asks the player whether they want to buy a property when landed on.
      *
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
+     * Refactored and documented by Nathan MacDiarmid - 101098993
      */
-    public boolean playerBuy(){
-        return this.getPlayer().buy(this.board.getProperty(this.getPlayer().getPosition()));
+    public void playerBuy(){
+        validCommand = false;
+        while(!validCommand) {
+            System.out.println("Would you like to buy this property? You currently have $"
+                    + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+            System.out.print(">>> ");
+
+            //Get user input
+            Scanner buyInput = new Scanner(System.in);
+            String inputBuy = buyInput.nextLine();
+
+            //Check user input
+            if (inputBuy.equals("yes")) {
+                //give option to buy property
+                if (this.getPlayer().buy(this.board.getProperty(this.getPlayer().getPosition()))) {
+                    System.out.println("You bought the Property!");
+                } else {
+                    System.out.println("You do not have enough money to buy this property");
+                }
+                validCommand = true;
+            } else if (inputBuy.equals("no")) {
+                System.out.println("You did not buy the Property!");
+                validCommand = true;
+            } else {
+                System.out.println("Not a valid command");
+            }
+        }
     }
 
     /**
@@ -221,32 +246,8 @@ public class Monopoly {
                         }
 
                         //Loop until the player enters a valid command, this way they don't lose their chance to buy
-                        validCommand = false;
-                        while(!validCommand) {
-                            System.out.println("Would you like to buy this property? You currently have $"
-                                    + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
-                            System.out.print(">>> ");
+                        playerBuy();
 
-                            //Get user input
-                            Scanner buyInput = new Scanner(System.in);
-                            String inputBuy = buyInput.nextLine();
-
-                            //Check user input
-                            if (inputBuy.equals("yes")) {
-                                //give option to buy property
-                                if (this.playerBuy()) {
-                                    System.out.println("You bought the Property!");
-                                } else {
-                                    System.out.println("You do not have enough money to buy this property");
-                                }
-                                validCommand = true;
-                            } else if (inputBuy.equals("no")) {
-                                System.out.println("You did not buy the Property!");
-                                validCommand = true;
-                            } else {
-                                System.out.println("Not a valid command");
-                            }
-                        }
                     } else {
                         // if this player is not the owner
                         if (this.getPlayer() != this.getPropertyOwner()) {
