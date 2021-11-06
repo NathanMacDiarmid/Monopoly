@@ -88,7 +88,7 @@ public class Monopoly {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      * Refactored and documented by Nathan MacDiarmid - 101098993
      */
-    public void playerBuy(){
+    public void buyProperty(){
         validCommand = false;
         while(!validCommand) {
             System.out.println("Would you like to buy this property? You currently have $"
@@ -131,9 +131,13 @@ public class Monopoly {
      * property the current Player is on and then calling the addMoney() method on the Player owning the property.
      *
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
+     * Refactored by Nathan MacDiarmid - 101098993
      */
     public void payRent(){
         this.board.getProperty(this.getPlayer().getPosition()).getOwner().addMoney(this.board.getProperty(this.getPlayer().getPosition()).getRent());
+        this.playerRent();
+        System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
+        System.out.println("You now have $" + this.getPlayer().getMoney());
     }
 
     /**
@@ -152,7 +156,7 @@ public class Monopoly {
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    public void addPlayerCommand() {
+    public void addPlayers() {
         while (running) {
             if (this.players.size() >= 4) {
                 System.out.println("Sorry, max is 4 players");
@@ -208,7 +212,7 @@ public class Monopoly {
      */
     public void play(){
 
-        addPlayerCommand();
+        addPlayers();
 
         //Check to make sure there are at least 2 players
         if(this.players.size() < 2){
@@ -245,17 +249,12 @@ public class Monopoly {
                             break;
                         }
 
-                        //Loop until the player enters a valid command, this way they don't lose their chance to buy
-                        playerBuy();
+                        buyProperty();
 
                     } else {
                         // if this player is not the owner
                         if (this.getPlayer() != this.getPropertyOwner()) {
-                            //pay rent
-                            this.playerRent();
-                            this.payRent();
-                            System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
-                            System.out.println("You now have $" + this.getPlayer().getMoney());
+                            payRent();
                         }
                     }
 
