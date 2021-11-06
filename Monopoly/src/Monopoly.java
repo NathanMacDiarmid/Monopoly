@@ -17,8 +17,8 @@ public class Monopoly {
      * @attribute playerTurn type int is used to determine whose turn it is
      */
     private final Board board;
-    private List<Player> players;
-    private Dice die;
+    private final List<Player> players;
+    private final Dice die;
     private int diceValue;
     private boolean validCommand = false;
     private boolean running = true;
@@ -92,7 +92,7 @@ public class Monopoly {
         validCommand = false;
         while(!validCommand) {
             System.out.println("Would you like to buy this property? You currently have $"
-                    + this.getPlayer().getMoney() + "\t Enter 'yes' to Buy or 'no' to continue playing");
+                    + this.getPlayer().getMoney() + " Enter 'yes' to Buy or 'no' to continue playing");
             System.out.print(">>> ");
 
             //Get user input
@@ -213,6 +213,33 @@ public class Monopoly {
     }
 
     /**
+     * Check to see if the current player has run out of money
+     * Prints bankruptcy if current player ran out of money
+     *
+     * Created and documented by Mehedi Mostofa (101154128)
+     */
+    public void checkMoney() {
+        if (getPlayer().getMoney() <= 0) {
+            System.out.println(this.getPlayer().getName() + " has gone bankrupt and is eliminated from the game!");
+            this.removePlayer();
+        }
+    }
+
+    /**
+     * Checks to see if there is only one player left. If yes, the remaining player has won
+     * Prints the name of the winner
+     *
+     * Created and documented by Mehedi Mostofa (101154128)
+     */
+    public void checkPlayer(){
+    // as if there is they've won
+            if(this.players.size() == 1){
+                System.out.println("Game over " + this.players.get(0).getName() + " has won");
+                running = false;
+            }
+    }
+
+    /**
      * This is the method that actually runs the game, it starts by getting names for every player in the game and adding them to the list
      * of players. Next it runs a loop that will loop until only one player remains, this loop starts by getting the player whose turn
      * it is to roll the dice. The value they roll will be added to their current position, they will then move the corresponding amount of
@@ -286,21 +313,11 @@ public class Monopoly {
                     continue;
             }
 
-            //Check to see if the current player has run out of money
-            if(getPlayer().getMoney() <= 0 ){
-                System.out.println(this.getPlayer().getName() + " has gone bankrupt and is eliminated from the game!");
-                this.removePlayer();
-                //Check to see if there is only one player left, as if there is they've won
-                if(this.players.size() == 1){
-                    System.out.println("Game over " + this.players.get(0).getName() + " has won");
-                    running = false;
-                    continue;
-                }
-            }
-
             //Increase playerTurn to pass the turn to the next player
             this.playerTurn = (this.playerTurn + 1) % this.players.size();
         }
+        checkMoney();
+        checkPlayer();
     }
 
     public static void main(String[] args) {
