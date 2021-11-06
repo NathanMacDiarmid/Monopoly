@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Monopoly {
+public class MonopolyModel {
     /**
      * The Monopoly class
      *
@@ -23,12 +23,21 @@ public class Monopoly {
     private boolean validCommand = false;
     private boolean running = true;
     int playerTurn;
+    private MonopolyView view;
 
-    public Monopoly() {
+    public MonopolyModel() {
         this.board = new Board();
         this.die = new Dice();
         this.players = new ArrayList<>();
         this.playerTurn = 0;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void addMonopolyView(MonopolyView mv){
+        view = mv;
     }
 
     /**
@@ -321,7 +330,7 @@ public class Monopoly {
 
     public static void main(String[] args) {
 
-        Monopoly monopoly = new Monopoly();
+        MonopolyModel monopoly = new MonopolyModel();
 
         monopoly.play();
 

@@ -1,6 +1,6 @@
-#Monopoly
+#MonopolyModel
 
-SYSC 3110 Fall 2021 Team Project: Monopoly game Version 1.0
+SYSC 3110 Fall 2021 Team Project: MonopolyModel game Version 1.0
 
 Description:
 ____________
