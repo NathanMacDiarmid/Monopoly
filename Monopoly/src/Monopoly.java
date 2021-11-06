@@ -232,7 +232,6 @@ public class Monopoly {
      * Created and documented by Mehedi Mostofa (101154128)
      */
     public void checkPlayer(){
-    // as if there is they've won
             if(this.players.size() == 1){
                 System.out.println("Game over " + this.players.get(0).getName() + " has won");
                 running = false;
@@ -249,7 +248,7 @@ public class Monopoly {
      * is checked to see if only one player remains, if only one player remains then the game is over and this player wins. Finally at the end of the loop
      * the playerTurn counter is increased so that the game knows it is the next players turn.
      *
-     * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153
+     * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153, Mehedi Mostofa - 101154128
      */
     public void play(){
 
