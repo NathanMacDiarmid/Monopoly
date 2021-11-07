@@ -62,7 +62,7 @@ public class MonopolyView extends JFrame {
             for(int j = 0; j < BOARDLENGTH; j++){
                 JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
                 propertyButtons.add(button);
-                button.setSize(100, 100);
+                button.setPreferredSize(new Dimension(100, 100));
                 button.setActionCommand((j + BOARDLENGTH * i) + "");
                 button.addActionListener(mbc);
                 panels.get(i).add(button);
@@ -70,19 +70,21 @@ public class MonopolyView extends JFrame {
         }
 
         //Add starting position for all players.
-        String buttonText = model.getBoard().getProperty(0).getName();
+        String buttonText = "<html>" + model.getBoard().getProperty(0).getName();
         for(int i = 0; i < model.getPlayers().size(); i++){
-            buttonText += "\n" + model.getPlayers().get(i).getName();
+            buttonText += "<br>" + model.getPlayers().get(i).getName();
         }
         propertyButtons.get(0).setText(buttonText);
 
         //Add roll dice button to middle of board.
         JPanel centerPanel = new JPanel(new BorderLayout());
         turnLabel.setText(model.getPlayer().getName() + " it is your turn");
+        centerPanel.setPreferredSize(new Dimension(400, 400));
         centerPanel.add(turnLabel, BorderLayout.NORTH);
         DiceController dc = new DiceController(model);
         JButton diceButton = new JButton("Roll Die");
         diceButton.addActionListener(dc);
+        diceButton.setPreferredSize(new Dimension(200, 200));
         centerPanel.add(diceButton, BorderLayout.SOUTH);
         pane.add(centerPanel, BorderLayout.CENTER);
     }
@@ -132,7 +134,7 @@ public class MonopolyView extends JFrame {
         //Set new player positions.
         for(int i = 0; i < model.getPlayers().size(); i++){
             int position = model.getPlayers().get(i).getPosition();
-            propertyButtons.get(position).setText(model.getBoard().getProperty(position).getName() + "\n " +model.getPlayers().get(i).getName());
+            propertyButtons.get(position).setText("<html>" + model.getBoard().getProperty(position).getName() + "<br>" +model.getPlayers().get(i).getName());
         }
 
     }
