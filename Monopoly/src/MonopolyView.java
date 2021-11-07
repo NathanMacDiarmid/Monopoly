@@ -139,6 +139,11 @@ public class MonopolyView extends JFrame {
         }
     }
 
+    /**
+     * The Monopoly model notifies the view whether the property can be bought.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public void checkAvailability() {
         int playerMoney = model.getPlayer().getMoney();
 
