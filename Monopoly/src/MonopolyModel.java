@@ -36,6 +36,10 @@ public class MonopolyModel {
         return board;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public void addMonopolyView(MonopolyView mv){
         view = mv;
     }
@@ -165,46 +169,8 @@ public class MonopolyModel {
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    public void addPlayers() {
-        while (running) {
-            if (this.players.size() >= 4) {
-                System.out.println("Sorry, max is 4 players");
-                break;
-            }
-            System.out.println("Please input your name:");
-            System.out.print(">>> ");
-
-            Scanner playerInput = new Scanner(System.in);
-            String name = playerInput.nextLine();
-
-            this.players.add(new Player(name));
-
-            //Loop until a valid command is entered
-            validCommand = false;
-            while(!validCommand) {
-                System.out.println("Add another player? Enter 'yes', 'no' or 'quit'");
-                System.out.print(">>> ");
-
-                Scanner morePlayers = new Scanner(System.in);
-                String addPlayers = morePlayers.nextLine();
-
-                switch (addPlayers) {
-                    case "yes":
-                        System.out.println("Great! Lets add some friends!");
-                        validCommand = true;
-                        break;
-                    case "no":
-                        running = false;
-                        validCommand = true;
-                        break;
-                    case "quit":
-                        return;
-                    default:
-                        System.out.println("Command not recognized");
-                        break;
-                }
-            }
-        }
+    public void addPlayer(String name) {
+        players.add(new Player(name));
     }
 
     /**
@@ -247,6 +213,13 @@ public class MonopolyModel {
             }
     }
 
+    public void playTurn(int rollValue){
+        this.getPlayer().addPosition(rollValue);
+        //Increase playerTurn to pass the turn to the next player
+        this.playerTurn = (this.playerTurn + 1) % this.players.size();
+        view.updateStatus();
+    }
+
     /**
      * This is the method that actually runs the game, it starts by getting names for every player in the game and adding them to the list
      * of players. Next it runs a loop that will loop until only one player remains, this loop starts by getting the player whose turn
@@ -261,17 +234,7 @@ public class MonopolyModel {
      */
     public void play(){
 
-        addPlayers();
-
-        //Check to make sure there are at least 2 players
-        if(this.players.size() < 2){
-            System.out.println("Game was not initialized with enough players, EXITING");
-            return;
-        }
-        else{
-            System.out.println("Welcome to Monopoly, let's play");
-            running = true;
-        }
+        running = true;
 
         while(running){
             System.out.println(this.getPlayer().getName() + " it is your turn");
