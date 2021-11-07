@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -96,38 +97,33 @@ public class MonopolyModel {
     }
 
     /**
-     * This method asks the player whether they want to buy a property when landed on.
+     * This method verifies that the property is available to buy.
      *
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      * Refactored and documented by Nathan MacDiarmid - 101098993
      */
-    public void buyProperty(){
-        validCommand = false;
-        while(!validCommand) {
-            System.out.println("Would you like to buy this property? You currently have $"
-                    + this.getPlayer().getMoney() + " Enter 'yes' to Buy or 'no' to continue playing");
-            System.out.print(">>> ");
-
-            //Get user input
-            Scanner buyInput = new Scanner(System.in);
-            String inputBuy = buyInput.nextLine();
-
-            //Check user input
-            if (inputBuy.equals("yes")) {
-                //give option to buy property
-                if (this.getPlayer().buy(this.board.getProperty(this.getPlayer().getPosition()))) {
-                    System.out.println("You bought the Property!");
-                } else {
-                    System.out.println("You do not have enough money to buy this property");
-                }
-                validCommand = true;
-            } else if (inputBuy.equals("no")) {
-                System.out.println("You did not buy the Property!");
-                validCommand = true;
-            } else {
-                System.out.println("Not a valid command");
+    public boolean checkProperty(){
+        if (this.getPropertyOwner() != null) {
+            if (this.getPlayer() != this.getPropertyOwner()) {
+                payRent();
             }
+            return false;
         }
+        else return !handleEmptyProperties();
+    }
+
+    /**
+     * This method allows players to buy properties.
+     * @param selection a selection from a JOptionPane
+     * @return a boolean value whether the property was bought.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public boolean buyProperty(int selection) {
+        if (selection == JOptionPane.YES_OPTION) {
+            return this.getPlayer().buy(this.board.getProperty(this.getPlayer().getPosition()));
+        }
+        return true;
     }
 
     /**
@@ -216,6 +212,7 @@ public class MonopolyModel {
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
         //Increase playerTurn to pass the turn to the next player
+        view.checkAvailability();
         this.playerTurn = (this.playerTurn + 1) % this.players.size();
         view.updateStatus();
     }
@@ -255,20 +252,7 @@ public class MonopolyModel {
                     System.out.println("You landed on " + getPropertyInfo());
 
                     // check if property is not owned
-                    if (this.getPropertyOwner() == null) {
-                        // check if lands on Go
-                        if (handleEmptyProperties()) {
-                            break;
-                        }
-
-                        buyProperty();
-
-                    } else {
-                        // if this player is not the owner
-                        if (this.getPlayer() != this.getPropertyOwner()) {
-                            payRent();
-                        }
-                    }
+                    checkProperty();
 
                     break;
                 case "info":

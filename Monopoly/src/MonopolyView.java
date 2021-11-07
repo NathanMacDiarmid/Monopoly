@@ -134,7 +134,31 @@ public class MonopolyView extends JFrame {
         //Set new player positions.
         for(int i = 0; i < model.getPlayers().size(); i++){
             int position = model.getPlayers().get(i).getPosition();
-            propertyButtons.get(position).setText("<html>" + model.getBoard().getProperty(position).getName() + "<br>" +model.getPlayers().get(i).getName());
+            propertyButtons.get(position).setText("<html>" + model.getBoard().getProperty(position).getName() +
+                    "<br>" + model.getPlayers().get(i).getName());
+        }
+    }
+
+    public void checkAvailability() {
+        int playerMoney = model.getPlayer().getMoney();
+
+        if (model.checkProperty()) {
+            int input = JOptionPane.showOptionDialog(this, "Would you like to buy this property?"
+                    + "\n" + model.getPropertyInfo(),
+                    "Buy Property", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, null, null);
+            if (!model.buyProperty(input)) {
+                JOptionPane.showMessageDialog(this, "You did not have enough money to buy the property.");
+            }
+
+            else {
+                JOptionPane.showMessageDialog(this, "You now have $" + model.getPlayer().getMoney());
+            }
+
+        }
+        else if (!model.checkProperty()) {
+            JOptionPane.showMessageDialog(this, "You just paid " +
+                    (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
         }
 
     }
