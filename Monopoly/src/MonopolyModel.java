@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class MonopolyModel {
     /**
@@ -20,7 +19,6 @@ public class MonopolyModel {
     private final Board board;
     private final List<Player> players;
     private final Dice die;
-    private int diceValue;
     private boolean validCommand = false;
     private boolean running = true;
     int playerTurn;
@@ -189,32 +187,13 @@ public class MonopolyModel {
     }
 
     /**
-     * Check to see if the current player has run out of money
-     * Prints bankruptcy if current player ran out of money
+     * This method handles the logic behind a player turn, it will be called by view and will increment the player position
+     * check the property the player is on as well as the players money and if someone has won. Finally it will change the turn
+     * to the next player and then update the view.
+     * @param rollValue
      *
-     * Created and documented by Mehedi Mostofa (101154128)
+     * Created and documented by Matthew Belanger - 101144323
      */
-    public boolean checkMoney() {
-        if (getPlayer().getMoney() <= 0) {
-            this.removePlayer();
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Checks to see if there is only one player left. If yes, the remaining player has won
-     * Prints the name of the winner
-     *
-     * Created and documented by Mehedi Mostofa (101154128)
-     */
-    public boolean checkPlayer(){
-            if(this.players.size() == 1){
-                return true;
-            }
-            return false;
-    }
-
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
         //Increase playerTurn to pass the turn to the next player
@@ -228,64 +207,6 @@ public class MonopolyModel {
         }
         this.playerTurn = (this.playerTurn + 1) % this.players.size();
         view.updateStatus();
-    }
-
-    /**
-     * This is the method that actually runs the game, it starts by getting names for every player in the game and adding them to the list
-     * of players. Next it runs a loop that will loop until only one player remains, this loop starts by getting the player whose turn
-     * it is to roll the dice. The value they roll will be added to their current position, they will then move the corresponding amount of
-     * spaces on the board landing on a property space. If the property is unowned they will be prompted to buy said property, if another
-     * player owns the property they will pay this player the rent of the property. The players turn then ends, the player's money is then checked
-     * to see if they are bankrupt, if they are then they are removed from the game. If a player is removed from the game then the list of players
-     * is checked to see if only one player remains, if only one player remains then the game is over and this player wins. Finally at the end of the loop
-     * the playerTurn counter is increased so that the game knows it is the next players turn.
-     *
-     * Created and documented by Matthew Belanger - 101144323, Nathan MacDiarmid - 101098993, Tao - 101164153, Mehedi Mostofa - 101154128
-     */
-    public void play(){
-
-        running = true;
-
-        while(running){
-            System.out.println(this.getPlayer().getName() + " it is your turn");
-
-            //Get user input
-            Scanner rollInput = new Scanner(System.in);
-            System.out.println("Enter 'roll' to roll the Dice, 'info' to show player info or 'quit' to quit the game");
-            System.out.print(">>> ");
-            String input = rollInput.nextLine();
-
-            //Check user input
-            switch (input) {
-                case "roll":
-                    diceValue = this.roll();
-                    System.out.println("You rolled a " + diceValue);
-                    this.getPlayer().addPosition(diceValue);
-
-                    System.out.println("You landed on " + getPropertyInfo());
-
-                    // check if property is not owned
-                    checkProperty();
-
-                    break;
-                case "info":
-                    System.out.println(this.getPlayer().toString());
-                    System.out.println(this.getPlayer().getProperties());
-                    System.out.println("You are currently on " + this.getPropertyInfo());
-                    continue;
-                case "quit":
-                    running = false;
-                    continue;
-                default:
-                    System.out.println("Command not recognized");
-                    continue;
-            }
-
-            //Increase playerTurn to pass the turn to the next player
-            this.playerTurn = (this.playerTurn + 1) % this.players.size();
-        }
-        checkMoney();
-        checkPlayer();
     }
 
 }

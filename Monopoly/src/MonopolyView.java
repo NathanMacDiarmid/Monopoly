@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class MonopolyView extends JFrame {
 
     private final MonopolyModel model;
-    private final MonopolyModel pinfo;
     private final Container pane;
     private final JLabel turnLabel;
     private final ArrayList<JButton> propertyButtons;
@@ -18,11 +17,9 @@ public class MonopolyView extends JFrame {
         pane.setLayout(new BorderLayout());
 
         model = new MonopolyModel();
-        pinfo = new MonopolyModel();
 
 
         model.addMonopolyView(this);
-        pinfo.addMonopolyView(this);
         propertyButtons = new ArrayList<JButton>();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,8 +59,18 @@ public class MonopolyView extends JFrame {
         MonopolyBoardController mbc = new MonopolyBoardController(model);
 
         //Loop through and add all of the properties as buttons to the board.
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 2; i++){
             for(int j = 0; j < BOARDLENGTH; j++){
+                JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
+                propertyButtons.add(button);
+                button.setPreferredSize(new Dimension(100, 100));
+                button.setActionCommand((j + BOARDLENGTH * i) + "");
+                button.addActionListener(mbc);
+                panels.get(i).add(button);
+            }
+        }
+        for(int i = 2; i < 4; i++){
+            for(int j = BOARDLENGTH - 1; j >= 0; j--){
                 JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
                 propertyButtons.add(button);
                 button.setPreferredSize(new Dimension(100, 100));
@@ -91,10 +98,9 @@ public class MonopolyView extends JFrame {
         diceButton.addActionListener(dc);
         diceButton.setPreferredSize(new Dimension(200, 200));
         centerPanel.add(diceButton, BorderLayout.SOUTH);
-        pane.add(centerPanel, BorderLayout.CENTER);
 
         // Add Player Info button on the right side of the board.
-        InfoController cpi = new InfoController(pinfo);
+        InfoController cpi = new InfoController(model);
         JButton infoButton = new JButton("Player Info");
         infoButton.addActionListener(cpi);
         infoButton.setPreferredSize(new Dimension(180, 100));
@@ -146,19 +152,42 @@ public class MonopolyView extends JFrame {
         }
     }
 
+    /**
+     * This method updates the view of board, it will change the label of whos turn it is, as well as where the players
+     * are on the board.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void updateStatus(){
         turnLabel.setText(model.getPlayer().getName() + " it is your turn");
 
-        //reset all of the names to clear the current player position.
-        for(int i = 0; i < propertyButtons.size(); i++){
-            propertyButtons.get(i).setText(model.getBoard().getProperty(i).getName());
-        }
+        //First update the top and right side of the board
+        for(int i = 0; i < 2; i++) {
+            for (int j = 0; j < BOARDLENGTH; j++) {
+                String text = "<html>" + model.getBoard().getProperty(j + BOARDLENGTH * i).getName();
 
-        //Set new player positions.
-        for(int i = 0; i < model.getPlayers().size(); i++){
-            int position = model.getPlayers().get(i).getPosition();
-            propertyButtons.get(position).setText("<html>" + model.getBoard().getProperty(position).getName() +
-                    "<br>" + model.getPlayers().get(i).getName());
+                for(int z = 0; z < model.getPlayers().size(); z++){
+                    if(model.getPlayers().get(z).getPosition() == j + BOARDLENGTH * i){
+                        text += "<br>" + model.getPlayers().get(z).getName();
+                    }
+                }
+                propertyButtons.get(j + BOARDLENGTH * i).setText(text);
+            }
+        }
+        //Next update the bottom and left side as these need to be done in reverse order.
+        for(int i = 2; i < 4; i++){
+            int y = 0;
+            for(int j = BOARDLENGTH - 1; j >= 0; j--){
+                String text = "<html>" + model.getBoard().getProperty(j + BOARDLENGTH * i).getName();
+
+                for(int z = 0; z < model.getPlayers().size(); z++){
+                    if(model.getPlayers().get(z).getPosition() == j + BOARDLENGTH * i){
+                        text += "<br>" + model.getPlayers().get(z).getName();
+                    }
+                }
+                propertyButtons.get(y + BOARDLENGTH * i).setText(text);
+                y++;
+            }
         }
     }
 
