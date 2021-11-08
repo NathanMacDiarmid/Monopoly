@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,8 +12,8 @@ public class MonopolyModelTest {
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    public void initEach() {
         model = new MonopolyModel();
         model.addPlayer("Player1");
         model.addPlayer("Player2");
@@ -28,9 +28,6 @@ public class MonopolyModelTest {
     public void buyPropertyTest() {
         model.getPlayer().addPosition(5);
         assertTrue(model.buyProperty(0));
-
-        // reset Player1 position to Go
-        model.getPlayer().addPosition(19);
     }
 
     /**
@@ -56,19 +53,19 @@ public class MonopolyModelTest {
         assertFalse(model.checkProperty());
 
         // moves Player1 to Free Parking
-        model.getPlayer().addPosition(12);
+        model.getPlayer().addPosition(7);
 
         // verifies that Free Parking cannot be bought
         assertFalse(model.checkProperty());
 
         // moves Player1 to Minto Case
-        model.getPlayer().addPosition(1);
+        model.getPlayer().addPosition(11);
 
         // verifies the property can be bought
         assertTrue(model.checkProperty());
 
         // sets the owner of Minto to Player1
-        model.getBoard().getProperty(18).setOwner(model.getPlayer());
+        model.getBoard().getProperty(23).setOwner(model.getPlayer());
 
         // verifies that Minto is owned
         assertFalse(model.checkProperty());
@@ -83,16 +80,10 @@ public class MonopolyModelTest {
         assertFalse(model.checkProperty());
 
         // moves Player2 to Minto Case
-        model.getPlayer().addPosition(13);
+        model.getPlayer().addPosition(18);
 
         // verifies that Player2 cannot buy the property
         assertFalse(model.checkProperty());
-
-        // resets both players to Go
-        model.getPlayer().addPosition(6);
-        model.playerTurn = (model.playerTurn + 1) % model.getPlayers().size();
-        model.getPlayer().addPosition(6);
-
     }
 
     /**
@@ -139,14 +130,6 @@ public class MonopolyModelTest {
         int newerPlayer2Money = newPlayer2Money + model.getBoard().getProperty(8).getRent();
         assertEquals((newerPlayer2Money - newPlayer2Money), model.getBoard().getProperty(8).getRent());
         assertEquals((newPlayer1Money - newerPlayer1Money), model.getBoard().getProperty(8).getRent());
-
-        // resets everything to original state
-        model.getBoard().getProperty(8).setOwner(null);
-        model.getBoard().getProperty(5).setOwner(null);
-        model.getPlayer().addPosition(16);
-        model.playerTurn = (model.playerTurn + 1) % model.getPlayers().size();
-        model.getPlayer().addPosition(19);
-
     }
 
     @Test

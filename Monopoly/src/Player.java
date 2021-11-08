@@ -61,7 +61,7 @@ public class Player {
      * Edited and enhanced by Matthew Belanger - 101144323
      */
     public void addPosition(int position) {
-            this.position = (this.position + position) % 23;
+            this.position = (this.position + position) % 24;
     }
 
     /**
