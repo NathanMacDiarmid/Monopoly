@@ -162,7 +162,7 @@ public class MonopolyModel {
         if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
             return true;
         }
-        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(17));
+        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(12));
     }
 
     /**
