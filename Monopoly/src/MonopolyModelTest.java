@@ -257,7 +257,7 @@ public class MonopolyModelTest {
         assertEquals(model.getPlayers().get(0), model.getPropertyOwner());
 
         model.getPlayers().get(0).addPosition(2);
-        assertEquals(null, model.getPropertyOwner());
+        assertNull(model.getPropertyOwner());
     }
 
 }
