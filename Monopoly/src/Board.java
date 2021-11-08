@@ -64,10 +64,8 @@ public class Board {
         // adds properties to property list
 
         this.properties.add(Go);
-
         this.properties.add(Loeb);
         this.properties.add(Southam);
-
         this.properties.add(Paterson);
         this.properties.add(Nesbitt);
         this.properties.add(Mackenzie);
@@ -75,29 +73,23 @@ public class Board {
         this.properties.add(Azreli);
         this.properties.add(Steacie);
         this.properties.add(Tory);
-
         this.properties.add(Robertson);
         this.properties.add(Architecture);
         this.properties.add(Canal);
 
+        this.properties.add(FreeParking);
+        this.properties.add(Glengarry);
+        this.properties.add(Lennox);
+        this.properties.add(Renfrew);
         this.properties.add(Lanark);
         this.properties.add(Grenville);
 
-        this.properties.add(Renfrew);
-        this.properties.add(Lennox);
-        this.properties.add(Glengarry);
-
-        this.properties.add(FreeParking);
-
-        this.properties.add(Minto);
-        this.properties.add(Nicol);
-
-        this.properties.add(Leeds);
-        this.properties.add(Frontenac);
-        this.properties.add(Prescott);
-
         this.properties.add(Dundas);
-
+        this.properties.add(Prescott);
+        this.properties.add(Frontenac);
+        this.properties.add(Leeds);
+        this.properties.add(Nicol);
+        this.properties.add(Minto);
     }
 
     /**
