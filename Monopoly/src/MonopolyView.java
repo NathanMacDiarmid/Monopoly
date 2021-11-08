@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class MonopolyView extends JFrame {
 
-    private MonopolyModel model;
-    private Container pane;
-    private JLabel turnLabel;
-    private ArrayList<JButton> propertyButtons;
+    private final MonopolyModel model;
+    private final MonopolyModel pinfo;
+    private final Container pane;
+    private final JLabel turnLabel;
+    private final ArrayList<JButton> propertyButtons;
     private final int BOARDLENGTH = 6;
 
     public MonopolyView(){
@@ -17,8 +18,11 @@ public class MonopolyView extends JFrame {
         pane.setLayout(new BorderLayout());
 
         model = new MonopolyModel();
+        pinfo = new MonopolyModel();
+
 
         model.addMonopolyView(this);
+        pinfo.addMonopolyView(this);
         propertyButtons = new ArrayList<JButton>();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +39,7 @@ public class MonopolyView extends JFrame {
     /**
      * This method handles the creation of the GUI board.
      *
-     * Created and documented by Matthew Belanger - 101144323
+     * Created and documented by Matthew Belanger - 101144323 and Mehedi Mostofa - 101154128
      */
     private void createBoard(){
         //Create grids to contain the properties.
@@ -87,6 +91,16 @@ public class MonopolyView extends JFrame {
         diceButton.setPreferredSize(new Dimension(200, 200));
         centerPanel.add(diceButton, BorderLayout.SOUTH);
         pane.add(centerPanel, BorderLayout.CENTER);
+
+        // Add Player Info button on the right side of the board.
+        InfoController cpi = new InfoController(pinfo);
+        JButton infoButton = new JButton("Player Info");
+        infoButton.addActionListener(cpi);
+        infoButton.setPreferredSize(new Dimension(180, 100));
+        centerPanel.add(infoButton, BorderLayout.EAST);
+        pane.add(centerPanel, BorderLayout.CENTER);
+
+
     }
 
     /**
