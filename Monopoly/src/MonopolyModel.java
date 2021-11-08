@@ -15,12 +15,11 @@ public class MonopolyModel {
      * players that are currently playing
      * @attribute die type Dice is the die that will be used for the game
      * @attribute playerTurn type int is used to determine whose turn it is
+     * @attribute MonopolyView this is the GUI class
      */
     private final Board board;
     private final List<Player> players;
     private final Dice die;
-    private boolean validCommand = false;
-    private boolean running = true;
     int playerTurn;
     private MonopolyView view;
 
@@ -31,14 +30,26 @@ public class MonopolyModel {
         this.playerTurn = 0;
     }
 
+    /**
+     * Getter for board.
+     * @return
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Getter for players.
+     * @return
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     *  Setter for MonopolyView.
+     * @param mv
+     */
     public void addMonopolyView(MonopolyView mv){
         view = mv;
     }
@@ -142,7 +153,7 @@ public class MonopolyModel {
     }
 
     /**
-     * This method is the logic is the logic behind adding players to the list
+     * This method is the logic behind adding players to the list
      * of players.
      *
      * Created and documented by Nathan MacDiarmid - 101098993
@@ -175,7 +186,6 @@ public class MonopolyModel {
      */
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
-        //Increase playerTurn to pass the turn to the next player
         view.checkAvailability();
         if(getPlayer().getMoney() <= 0){
             view.playerEliminated();

@@ -20,14 +20,27 @@ public class MonopolyModelTest {
     }
 
     /**
+     * This test verifies the buyProperty method, it checks that you're able to buy properties
      *
-     *
-     * Refactored by Nathan MacDiarmid - 101098993
+     * Created and documented by Matthew Belanger - 101144323 Refactored by Nathan MacDiarmid - 101098993
      */
     @Test
     public void buyPropertyTest() {
         model.getPlayer().addPosition(5);
-        assertTrue(model.buyProperty(0));
+        model.buyProperty(0);
+        assertEquals("Properties owned: \n" + "Makenzie Building",
+                model.getPlayer().getProperties());
+
+        model.getPlayer().addPosition(8);
+        model.buyProperty(0);
+        assertEquals("Properties owned: \n" + "Makenzie Building\n" + "Glengarry House",
+                model.getPlayer().getProperties());
+
+        model.getPlayer().addPosition(2);
+        model.buyProperty(0);
+        assertEquals("Properties owned: \n" + "Makenzie Building\n" + "Glengarry House\n" + "Renfrew House",
+                model.getPlayer().getProperties());
+
     }
 
     /**

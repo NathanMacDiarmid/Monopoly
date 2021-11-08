@@ -3,6 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InfoController implements ActionListener {
+    /**
+     * The InfoController class
+     *
+     * This class handles when the info button is pressed.
+     */
+
     MonopolyModel model;
 
     public InfoController(MonopolyModel model) {

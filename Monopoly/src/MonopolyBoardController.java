@@ -3,6 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MonopolyBoardController implements ActionListener {
+    /**
+     * The MonopolyBoardController class
+     *
+     * This class handles when a property button is pressed.
+     */
 
     MonopolyModel model;
 

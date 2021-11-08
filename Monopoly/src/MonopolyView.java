@@ -4,12 +4,26 @@ import java.util.ArrayList;
 
 public class MonopolyView extends JFrame {
 
+    /**
+     * The MonopolyView class
+     *
+     * This class is the GUI of the game, it will handle all of the JFrame components that make up our GUI.
+     * It will rely on the MonopolyModel to handle all of the logic. It will also use the Controller classes
+     * to handle the input from the buttons.
+     *
+     */
     private final MonopolyModel model;
     private final Container pane;
     private final JLabel turnLabel;
     private final ArrayList<JButton> propertyButtons;
     private final int BOARDLENGTH = 6;
 
+    /**
+     * This constructor will set up the GUI as well as initialize all attributes, it will call
+     * playerSetup and createBoard to handle most of the GUI creation.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public MonopolyView(){
         super("Monopoly");
 
@@ -17,7 +31,6 @@ public class MonopolyView extends JFrame {
         pane.setLayout(new BorderLayout());
 
         model = new MonopolyModel();
-
 
         model.addMonopolyView(this);
         propertyButtons = new ArrayList<JButton>();
@@ -58,7 +71,7 @@ public class MonopolyView extends JFrame {
 
         MonopolyBoardController mbc = new MonopolyBoardController(model);
 
-        //Loop through and add all of the properties as buttons to the board.
+        //Loop through and add all of the properties as buttons to the board on the top and right side.
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < BOARDLENGTH; j++){
                 JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
@@ -69,6 +82,7 @@ public class MonopolyView extends JFrame {
                 panels.get(i).add(button);
             }
         }
+        //Next update the bottom and left side as these need to be done in reverse order.
         for(int i = 2; i < 4; i++){
             for(int j = BOARDLENGTH - 1; j >= 0; j--){
                 JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
@@ -92,7 +106,6 @@ public class MonopolyView extends JFrame {
         turnLabel.setText(model.getPlayer().getName() + " it is your turn");
         centerPanel.setPreferredSize(new Dimension(400, 400));
         centerPanel.add(turnLabel, BorderLayout.NORTH);
-
         DiceController dc = new DiceController(model);
         JButton diceButton = new JButton("Roll Die");
         diceButton.addActionListener(dc);
@@ -119,10 +132,12 @@ public class MonopolyView extends JFrame {
     private void playerSetup(){
         boolean validSetup = false;
 
+        //Loop until a valid number of players has been entered.
         while(!validSetup) {
             int numberOfPlayers = 0;
             JPanel mainPanel = new JPanel();
 
+            //Set up a JOptionPane that will get user input for number of players.
             JTextField enterNumOfPlayers = new JTextField("Enter number of players (2-4):");
             enterNumOfPlayers.setEditable(false);
             mainPanel.add(enterNumOfPlayers);
@@ -135,6 +150,7 @@ public class MonopolyView extends JFrame {
             if (numberOfPlayers < 2 || numberOfPlayers > 4) {
                 JOptionPane.showMessageDialog(this, "Invalid number of players, must be between 2 to 4 players");
             } else {
+                //Get the name of all of the players and add them to the game.
                 for (int i = 0; i < numberOfPlayers; i++) {
                     JPanel playerAddPanel = new JPanel();
 
