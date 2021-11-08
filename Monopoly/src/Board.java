@@ -80,23 +80,23 @@ public class Board {
         this.properties.add(Architecture);
         this.properties.add(Canal);
 
+        this.properties.add(FreeParking);
+
+        this.properties.add(Glengarry);
+        this.properties.add(Lennox);
+        this.properties.add(Renfrew);
+
         this.properties.add(Lanark);
         this.properties.add(Grenville);
 
-        this.properties.add(Renfrew);
-        this.properties.add(Lennox);
-        this.properties.add(Glengarry);
-
-        this.properties.add(FreeParking);
-
-        this.properties.add(Minto);
-        this.properties.add(Nicol);
-
-        this.properties.add(Leeds);
-        this.properties.add(Frontenac);
-        this.properties.add(Prescott);
-
         this.properties.add(Dundas);
+
+        this.properties.add(Prescott);
+        this.properties.add(Frontenac);
+        this.properties.add(Leeds);
+
+        this.properties.add(Nicol);
+        this.properties.add(Minto);
 
     }
 

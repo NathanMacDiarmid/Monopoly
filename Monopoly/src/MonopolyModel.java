@@ -97,8 +97,7 @@ public class MonopolyModel {
     /**
      * This method verifies that the property is available to buy.
      *
-     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
-     * Refactored and documented by Nathan MacDiarmid - 101098993
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
     public boolean checkProperty() {
         if (this.getPropertyOwner() != null) {
@@ -120,7 +119,8 @@ public class MonopolyModel {
      * @param selection a selection from a JOptionPane
      * @return a boolean value whether the property was bought.
      *
-     * Created and documented by Nathan MacDiarmid - 101098993
+     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
+     * Refactored and re-documented by Nathan MacDiarmid - 101098993
      */
     public boolean buyProperty(int selection) {
         if (selection == JOptionPane.YES_OPTION) {
@@ -148,18 +148,6 @@ public class MonopolyModel {
     public void payRent(){
         this.board.getProperty(this.getPlayer().getPosition()).getOwner().addMoney(this.board.getProperty(this.getPlayer().getPosition()).getRent());
         this.playerRent();
-        System.out.println("You paid $" + this.getRent() + " of rent to " + this.getPropertyOwner().getName());
-        System.out.println("You now have $" + this.getPlayer().getMoney());
-    }
-
-    /**
-     * This method will return the rent amount of the Property the current Player is on
-     * @return rent value in the form of an int
-     *
-     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
-     */
-    public int getRent(){
-        return this.board.getProperty(this.getPlayer().getPosition()).getRent();
     }
 
     /**
