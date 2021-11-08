@@ -130,15 +130,6 @@ public class MonopolyModel {
     }
 
     /**
-     * This method calls the current Player's rent method and passes the property they are currently on as a parameter
-     *
-     * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
-     */
-    public void playerRent(){
-        this.getPlayer().rent(this.board.getProperty(this.getPlayer().getPosition()));
-    }
-
-    /**
      * This method adds money to the Player the rent is being paid too. This is done by getting the Player who owns the
      * property the current Player is on and then calling the addMoney() method on the Player owning the property.
      *
@@ -147,7 +138,7 @@ public class MonopolyModel {
      */
     public void payRent(){
         this.board.getProperty(this.getPlayer().getPosition()).getOwner().addMoney(this.board.getProperty(this.getPlayer().getPosition()).getRent());
-        this.playerRent();
+        this.getPlayer().rent(this.board.getProperty(this.getPlayer().getPosition()));
     }
 
     /**
