@@ -255,7 +255,8 @@ public class MonopolyView extends JFrame {
      * Created and documented by Matthew Belanger - 101144323
      */
     public void playerWin(){
-        JOptionPane.showMessageDialog(this, "You have won Monopoly!!!");
+        JOptionPane.showMessageDialog(this, model.getPlayer().getName()+ " has won Monopoly!!!");
+        this.setVisible(false);
     }
 
     public static void main(String[] args) {

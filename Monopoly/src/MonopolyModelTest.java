@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MonopolyModelTest {
-
+    /**
+     * IMPORTANT NOTE the playTurn method is not tested as it requires the view, instead all of the methods that
+     * playTurn calls are tested to ensure that it works properly.
+     */
     private static MonopolyModel model;
 
     /**
@@ -180,4 +183,81 @@ public class MonopolyModelTest {
         // verifies that Player2 cannot buy the property
         assertFalse(model.checkProperty());
     }
+
+    /**
+     * This test verifies the removePlayer method, it checks that players are removed.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void removePlayerTest() {
+        model.removePlayer();
+        assertEquals(1, model.getPlayers().size());
+    }
+
+    /**
+     * This test verifies the roll method, it checks that a number between 1 and 12 is returned.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void rollTest() {
+        int roll = model.roll();
+        assertTrue(roll >= 1);
+        assertTrue(roll <= 12);
+
+        roll = model.roll();
+        assertTrue(roll >= 1);
+        assertTrue(roll <= 12);
+
+        roll = model.roll();
+        assertTrue(roll >= 1);
+        assertTrue(roll <= 12);
+    }
+
+    /**
+     * This test verifies the getPlayer method, it checks that this method returns the player whos turn it is.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void getPlayerTest() {
+        assertEquals(model.getPlayers().get(0), model.getPlayer());
+        model.playerTurn += 1;
+        assertEquals(model.getPlayers().get(1), model.getPlayer());
+    }
+
+    /**
+     * This test verifies the getPropertyInfo method, it checks that the correct info is returned.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void getPropertyInfoTest() {
+        model.getPlayers().get(0).addPosition(5);
+        assertEquals("Property{name='Makenzie Building', cost=120, rent=12, owner=null}", model.getPropertyInfo());
+
+        model.getPlayers().get(0).addPosition(5);
+        assertEquals("Property{name='Architecture Building', cost=180, rent=18, owner=null}", model.getPropertyInfo());
+    }
+
+    /**
+     * This test verifies the getPropertyOwner method, it checks that the correct info is returned.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void getPropertyOwnerTest() {
+        model.getPlayers().get(0).addPosition(5);
+        model.buyProperty(0);
+        assertEquals(model.getPlayers().get(0), model.getPropertyOwner());
+
+        model.getPlayers().get(0).addPosition(10);
+        model.buyProperty(0);
+        assertEquals(model.getPlayers().get(0), model.getPropertyOwner());
+
+        model.getPlayers().get(0).addPosition(2);
+        assertEquals(null, model.getPropertyOwner());
+    }
+
 }
