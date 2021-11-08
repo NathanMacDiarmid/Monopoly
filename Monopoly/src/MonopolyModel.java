@@ -189,11 +189,12 @@ public class MonopolyModel {
      *
      * Created and documented by Mehedi Mostofa (101154128)
      */
-    public void checkMoney() {
+    public boolean checkMoney() {
         if (getPlayer().getMoney() <= 0) {
-            System.out.println(this.getPlayer().getName() + " has gone bankrupt and is eliminated from the game!");
             this.removePlayer();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -202,17 +203,24 @@ public class MonopolyModel {
      *
      * Created and documented by Mehedi Mostofa (101154128)
      */
-    public void checkPlayer(){
+    public boolean checkPlayer(){
             if(this.players.size() == 1){
-                System.out.println("Game over " + this.players.get(0).getName() + " has won");
-                running = false;
+                return true;
             }
+            return false;
     }
 
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
         //Increase playerTurn to pass the turn to the next player
         view.checkAvailability();
+        if(getPlayer().getMoney() <= 0){
+            view.playerEliminated();
+            this.removePlayer();
+        }
+        if(this.players.size() == 1){
+            view.playerWin();
+        }
         this.playerTurn = (this.playerTurn + 1) % this.players.size();
         view.updateStatus();
     }

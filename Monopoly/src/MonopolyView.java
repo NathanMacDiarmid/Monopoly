@@ -58,7 +58,7 @@ public class MonopolyView extends JFrame {
         MonopolyBoardController mbc = new MonopolyBoardController(model);
 
         //Loop through and add all of the properties as buttons to the board.
-        for(int i = 0; i < panels.size(); i++){
+        for(int i = 0; i < 4; i++){
             for(int j = 0; j < BOARDLENGTH; j++){
                 JButton button = new JButton(model.getBoard().getProperty(j + BOARDLENGTH * i).getName());
                 propertyButtons.add(button);
@@ -166,6 +166,24 @@ public class MonopolyView extends JFrame {
                     (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
         }
 
+    }
+
+    /**
+     * This method displays a JOptionPane which displays the message that the current player has been eliminated.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void playerEliminated(){
+        JOptionPane.showMessageDialog(this, "You have been eliminated from the game");
+    }
+
+    /**
+     * This method displays a JOptionPane which displays the message that the current player has won.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void playerWin(){
+        JOptionPane.showMessageDialog(this, "You have won Monopoly!!!");
     }
 
     public static void main(String[] args) {
