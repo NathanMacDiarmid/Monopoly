@@ -85,6 +85,7 @@ public class MonopolyView extends JFrame {
         turnLabel.setText(model.getPlayer().getName() + " it is your turn");
         centerPanel.setPreferredSize(new Dimension(400, 400));
         centerPanel.add(turnLabel, BorderLayout.NORTH);
+
         DiceController dc = new DiceController(model);
         JButton diceButton = new JButton("Roll Die");
         diceButton.addActionListener(dc);
@@ -107,7 +108,7 @@ public class MonopolyView extends JFrame {
      * This method handles the player setup, it will first ask for the number of players playing and then
      * for each of their names.
      *
-     * Created and documented by Matthew Belanger - 101144323
+     * Created and documented by Matthew Belanger - 101144323, Tao - 101164153
      */
     private void playerSetup(){
         boolean validSetup = false;
@@ -115,7 +116,11 @@ public class MonopolyView extends JFrame {
         while(!validSetup) {
             int numberOfPlayers = 0;
             JPanel mainPanel = new JPanel();
-            mainPanel.add(new TextField("Enter number of players (2-4):"));
+
+            JTextField enterNumOfPlayers = new JTextField("Enter number of players (2-4):");
+            enterNumOfPlayers.setEditable(false);
+            mainPanel.add(enterNumOfPlayers);
+
             JTextField getPlayers = new JTextField(10);
             mainPanel.add(getPlayers);
             JOptionPane.showOptionDialog(this, mainPanel, "Setup", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
@@ -126,7 +131,11 @@ public class MonopolyView extends JFrame {
             } else {
                 for (int i = 0; i < numberOfPlayers; i++) {
                     JPanel playerAddPanel = new JPanel();
-                    playerAddPanel.add(new TextField("Enter player name"));
+
+                    JTextField enterPlayersName = new JTextField("Enter player name");
+                    enterPlayersName.setEditable(false);
+                    playerAddPanel.add(enterPlayersName);
+
                     JTextField getName = new JTextField(10);
                     playerAddPanel.add(getName);
                     JOptionPane.showOptionDialog(this, playerAddPanel, "Setup", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
@@ -157,6 +166,7 @@ public class MonopolyView extends JFrame {
      * The Monopoly model notifies the view whether the property can be bought.
      *
      * Created and documented by Nathan MacDiarmid - 101098993
+     * Refactored by Tao Lufula - 101164153
      */
     public void checkAvailability() {
         int playerMoney = model.getPlayer().getMoney();
@@ -176,9 +186,12 @@ public class MonopolyView extends JFrame {
 
         }
         else if (!model.checkProperty()) {
-            JOptionPane.showMessageDialog(this, "You just paid " +
-                    (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
+            if((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
+                JOptionPane.showMessageDialog(this, "You just paid " +
+                        (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
+            }
         }
+
 
     }
 

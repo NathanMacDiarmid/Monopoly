@@ -102,14 +102,19 @@ public class MonopolyModel {
      * Created and documented by Matthew Belanger - 101144323 and Tao - 101164153
      * Refactored and documented by Nathan MacDiarmid - 101098993
      */
-    public boolean checkProperty(){
+    public boolean checkProperty() {
         if (this.getPropertyOwner() != null) {
             if (this.getPlayer() != this.getPropertyOwner()) {
                 payRent();
             }
             return false;
         }
-        else return !handleEmptyProperties();
+
+        if (handleEmptyProperties()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -180,7 +185,7 @@ public class MonopolyModel {
         if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
             return true;
         }
-        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(12));
+        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(17));
     }
 
     /**
@@ -283,11 +288,4 @@ public class MonopolyModel {
         checkPlayer();
     }
 
-    public static void main(String[] args) {
-
-        MonopolyModel monopoly = new MonopolyModel();
-
-        monopoly.play();
-
-    }
 }
