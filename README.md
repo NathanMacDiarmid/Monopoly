@@ -16,7 +16,7 @@ ______
 
 When prompted, enter the  number of players, then the name of all the players that will be playing the game.
 Commands include roll die, player info, and purchase-related commands.
-There is error control -- if you start a game with less than two or more than four players, the program prompts you to enter the correct number of players.
+There is error control  -- if you start a game with less than two or more than four players, the program prompts you to enter the correct number of players.
 -- if you type an unknown command, the program tells you there is no such command and prompts you again.
 Clicking  the quit command ends the game (program).
 
