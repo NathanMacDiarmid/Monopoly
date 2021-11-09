@@ -14,11 +14,11 @@ The team plans to implement additional features like: hotels, and special proper
 Usage:
 ______
 
-When prompted, enter the name of all the players that will be playing the game.
-Commands include roll, info, quit and purchase-related commands.
-There is error control -- if you start a game with less than two players, the program tells you that the game was not initialized and quits.
+When prompted, enter the  number of players, then the name of all the players that will be playing the game.
+Commands include roll die, player info, and purchase-related commands.
+There is error control -- if you start a game with less than two or more than four players, the program prompts you to enter the correct number of players.
 -- if you type an unknown command, the program tells you there is no such command and prompts you again.
-Using the quit command ends the program.
+Clicking  the quit command ends the game (program).
 
 
 Credits:
