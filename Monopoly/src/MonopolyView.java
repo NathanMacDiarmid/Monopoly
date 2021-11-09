@@ -145,7 +145,12 @@ public class MonopolyView extends JFrame {
             JTextField getPlayers = new JTextField(10);
             mainPanel.add(getPlayers);
             JOptionPane.showOptionDialog(this, mainPanel, "Setup", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-            numberOfPlayers = Integer.parseInt(getPlayers.getText());
+            try {
+                numberOfPlayers = Integer.parseInt(getPlayers.getText());
+            }catch(NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid number of players, must be between 2 to 4 players");
+                continue;
+            }
 
             if (numberOfPlayers < 2 || numberOfPlayers > 4) {
                 JOptionPane.showMessageDialog(this, "Invalid number of players, must be between 2 to 4 players");
