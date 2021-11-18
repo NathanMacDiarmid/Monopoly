@@ -29,12 +29,12 @@ public class MonopolyModelTest {
      */
     @Test
     public void buyPropertyTest() {
-        model.getPlayer().addPosition(5);
+        model.getPlayer().addPosition(6);
         model.buyProperty(0);
         assertEquals("Properties owned: \n" + "Makenzie Building",
                 model.getPlayer().getProperties());
 
-        model.getPlayer().addPosition(8);
+        model.getPlayer().addPosition(11);
         model.buyProperty(0);
         assertEquals("Properties owned: \n" + "Makenzie Building\n" + "Glengarry House",
                 model.getPlayer().getProperties());
@@ -58,19 +58,25 @@ public class MonopolyModelTest {
         assertTrue(model.handleEmptyProperties());
 
         // moves Player1 to Mackenzie Building
-        model.getPlayer().addPosition(5);
+        model.getPlayer().addPosition(6);
 
         // verifies that Mackenzie Building is not an empty property
         assertFalse(model.handleEmptyProperties());
 
+        // moves Player1 to Jail
+        model.getPlayer().addPosition(1);
+
+        // verifies that Jail has no action
+        assertTrue(model.handleEmptyProperties());
+
         // moves Player1 to Free Parking
-        model.getPlayer().addPosition(7);
+        model.getPlayer().addPosition(9);
 
         // verifies that Free Parking is an empty property
         assertTrue(model.handleEmptyProperties());
 
         // moves Player1 to Minto Case
-        model.getPlayer().addPosition(11);
+        model.getPlayer().addPosition(15);
 
         // verifies that Minto Case is not an empty property
         assertFalse(model.handleEmptyProperties());
@@ -139,31 +145,43 @@ public class MonopolyModelTest {
         assertFalse(model.checkProperty());
 
         // moves Player1 to Mackenzie building
-        model.getPlayer().addPosition(5);
+        model.getPlayer().addPosition(6);
 
         // verifies the property can be bought
         assertTrue(model.checkProperty());
 
         // sets the owner of Mackenzie to Player1
-        model.getBoard().getProperty(5).setOwner(model.getPlayer());
+        model.getBoard().getProperty(6).setOwner(model.getPlayer());
 
         // verifies the property is owned by a player
         assertFalse(model.checkProperty());
 
+        // moves Player1 to Jail
+        model.getPlayer().addPosition(1);
+
+        // verifies that Jail cannot be bought
+        assertFalse(model.checkProperty());
+
         // moves Player1 to Free Parking
-        model.getPlayer().addPosition(7);
+        model.getPlayer().addPosition(9);
 
         // verifies that Free Parking cannot be bought
         assertFalse(model.checkProperty());
 
+        // moves Player1 to Go To Jail
+        model.getPlayer().addPosition(9);
+
+        //verifies that Go To Jail cannot be bought
+        assertFalse(model.checkProperty());
+
         // moves Player1 to Minto Case
-        model.getPlayer().addPosition(11);
+        model.getPlayer().addPosition(6);
 
         // verifies the property can be bought
         assertTrue(model.checkProperty());
 
         // sets the owner of Minto to Player1
-        model.getBoard().getProperty(23).setOwner(model.getPlayer());
+        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
 
         // verifies that Minto is owned
         assertFalse(model.checkProperty());
@@ -172,13 +190,13 @@ public class MonopolyModelTest {
         model.playerTurn = (model.playerTurn + 1) % model.getPlayers().size();
 
         // moves Player2 to Mackenzie Building
-        model.getPlayer().addPosition(5);
+        model.getPlayer().addPosition(6);
 
         // verifies the property cannot be bought by Player2
         assertFalse(model.checkProperty());
 
         // moves Player2 to Minto Case
-        model.getPlayer().addPosition(18);
+        model.getPlayer().addPosition(25);
 
         // verifies that Player2 cannot buy the property
         assertFalse(model.checkProperty());
@@ -234,10 +252,10 @@ public class MonopolyModelTest {
      */
     @Test
     public void getPropertyInfoTest() {
-        model.getPlayers().get(0).addPosition(5);
+        model.getPlayers().get(0).addPosition(6);
         assertEquals("Property{name='Makenzie Building', cost=120, rent=12, owner=null}", model.getPropertyInfo());
 
-        model.getPlayers().get(0).addPosition(5);
+        model.getPlayers().get(0).addPosition(8);
         assertEquals("Property{name='Architecture Building', cost=180, rent=18, owner=null}", model.getPropertyInfo());
     }
 
@@ -258,6 +276,31 @@ public class MonopolyModelTest {
 
         model.getPlayers().get(0).addPosition(2);
         assertNull(model.getPropertyOwner());
+    }
+
+    @Test
+    public void getRentTest() {
+        model.getPlayer().addPosition(3);
+        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
+
+        assertEquals(25, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+
+        model.getPlayer().addPosition(9);
+        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
+        System.out.println(model.getPlayer().getAmountofRailroads());
+        model.getBoard().getProperty(model.getPlayer().getPosition()).updateRent(model.getPlayer().getAmountofRailroads());
+
+        assertEquals(50, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+
+        // changes players turn
+        model.playerTurn = (model.playerTurn + 1) % model.getPlayers().size();
+
+        model.getPlayer().addPosition(20);
+        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
+
+        assertEquals(25, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+
+
     }
 
 }

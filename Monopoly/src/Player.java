@@ -61,7 +61,7 @@ public class Player {
      * Edited and enhanced by Matthew Belanger - 101144323
      */
     public void addPosition(int position) {
-            this.position = (this.position + position) % 24;
+            this.position = (this.position + position) % 32;
     }
 
     /**
@@ -155,5 +155,15 @@ public class Player {
                 ", money=" + money +
                 ", position=" + position +
                 '}';
+    }
+
+    public int getAmountofRailroads() {
+        int count = 0;
+        for (Property p : propertiesOwned) {
+            if (p instanceof Railroad) {
+                count++;
+            }
+        }
+        return count;
     }
 }

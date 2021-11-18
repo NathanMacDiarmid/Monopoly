@@ -14,7 +14,7 @@ public class Property {
      */
     private final String name;
     private final int cost;
-    private final int rent;
+    private int rent;
     private Player owner;
 
     /**
@@ -52,6 +52,10 @@ public class Property {
      */
     public int getCost() {
         return this.cost;
+    }
+
+    public void updateRent(int rent) {
+        this.rent = rent;
     }
 
     /**

@@ -170,10 +170,16 @@ public class MonopolyModel {
      * Created and documented by Nathan MacDiarmid - 101098993
      */
     public boolean handleEmptyProperties() {
-        if (this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(0))) {
+        if (this.board.getProperty(this.getPlayer().getPosition()) instanceof Go) {
             return true;
         }
-        else return this.board.getProperty(this.getPlayer().getPosition()).equals(this.board.getProperty(12));
+        else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof FreeParking) {
+            return true;
+        }
+        else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof GoToJail) {
+            return true;
+        }
+        else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
     }
 
     /**

@@ -16,7 +16,7 @@ public class MonopolyView extends JFrame {
     private final Container pane;
     private final JLabel turnLabel;
     private final ArrayList<JButton> propertyButtons;
-    private final int BOARDLENGTH = 6;
+    private final int BOARDLENGTH = 8;
 
     /**
      * This constructor will set up the GUI as well as initialize all attributes, it will call
@@ -231,6 +231,10 @@ public class MonopolyView extends JFrame {
             }
 
             else {
+                if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Railroad) {
+                    model.getBoard().getProperty(model.getPlayer().getPosition()).updateRent(model.getPlayer().getAmountofRailroads());
+                    JOptionPane.showMessageDialog(this, "Rent on your Railroads is: " + model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+                }
                 JOptionPane.showMessageDialog(this, "You now have $" + model.getPlayer().getMoney());
             }
 
