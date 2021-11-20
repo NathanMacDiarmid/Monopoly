@@ -281,12 +281,12 @@ public class MonopolyModelTest {
     @Test
     public void getRentTest() {
         model.getPlayer().addPosition(3);
-        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
+        model.getPlayer().buy(model.getBoard().getProperty(model.getPlayer().getPosition()));
 
         assertEquals(25, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
 
         model.getPlayer().addPosition(9);
-        model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
+        model.getPlayer().buy(model.getBoard().getProperty(model.getPlayer().getPosition()));
         System.out.println(model.getPlayer().getAmountofRailroads());
         model.getBoard().getProperty(model.getPlayer().getPosition()).updateRent(model.getPlayer().getAmountofRailroads());
 
@@ -299,6 +299,10 @@ public class MonopolyModelTest {
         model.getBoard().getProperty(model.getPlayer().getPosition()).setOwner(model.getPlayer());
 
         assertEquals(25, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+
+        model.getPlayer().addPosition(15);
+
+        assertEquals(50, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
 
 
     }

@@ -182,6 +182,16 @@ public class MonopolyModel {
         else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
     }
 
+    public void setRailroadRent() {
+        for (Player p : players) {
+            for (Property pr : p.getPropertiesArray()) {
+                if (pr instanceof Railroad) {
+
+                }
+            }
+        }
+    }
+
     /**
      * This method handles the logic behind a player turn, it will be called by view and will increment the player position
      * check the property the player is on as well as the players money and if someone has won. Finally it will change the turn

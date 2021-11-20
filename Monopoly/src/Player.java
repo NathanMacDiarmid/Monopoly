@@ -33,6 +33,10 @@ public class Player {
         this.propertiesOwned = new ArrayList<>();
     }
 
+    public List<Property> getPropertiesArray() {
+        return this.propertiesOwned;
+    }
+
     /**
      * Default getter for the @attribute name
      * @return the name of the Player
@@ -168,7 +172,7 @@ public class Player {
 
     public int getAmountofRailroads() {
         int count = 0;
-        for (Property p : propertiesOwned) {
+        for (Property p: propertiesOwned) {
             if (p instanceof Railroad) {
                 count++;
             }
