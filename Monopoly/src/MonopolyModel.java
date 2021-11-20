@@ -182,11 +182,19 @@ public class MonopolyModel {
         else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
     }
 
+    /**
+     * Determines the amount of Railroads a Player owns and calls the updateRent() method
+     * from Railroad
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public void setRailroadRent() {
+        int railroads;
         for (Player p : players) {
+            railroads = p.getAmountofRailroads();
             for (Property pr : p.getPropertiesArray()) {
                 if (pr instanceof Railroad) {
-
+                    pr.updateRent(railroads);
                 }
             }
         }

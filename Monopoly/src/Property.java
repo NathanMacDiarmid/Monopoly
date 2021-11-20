@@ -58,6 +58,12 @@ public class Property {
         return this.cost;
     }
 
+    /**
+     * Basic setter for the rent attribute
+     * @param rent the new amount of rent to be charged.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public void updateRent(int rent) {
         this.rent = rent;
     }

@@ -239,7 +239,7 @@ public class MonopolyView extends JFrame {
 
             else {
                 if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Railroad) {
-                    model.getBoard().getProperty(model.getPlayer().getPosition()).updateRent(model.getPlayer().getAmountofRailroads());
+                    model.setRailroadRent();
                     JOptionPane.showMessageDialog(this, "Rent on your Railroads is: " + model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
                 }
                 JOptionPane.showMessageDialog(this, "You now have $" + model.getPlayer().getMoney());

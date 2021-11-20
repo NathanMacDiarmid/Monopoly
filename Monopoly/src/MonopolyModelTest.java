@@ -253,10 +253,10 @@ public class MonopolyModelTest {
     @Test
     public void getPropertyInfoTest() {
         model.getPlayers().get(0).addPosition(6);
-        assertEquals("Property{name='Makenzie Building', cost=120, rent=12, owner=null}", model.getPropertyInfo());
+        assertEquals("Property{name='Makenzie Building', cost=120, rent=12, owner=null, house=false, hotel=false}", model.getPropertyInfo());
 
         model.getPlayers().get(0).addPosition(8);
-        assertEquals("Property{name='Architecture Building', cost=180, rent=18, owner=null}", model.getPropertyInfo());
+        assertEquals("Property{name='Architecture Building', cost=180, rent=18, owner=null, house=false, hotel=false}", model.getPropertyInfo());
     }
 
     /**
@@ -278,6 +278,13 @@ public class MonopolyModelTest {
         assertNull(model.getPropertyOwner());
     }
 
+    /**
+     * This test verifies the amount of rent that is to be paid to a property.
+     * Specifically the Railroads.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     * Refactored and enhanced by both Nathan MacDiarmid - 101098993 and Matthew Belanger - 101144323
+     */
     @Test
     public void getRentTest() {
         model.getPlayer().addPosition(3);
@@ -287,7 +294,6 @@ public class MonopolyModelTest {
 
         model.getPlayer().addPosition(9);
         model.getPlayer().buy(model.getBoard().getProperty(model.getPlayer().getPosition()));
-        System.out.println(model.getPlayer().getAmountofRailroads());
         model.getBoard().getProperty(model.getPlayer().getPosition()).updateRent(model.getPlayer().getAmountofRailroads());
 
         assertEquals(50, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
@@ -301,6 +307,7 @@ public class MonopolyModelTest {
         assertEquals(25, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
 
         model.getPlayer().addPosition(15);
+        model.setRailroadRent();
 
         assertEquals(50, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
 
