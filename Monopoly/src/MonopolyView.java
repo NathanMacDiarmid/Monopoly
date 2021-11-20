@@ -118,9 +118,16 @@ public class MonopolyView extends JFrame {
         infoButton.addActionListener(cpi);
         infoButton.setPreferredSize(new Dimension(180, 100));
         centerPanel.add(infoButton, BorderLayout.EAST);
+
+
+        //Add a button to allow the player to buy a house or hotel
+        HouseAndHotelController hhc = new HouseAndHotelController(model);
+        JButton houseAndHotelButton = new JButton("Buy House or Hotel");
+        houseAndHotelButton.addActionListener(hhc);
+        houseAndHotelButton.setPreferredSize(new Dimension(180, 100));
+        centerPanel.add(houseAndHotelButton, BorderLayout.WEST);
+
         pane.add(centerPanel, BorderLayout.CENTER);
-
-
     }
 
     /**

@@ -141,6 +141,15 @@ public class Player {
         return s ;
     }
 
+    public String getPropertiesForController(){
+        String s = "";
+
+        for(int i = 0; i < this.propertiesOwned.size(); i++){
+            s += "<br>" + this.propertiesOwned.get(i).getName();
+        }
+        return s ;
+    }
+
     /**
      * Overrides the toString() default method to output Player
      * attributes and and class type
@@ -165,5 +174,27 @@ public class Player {
             }
         }
         return count;
+    }
+
+    public List<Property> getPropertiesOwned() {
+        return propertiesOwned;
+    }
+
+    public void buyHouse(String propertyName){
+       for(int i = 0; i < propertiesOwned.size(); i++){
+           if(propertiesOwned.get(i).getName().equals(propertyName)){
+               propertiesOwned.get(i).setHasHouse(true);
+           }
+       }
+       this.money -= 50;
+    }
+
+    public void buyHotel(String propertyName){
+        for(int i = 0; i < propertiesOwned.size(); i++){
+            if(propertiesOwned.get(i).getName().equals(propertyName)){
+                propertiesOwned.get(i).setHasHotel(true);
+            }
+        }
+        this.money -= 100;
     }
 }

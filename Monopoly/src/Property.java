@@ -16,6 +16,8 @@ public class Property {
     private final int cost;
     private int rent;
     private Player owner;
+    private boolean hasHouse;
+    private boolean hasHotel;
 
     /**
      * Default constructor for
@@ -28,6 +30,8 @@ public class Property {
         this.cost = cost;
         this.rent = rent;
         this.owner = null;
+        this.hasHouse = false;
+        this.hasHotel = false;
     }
 
     /**
@@ -63,6 +67,12 @@ public class Property {
      * @return the int rent of the Property
      */
     public int getRent() {
+        if(this.hasHotel){
+            return this.rent + 30;
+        }
+        else if(this.hasHouse){
+            return this.rent + 10;
+        }
         return this.rent;
     }
 
@@ -86,6 +96,20 @@ public class Property {
                 ", cost=" + cost +
                 ", rent=" + rent +
                 ", owner=" + owner +
+                ", house=" + hasHouse +
+                ", hotel=" + hasHotel +
                 '}';
+    }
+
+    public void setHasHouse(boolean hasHouse) {
+        this.hasHouse = hasHouse;
+    }
+
+    public boolean hasHouse(){
+        return this.hasHouse;
+    }
+
+    public void setHasHotel(boolean hasHotel) {
+        this.hasHotel = hasHotel;
     }
 }
