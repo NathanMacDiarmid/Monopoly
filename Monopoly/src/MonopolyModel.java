@@ -202,6 +202,8 @@ public class MonopolyModel {
      */
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
+        this.getPlayer().updateTrackPosition();
+
         view.checkAvailability();
         if(getPlayer().getMoney() <= 0){
             view.playerEliminated();

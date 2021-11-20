@@ -10,6 +10,7 @@ public class DiceController implements ActionListener {
      */
 
     MonopolyModel model;
+    int rollValue;
 
     public DiceController(MonopolyModel model) {
         this.model = model;
@@ -24,7 +25,7 @@ public class DiceController implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        int rollValue = model.roll();
+        rollValue = model.roll();
         JOptionPane.showMessageDialog(null, "You rolled a " + rollValue);
         model.playTurn(rollValue);
     }

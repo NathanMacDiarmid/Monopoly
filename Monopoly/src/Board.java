@@ -32,7 +32,7 @@ public class Board {
         Property Loeb = new Property("Loeb Building", 60, 6);
         Property Southam = new Property("Southam Hall", 60, 6);
 
-        Utilities electric = new Utilities("Electric Company", 0, 0);
+        Utilities electric = new Utilities("Electric Company", 150, 0);
 
         Railroad Taxi = new Railroad("Taxi", 200, 25);
 
@@ -74,7 +74,7 @@ public class Board {
 
         Property Nicol = new Property("Nicol Building", 350, 35);
 
-        Utilities water = new Utilities("Water Works", 0, 0);
+        Utilities water = new Utilities("Water Works", 150, 0);
 
         Property Minto = new Property("Minto CASE", 400, 40);
 

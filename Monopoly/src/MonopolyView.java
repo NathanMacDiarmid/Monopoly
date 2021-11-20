@@ -251,6 +251,16 @@ public class MonopolyView extends JFrame {
                 JOptionPane.showMessageDialog(this, "You just paid " +
                         (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
             }
+
+        if(model.getPlayer().updateTrackPosition()) {
+            model.getPlayer().addMoney(200);
+            JOptionPane.showMessageDialog(this, "You passed Go! and collected 200$");
+            }
+        else if(model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go){
+                model.getPlayer().addMoney(200);
+                JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
+
+            }
         }
 
 

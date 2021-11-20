@@ -1,3 +1,4 @@
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Player {
     private String name;
     private int money;
     private int position;
+    private int trackPosition;
     private List<Property> propertiesOwned;
 
     /**
@@ -31,6 +33,7 @@ public class Player {
         this.money = 1500;
         this.position = 0;
         this.propertiesOwned = new ArrayList<>();
+        this.trackPosition = 0;
     }
 
     public List<Property> getPropertiesArray() {
@@ -65,7 +68,8 @@ public class Player {
      * Edited and enhanced by Matthew Belanger - 101144323
      */
     public void addPosition(int position) {
-            this.position = (this.position + position) % 32;
+        this.trackPosition += position;
+        this.position = (this.position + position) % 32;
     }
 
     /**
@@ -86,6 +90,14 @@ public class Player {
      */
     public void addMoney(int money) {
         this.money += money;
+    }
+
+    public Boolean updateTrackPosition(){
+        if(this.trackPosition > 32){
+            this.trackPosition = this.position;
+            return true;
+        }
+        return false;
     }
 
     /**
