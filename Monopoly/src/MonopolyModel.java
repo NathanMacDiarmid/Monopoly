@@ -162,7 +162,12 @@ public class MonopolyModel {
         players.add(new Player(name));
     }
 
-
+    /**
+     * This method is the logic behind adding AI's to the list
+     * of players.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void addAI(String name) {
         players.add(new AI(name));
     }
@@ -227,6 +232,25 @@ public class MonopolyModel {
         }
     }
 
+    public void AITurn(){
+        int AIRollValue = this.roll();
+        this.getPlayer().addPosition(AIRollValue);
+        this.setUtilityRent(AIRollValue);
+
+        if(this.getPlayer().getPositionTracker() > 32) {
+            this.getPlayer().addMoney(200);
+        }
+
+        if (this.checkProperty()) {
+            boolean successfulBuy = this.buyProperty(JOptionPane.YES_OPTION);
+            if(successfulBuy){
+                if (this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Railroad) {
+                    this.setRailroadRent();
+                }
+            }
+        }
+    }
+
     /**
      * This method handles the logic behind a player turn, it will be called by view and will increment the player position
      * check the property the player is on as well as the players money and if someone has won. Finally it will change the turn
@@ -238,21 +262,30 @@ public class MonopolyModel {
      */
     public void playTurn(int rollValue){
 
-        this.getPlayer().addPosition(rollValue);
-        this.setUtilityRent(rollValue);
+        do {
+            if(this.getPlayer() instanceof AI){
+                this.AITurn();
+            }
+            else {
+                this.getPlayer().addPosition(rollValue);
+                this.setUtilityRent(rollValue);
 
-        view.checkAvailability();
-        this.getPlayer().updatePositionTracker();
+                view.checkAvailability();
+            }
 
-        if(getPlayer().getMoney() <= 0){
-            view.playerEliminated();
-            this.removePlayer();
-        }
-        if(this.players.size() == 1){
-            view.playerWin();
-        }
-        this.playerTurn = (this.playerTurn + 1) % this.players.size();
-        view.updateStatus();
+            this.getPlayer().updatePositionTracker();
+
+            if (getPlayer().getMoney() <= 0) {
+                view.playerEliminated();
+                this.removePlayer();
+            }
+            if (this.players.size() == 1) {
+                view.playerWin();
+            }
+            this.playerTurn = (this.playerTurn + 1) % this.players.size();
+            view.updateStatus();
+
+        }while(this.getPlayer() instanceof AI);
     }
 
 }

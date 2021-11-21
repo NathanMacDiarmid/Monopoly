@@ -193,7 +193,7 @@ public class MonopolyView extends JFrame {
                             model.addPlayer(getName.getText());
                         }
                         else if(result == JOptionPane.NO_OPTION){
-                            model.addAI(getName.getText());
+                            model.addAI(getName.getText() + "_AI");
                         }
                     }
                 }
