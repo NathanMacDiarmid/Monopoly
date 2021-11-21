@@ -134,7 +134,7 @@ public class MonopolyView extends JFrame {
      * This method handles the player setup, it will first ask for the number of players playing and then
      * for each of their names.
      *
-     * Created and documented by Matthew Belanger - 101144323, Tao - 101164153
+     * Created and documented by Matthew Belanger - 101144323, Tao Lufula - 101164153
      */
     private void playerSetup(){
         boolean validSetup = false;
@@ -228,7 +228,7 @@ public class MonopolyView extends JFrame {
     public void checkAvailability() {
         int playerMoney = model.getPlayer().getMoney();
 
-        if(model.getPlayer().getTrackPosition() > 32) {
+        if(model.getPlayer().getPositionTracker() > 32) {
             model.getPlayer().addMoney(200);
             JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
         }
@@ -254,7 +254,7 @@ public class MonopolyView extends JFrame {
         else if (!model.checkProperty()) {
             if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
                 JOptionPane.showMessageDialog(this, "You just paid " +
-                        (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
+                        (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
             } else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go) {
                 model.getPlayer().addMoney(200);
                 JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
@@ -285,5 +285,4 @@ public class MonopolyView extends JFrame {
     public static void main(String[] args) {
         new MonopolyView();
     }
-
 }

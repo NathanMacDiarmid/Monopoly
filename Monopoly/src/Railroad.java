@@ -35,9 +35,6 @@ public class Railroad extends Property {
         }
     }
 
-    public Class<? extends Railroad> getClassType() {
-        return this.getClass();
-    }
 
     /**
      * Overrides the toString() method

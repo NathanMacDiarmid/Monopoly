@@ -200,13 +200,26 @@ public class MonopolyModel {
         }
     }
 
-    public void setUtilityRent() {
+    /**
+     * Determines the number of Utilities owned by a player, then updates the rent
+     * accordingly
+     *
+     * @param roll int value of dice rolled
+     *
+     *Created and documented by Tao Lufula - 101164153
+     */
+    public void setUtilityRent(int roll) {
         int utility;
         for (Player p : players) {
             utility = p.getAmountOfUtilities();
             for (Property pr : p.getPropertiesArray()) {
                 if (pr instanceof Utilities) {
-                    pr.updateRent(utility);
+                    if (utility == 1) {
+                        pr.updateRent(roll*4);
+                    }
+                    else if (utility == 2) {
+                        pr.updateRent(roll*10);
+                    }
                 }
             }
         }
@@ -218,13 +231,16 @@ public class MonopolyModel {
      * to the next player and then update the view.
      * @param rollValue
      *
-     * Created and documented by Matthew Belanger - 101144323
+     * Created and documented by Matthew Belanger - 101144323 , Tao Lufula - 101164153
+     *
      */
     public void playTurn(int rollValue){
+
         this.getPlayer().addPosition(rollValue);
+        this.setUtilityRent(rollValue);
 
         view.checkAvailability();
-        this.getPlayer().updateTrackPosition();
+        this.getPlayer().updatePositionTracker();
 
         if(getPlayer().getMoney() <= 0){
             view.playerEliminated();

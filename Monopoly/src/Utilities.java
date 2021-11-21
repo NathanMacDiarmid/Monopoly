@@ -13,23 +13,6 @@ public class Utilities extends Property{
         super(name, cost, rent);
     }
 
-    public int utilitiesOwned(int rollValue){
-        return 4*rollValue;
-    }
-
-/**
-    @Override
-    public void updateRent(int amount) {
-        if(amount == 1){
-            super.updateRent(*4);
-        }
-        else if(amount == 2){
-            super.updateRent(*10);
-        }
-    }
-    */
-
-
 
     /**
      *Overrides the toString() method
@@ -49,8 +32,8 @@ public class Utilities extends Property{
                 '}' +
                 "\n" +
                 "\n" +
-                "If " + super.getOwner()+ " owns 1 utility, rent is player roll * 4 " +
+                "If " + super.getOwner()+ " owns 1 utility, rent is player's roll multiplied by 4 " +
                 "\n" +
-                "If " + super.getOwner()+ " owns 2 utilities, rent is player roll * 10 \n";
+                "If " + super.getOwner()+ " owns 2 utilities, rent is player's roll multiplied by 10 \n";
     }
 }

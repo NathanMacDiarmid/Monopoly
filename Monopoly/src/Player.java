@@ -19,7 +19,7 @@ public class Player {
     private String name;
     private int money;
     private int position;
-    private int trackPosition;
+    private int positionTracker;
     private List<Property> propertiesOwned;
 
 
@@ -34,7 +34,7 @@ public class Player {
         this.money = 1500;
         this.position = 0;
         this.propertiesOwned = new ArrayList<>();
-        this.trackPosition = 0;
+        this.positionTracker = 0;
     }
 
     public List<Property> getPropertiesArray() {
@@ -69,7 +69,7 @@ public class Player {
      * Edited and enhanced by Matthew Belanger - 101144323, Tao Lufula 101164153
      */
     public void addPosition(int position) {
-        this.trackPosition += position;
+        this.positionTracker += position;
         this.position = (this.position + position) % 32;
     }
 
@@ -94,26 +94,28 @@ public class Player {
     }
 
     /**
+     * Keep track of the player on the board to know when a player has a done a full round around the board
      *
-     * @return
+     * @return the number of moves a player has done on the board in one cycle
      *
      * Created and documented by Tao Lufula - 101164153
      */
-    public int updateTrackPosition(){
-        if(this.trackPosition >= 32){
-            this.trackPosition = this.position;
+    public int updatePositionTracker(){
+        if(this.positionTracker >= 32){
+            this.positionTracker = this.position;
         }
-        return this.trackPosition;
+        return this.positionTracker;
     }
 
     /**
+     * Getter method for positionTracker
      *
-     * @return
+     * @return int number of player's moves in one cycle
      *
      * Created and documented by Tao Lufula - 101164153
      */
-    public int getTrackPosition() {
-        return trackPosition;
+    public int getPositionTracker() {
+        return positionTracker;
     }
 
     /**
