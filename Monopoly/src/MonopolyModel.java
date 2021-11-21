@@ -162,6 +162,11 @@ public class MonopolyModel {
         players.add(new Player(name));
     }
 
+
+    public void addAI(String name) {
+        players.add(new AI(name));
+    }
+
     /**
      * Handles the empty properties that don't do anything at the moment.
      * Current empties: Go and Free Parking
