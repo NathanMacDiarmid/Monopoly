@@ -22,6 +22,7 @@ public class Player {
     private int trackPosition;
     private List<Property> propertiesOwned;
 
+
     /**
      * Default constructor for Player
      * @param name the name of the Player
@@ -65,7 +66,7 @@ public class Player {
      * @param position the integer returned from the Dice.roll() method
      *
      * Created and documented by Nathan MacDiarmid - 101098993
-     * Edited and enhanced by Matthew Belanger - 101144323
+     * Edited and enhanced by Matthew Belanger - 101144323, Tao Lufula 101164153
      */
     public void addPosition(int position) {
         this.trackPosition += position;
@@ -92,12 +93,27 @@ public class Player {
         this.money += money;
     }
 
-    public Boolean updateTrackPosition(){
-        if(this.trackPosition > 32){
+    /**
+     *
+     * @return
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int updateTrackPosition(){
+        if(this.trackPosition >= 32){
             this.trackPosition = this.position;
-            return true;
         }
-        return false;
+        return this.trackPosition;
+    }
+
+    /**
+     *
+     * @return
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int getTrackPosition() {
+        return trackPosition;
     }
 
     /**
@@ -186,6 +202,16 @@ public class Player {
         int count = 0;
         for (Property p: propertiesOwned) {
             if (p instanceof Railroad) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getAmountOfUtilities() {
+        int count = 0;
+        for (Property p: propertiesOwned) {
+            if (p instanceof Utilities) {
                 count++;
             }
         }

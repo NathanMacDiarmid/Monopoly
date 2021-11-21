@@ -200,6 +200,18 @@ public class MonopolyModel {
         }
     }
 
+    public void setUtilityRent() {
+        int utility;
+        for (Player p : players) {
+            utility = p.getAmountOfUtilities();
+            for (Property pr : p.getPropertiesArray()) {
+                if (pr instanceof Utilities) {
+                    pr.updateRent(utility);
+                }
+            }
+        }
+    }
+
     /**
      * This method handles the logic behind a player turn, it will be called by view and will increment the player position
      * check the property the player is on as well as the players money and if someone has won. Finally it will change the turn
@@ -210,9 +222,10 @@ public class MonopolyModel {
      */
     public void playTurn(int rollValue){
         this.getPlayer().addPosition(rollValue);
-        this.getPlayer().updateTrackPosition();
 
         view.checkAvailability();
+        this.getPlayer().updateTrackPosition();
+
         if(getPlayer().getMoney() <= 0){
             view.playerEliminated();
             this.removePlayer();

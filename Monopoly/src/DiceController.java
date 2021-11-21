@@ -29,4 +29,8 @@ public class DiceController implements ActionListener {
         JOptionPane.showMessageDialog(null, "You rolled a " + rollValue);
         model.playTurn(rollValue);
     }
+
+    public int lastRoll(){
+        return rollValue;
+    }
 }

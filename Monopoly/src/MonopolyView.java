@@ -228,6 +228,11 @@ public class MonopolyView extends JFrame {
     public void checkAvailability() {
         int playerMoney = model.getPlayer().getMoney();
 
+        if(model.getPlayer().getTrackPosition() > 32) {
+            model.getPlayer().addMoney(200);
+            JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
+        }
+
         if (model.checkProperty()) {
             int input = JOptionPane.showOptionDialog(this, "Would you like to buy this property?"
                     + "\n" + model.getPropertyInfo(),
@@ -247,22 +252,14 @@ public class MonopolyView extends JFrame {
 
         }
         else if (!model.checkProperty()) {
-            if((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
+            if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
                 JOptionPane.showMessageDialog(this, "You just paid " +
                         (playerMoney - model.getPlayer().getMoney()) + " in rent to " + model.getPropertyOwner());
-            }
-
-        if(model.getPlayer().updateTrackPosition()) {
-            model.getPlayer().addMoney(200);
-            JOptionPane.showMessageDialog(this, "You passed Go! and collected 200$");
-            }
-        else if(model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go){
+            } else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go) {
                 model.getPlayer().addMoney(200);
                 JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
-
             }
         }
-
 
     }
 
