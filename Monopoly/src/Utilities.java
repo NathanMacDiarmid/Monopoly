@@ -1,6 +1,6 @@
 public class Utilities extends Property{
     /**
-     *Default constructor fot utility
+     *Default constructor for utility
      *
      * @param name String name of the utility
      * @param cost int cost of the utility

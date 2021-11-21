@@ -176,9 +176,6 @@ public class MonopolyModel {
         else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof FreeParking) {
             return true;
         }
-        else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof GoToJail) {
-            return true;
-        }
         else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
     }
 

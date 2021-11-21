@@ -8,7 +8,7 @@ public class Dice {
     @attribute dice1 is random int between 1 and 6
     @attribute dice2 is a random int between 1 and 6
 
-    Created and documented by Nathan MacDiarmid - 101098993
+    Created and documented by Nathan MacDiarmid - 101098993 and Mehedi Mostofa - 101154128
      */
     private int dice1;
     private int dice2;
@@ -30,5 +30,13 @@ public class Dice {
         this.dice2 = (int) (Math.random()*(6) + 1);
 
         return dice1 + dice2;
+    }
+
+    /**
+     * Rolls the dice and checks if two dices return the same value
+     * @return the check of two dice values
+     */
+    public boolean doubleRoll(){
+        return dice1 == dice2;
     }
 }

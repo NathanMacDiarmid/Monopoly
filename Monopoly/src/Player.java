@@ -21,6 +21,8 @@ public class Player {
     private int position;
     private int positionTracker;
     private List<Property> propertiesOwned;
+    public boolean jailed = true;
+    public int turns = 0;
 
 
     /**
