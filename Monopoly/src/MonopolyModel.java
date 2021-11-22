@@ -315,7 +315,7 @@ public class MonopolyModel {
                 this.goToJail();
             }
 
-            inJail();
+            this.inJail();
 
             this.getPlayer().updatePositionTracker();
 
