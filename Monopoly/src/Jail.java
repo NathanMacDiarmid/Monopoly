@@ -23,11 +23,10 @@ public class Jail extends Property{
      * This method adds the player to the list of jailedPlayers.
      * @param player the player that is going to Jail.
      *
-     * Created and documented by Nathan MacDiarmid - 101098993 and Mehedi Mostofa - 101154128
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
     public void addToJailList(Player player) {
         jailedPlayers.add(player);
-        player.addMoney(-50);
     }
 
     /**
