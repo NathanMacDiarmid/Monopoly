@@ -17,6 +17,7 @@ public class MonopolyView extends JFrame {
     private final JLabel turnLabel;
     private final ArrayList<JButton> propertyButtons;
     private final int BOARDLENGTH = 8;
+    private static final int BOARDSIZE = 32;
 
     /**
      * This constructor will set up the GUI as well as initialize all attributes, it will call
@@ -248,9 +249,8 @@ public class MonopolyView extends JFrame {
      * Refactored by Tao Lufula - 101164153
      */
     public void checkAvailability() {
-        int playerMoney = model.getPlayer().getMoney();
 
-        if(model.getPlayer().getPositionTracker() > 32) {
+        if(model.getPlayer().getPositionTracker() > BOARDSIZE) {
             model.getPlayer().addMoney(200);
             JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
         }
@@ -281,6 +281,19 @@ public class MonopolyView extends JFrame {
                 model.getPlayer().addMoney(200);
                 JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
             }
+        }
+        else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof GoToJail) {
+            if (model.getPlayer() instanceof AI) {
+                JOptionPane.showMessageDialog(this, model.getPlayer().getName() + " went to jail.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Go directly to jail! \nDo not pass Go and do not collect $200!" +
+                        "\nRoll doubles or wait three turns.");
+            }
+        }
+
+        else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Jail && model.getPlayer().getJailed()) {
+            JOptionPane.showMessageDialog(this, "You did not roll doubles.");
         }
 
     }

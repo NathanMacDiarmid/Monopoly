@@ -311,14 +311,11 @@ public class MonopolyModel {
             else {
                 this.getPlayer().addPosition(rollValue);
                 this.setUtilityRent(rollValue);
-                this.goToJail();
-
                 view.checkAvailability();
+                this.goToJail();
             }
 
-            if (this.getPlayer().getJailed()) {
-                inJail();
-            }
+            inJail();
 
             this.getPlayer().updatePositionTracker();
 

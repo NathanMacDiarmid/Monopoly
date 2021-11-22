@@ -92,8 +92,10 @@ public class Player {
      * Edited and enhanced by Matthew Belanger - 101144323, Tao Lufula 101164153
      */
     public void addPosition(int position) {
-        this.positionTracker += position;
-        this.position = (this.position + position) % BOARDSIZE;
+        if (!jailed) {
+            this.positionTracker += position;
+            this.position = (this.position + position) % BOARDSIZE;
+        }
     }
 
     /**

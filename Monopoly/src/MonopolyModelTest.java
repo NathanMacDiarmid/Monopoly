@@ -310,7 +310,57 @@ public class MonopolyModelTest {
         model.setRailroadRent();
 
         assertEquals(50, model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+    }
 
+    /**
+     * This test verifies the goToJail method in GoToJail class.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    @Test
+    public void goToJailTest() {
+        int initialMoney = model.getPlayer().getMoney();
+        model.getPlayer().addPosition(25);
+
+        model.goToJail();
+
+        assertEquals(7, model.getPlayer().getPosition());
+
+        assertEquals(initialMoney, model.getPlayer().getMoney());
+
+        assertTrue(model.getPlayer().getJailed());
+    }
+
+    /**
+     * This test verifies the inJail method in Jail class.
+     *
+     * NOTE: This test could fail sometimes specifically because the dice are random numbers.
+     *       It will pass if there are no doubles rolled. It will fail if numbers ARE rolled.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    @Test
+    public void inJailTest() {
+        model.getPlayer().addPosition(7);
+        model.getPlayer().setJailed(true);
+        Jail jail = (Jail) model.getBoard().getProperty(7);
+        jail.addToJailList(model.getPlayer());
+
+        // Tests the player can't move
+        model.getPlayer().addPosition(model.roll());
+        assertEquals(7, model.getPlayer().getPosition());
+
+        jail.inJail(model.getPlayer(), model.isDoubles());
+
+        assertTrue(model.getPlayer().getJailed());
+
+        jail.inJail(model.getPlayer(), model.isDoubles());
+
+        assertTrue(model.getPlayer().getJailed());
+
+        jail.inJail(model.getPlayer(), model.isDoubles());
+
+        assertFalse(model.getPlayer().getJailed());
 
     }
 
