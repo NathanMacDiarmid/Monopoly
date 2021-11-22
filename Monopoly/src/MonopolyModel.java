@@ -32,7 +32,6 @@ public class MonopolyModel {
 
     /**
      * Getter for board.
-     * @return
      */
     public Board getBoard() {
         return board;
@@ -40,7 +39,6 @@ public class MonopolyModel {
 
     /**
      * Getter for players.
-     * @return
      */
     public List<Player> getPlayers() {
         return players;
@@ -48,7 +46,6 @@ public class MonopolyModel {
 
     /**
      *  Setter for MonopolyView.
-     * @param mv
      */
     public void addMonopolyView(MonopolyView mv){
         view = mv;
@@ -131,8 +128,7 @@ public class MonopolyModel {
         if (handleEmptyProperties()) {
             return false;
         }
-
-        return true;
+            return true;
     }
 
     /**
@@ -199,7 +195,9 @@ public class MonopolyModel {
         else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof GoToJail) {
             return true;
         }
-        else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
+        else {
+            return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
+        }
     }
 
     /**
