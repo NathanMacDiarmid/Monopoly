@@ -21,12 +21,13 @@ public class Dice {
     public Dice() {
         this.dice1 = (int) (Math.random()*(6) + 1);
         this.dice2 = (int) (Math.random()*(6) + 1);
-        this.doubles = false;
     }
 
     /**
      * Rolls the dice and adds the random ints together
      * @return the two random ints added together
+     *
+     * Created and documented by Mehedi Mostofa - 101154128
      */
     public int roll() {
         this.dice1 = (int) (Math.random()*(6) + 1);
@@ -38,13 +39,11 @@ public class Dice {
 
     /**
      * Rolls the dice and checks if two dices return the same value
-     * @return the check of two dice values
+     * checks the similarity of two dice values
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    public void checkDoubles() {
-        this.doubles = this.dice1 == this.dice2;
-    }
+    public void checkDoubles() {this.doubles = this.dice1 == this.dice2;}
 
     /**
      * Default getter for doubles
@@ -52,7 +51,5 @@ public class Dice {
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    public boolean isDoubles() {
-        return doubles;
-    }
+    public boolean isDoubles() {return doubles;}
 }

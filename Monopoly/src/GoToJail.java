@@ -1,6 +1,6 @@
 public class GoToJail extends Property {
 
-    private Jail jail;
+    private final Jail jail;
     static final int GOTOJAILSPACES = 14;
 
     /**

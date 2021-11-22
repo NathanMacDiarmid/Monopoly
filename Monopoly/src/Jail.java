@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Jail extends Property{
 
-    private List<Player> jailedPlayers;
-    private int[] jailedTurns = {0, 0, 0, 0};
+    private final List<Player> jailedPlayers;
+    private final int[] jailedTurns = {0, 0, 0, 0};
     /**
      * Default constructor for Jail
      *
@@ -23,10 +23,11 @@ public class Jail extends Property{
      * This method adds the player to the list of jailedPlayers.
      * @param player the player that is going to Jail.
      *
-     * Created and documented by Nathan MacDiarmid - 101098993
+     * Created and documented by Nathan MacDiarmid - 101098993 and Mehedi Mostofa - 101154128
      */
     public void addToJailList(Player player) {
         jailedPlayers.add(player);
+        player.addMoney(-50);
     }
 
     /**
@@ -46,6 +47,7 @@ public class Jail extends Property{
                 jailedPlayers.remove(player);
                 jailedTurns[playerIndex] = 0;
             }
+            player.setJailed(true);
         }
         else {
             player.setJailed(false);
