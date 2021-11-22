@@ -247,6 +247,7 @@ public class MonopolyModel {
                 if (this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Railroad) {
                     this.setRailroadRent();
                 }
+                this.view.AIBuy(this.getPlayer().getName(), this.board.getProperty(this.getPlayer().getPosition()).getName());
             }
         }
     }

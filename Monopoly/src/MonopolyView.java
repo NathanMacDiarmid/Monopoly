@@ -304,6 +304,10 @@ public class MonopolyView extends JFrame {
         this.setVisible(false);
     }
 
+    public void AIBuy(String playerName, String propertyName){
+        JOptionPane.showMessageDialog(this, playerName + " has bought " + propertyName);
+    }
+
     public static void main(String[] args) {
         new MonopolyView();
     }
