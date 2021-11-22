@@ -1,70 +1,56 @@
-public class Jail extends Property  {
+import java.util.ArrayList;
+import java.util.List;
 
-    /**
-     *This is the Jail class.
-     *
-     * The 'Jail' block sends players to jail. Players can leave the jail anytime
-     * before 3 turns by rolling a double on both dices.
-     *
-     * Created and documented by Mehedi Mostofa - 101154128
-     */
+public class Jail extends Property{
 
-    MonopolyModel model;
-    Player jailPlayer;
-    Board board;
-
+    private List<Player> jailedPlayers;
+    private int[] jailedTurns = {0, 0, 0, 0};
     /**
      * Default constructor for Jail
      *
-     * Created and documented by Mehedi Mostofa - 101154128
+     * @param name is the String name of the Property
+     * @param cost is the int cost of the Property
+     * @param rent is the int rent cost of the Property
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
-
     public Jail(String name, int cost, int rent) {
         super(name, cost, rent);
+        jailedPlayers = new ArrayList<>();
     }
 
     /**
-     * This method sends the player to jail if the player lands on the 'Jail' property.
+     * This method adds the player to the list of jailedPlayers.
+     * @param player the player that is going to Jail.
      *
-     * Created and documented by Mehedi Mostofa - 101154128
-     *
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
+    public void addToJailList(Player player) {
+        jailedPlayers.add(player);
+    }
 
-    public void goJail() {
-        // goes to jail if lands on 'Jail'
-        if (this.board.getProperty(this.jailPlayer.getPosition()) instanceof GoToJail) {
-            System.out.println("Go to jail for next 3 turns.");
-            jailPlayer.addMoney(-50); // -$50 from player's account.
+    /**
+     * This method controls a players turn while in jail.
+     * @param player the player whose turn it is
+     * @param isDoubles checks if they rolled a double.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void inJail(Player player, boolean isDoubles) {
+        int playerIndex = jailedPlayers.indexOf(player);
+
+        jailedTurns[playerIndex]++;
+        if (jailedTurns[playerIndex] != 3) {
+            if (isDoubles) {
+                player.setJailed(false);
+                jailedPlayers.remove(player);
+                jailedTurns[playerIndex] = 0;
+            }
         }
         else {
-            model.playTurn(model.roll());
+            player.setJailed(false);
+            jailedPlayers.remove(player);
+            jailedTurns[playerIndex] = 0;
         }
     }
-
-    /**
-     * This method checks if the player can roll a double on both dices before 3 turns.
-     * If not, the player remains in jail.
-     * @param jailPlayer is the player
-     *
-     * Created and documented by Mehedi Mostofa - 101154128
-     */
-
-    public boolean leaveJail(Player jailPlayer, Dice dice){
-        jailPlayer.turns++;
-        System.out.print("Turn " + jailPlayer.turns);
-
-        if(jailPlayer.turns != 3){ // checks if turns are <3
-            jailPlayer.jailed = true;
-
-            if(!dice.doubleRoll()){
-                jailPlayer.addMoney(50); // get $50 back in player's account
-            }
-
-            jailPlayer.addPosition(model.roll());
-        }
-
-        return jailPlayer.jailed;
-
-    }
-
 }

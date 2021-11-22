@@ -1,4 +1,3 @@
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +14,15 @@ public class Player {
     money is initialized to $1500 always
     @attribute position is where the Player is on the board
      @attribute propertiesOwned is a List of properties owned by this player
+     @attribute jailed is a boolean attribute that determines whether each Player is in jail.
      */
     private String name;
     private int money;
     private int position;
     private int positionTracker;
     private List<Property> propertiesOwned;
-    public boolean jailed = true;
-    public int turns = 0;
+    private boolean jailed;
+    private static final int BOARDSIZE = 32;
 
 
     /**
@@ -37,6 +37,7 @@ public class Player {
         this.position = 0;
         this.propertiesOwned = new ArrayList<>();
         this.positionTracker = 0;
+        boolean jailed = false;
     }
 
     public List<Property> getPropertiesArray() {
@@ -64,6 +65,26 @@ public class Player {
     }
 
     /**
+     * Default getter for the jailed attribute.
+     * @return the boolean jailed attribute
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public boolean getJailed() {
+        return this.jailed;
+    }
+
+    /**
+     * Default setter for the jailed attribute.
+     * @param jailed the boolean that jailed is to be set to.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void setJailed(boolean jailed) {
+        this.jailed = jailed;
+    }
+
+    /**
      * Adds the dice roll to the @attribute position
      * @param position the integer returned from the Dice.roll() method
      *
@@ -72,7 +93,7 @@ public class Player {
      */
     public void addPosition(int position) {
         this.positionTracker += position;
-        this.position = (this.position + position) % 32;
+        this.position = (this.position + position) % BOARDSIZE;
     }
 
     /**
@@ -98,15 +119,11 @@ public class Player {
     /**
      * Keep track of the player on the board to know when a player has a done a full round around the board
      *
-     * @return the number of moves a player has done on the board in one cycle
-     *
-     * Created and documented by Tao Lufula - 101164153
      */
-    public int updatePositionTracker(){
-        if(this.positionTracker >= 32){
+    public void updatePositionTracker(){
+        if(this.positionTracker >= BOARDSIZE){
             this.positionTracker = this.position;
         }
-        return this.positionTracker;
     }
 
     /**

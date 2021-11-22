@@ -76,6 +76,16 @@ public class MonopolyModel {
     }
 
     /**
+     * This method checks if the rolled dice are doubles.
+     * @return a boolean expression of whether the dice is doubles
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public boolean isDoubles() {
+        return this.die.isDoubles();
+    }
+
+    /**
      * This method is used to get the player whose turn it is
      * @return the current Player object
      *
@@ -236,6 +246,28 @@ public class MonopolyModel {
     }
 
     /**
+     * Calls the goToJail method from the GoToJail class
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void goToJail() {
+        if (this.board.getProperty(this.getPlayer().getPosition()) instanceof GoToJail) {
+            ((GoToJail) this.board.getProperty(this.getPlayer().getPosition())).goToJail(this.getPlayer());
+        }
+    }
+
+    /**
+     * Calls the inJail method in the Jail class
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void inJail() {
+        if (this.getPlayer().getJailed()) {
+            ((Jail) this.board.getProperty(this.getPlayer().getPosition())).inJail(this.getPlayer(), isDoubles());
+        }
+    }
+
+    /**
      * This method handles the AI logic of a turn, the logic is very simple as the AI will attempt to buy
      * whatever they land on.
      *
@@ -245,6 +277,7 @@ public class MonopolyModel {
         int AIRollValue = this.roll();
         this.getPlayer().addPosition(AIRollValue);
         this.setUtilityRent(AIRollValue);
+        this.goToJail();
 
         if(this.getPlayer().getPositionTracker() > 32) {
             this.getPlayer().addMoney(200);
@@ -279,8 +312,13 @@ public class MonopolyModel {
             else {
                 this.getPlayer().addPosition(rollValue);
                 this.setUtilityRent(rollValue);
+                this.goToJail();
 
                 view.checkAvailability();
+            }
+
+            if (this.getPlayer().getJailed()) {
+                inJail();
             }
 
             this.getPlayer().updatePositionTracker();

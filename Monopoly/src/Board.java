@@ -64,7 +64,7 @@ public class Board {
         Property Grenville = new Property("Grenville House", 260, 26);
         Property Dundas = new Property("Dundas House", 280, 28);
 
-        GoToJail goToJail = new GoToJail("Go To Jail", 0, 0);
+        GoToJail goToJail = new GoToJail("Go To Jail", 0, 0, jail);
 
         Property Prescott = new Property("Prescott House", 300, 30);
         Property Frontenac = new Property("Frontenac House", 300, 30);
