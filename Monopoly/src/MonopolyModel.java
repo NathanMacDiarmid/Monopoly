@@ -276,8 +276,9 @@ public class MonopolyModel {
         this.getPlayer().addPosition(AIRollValue);
         this.setUtilityRent(AIRollValue);
         this.goToJail();
+        this.inJail();
 
-        if(this.getPlayer().getPositionTracker() > 32) {
+        if(this.getPlayer().getPositionTracker() >= 32) {
             this.getPlayer().addMoney(200);
         }
 

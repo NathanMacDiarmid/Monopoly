@@ -27,7 +27,6 @@ public class Jail extends Property{
      */
     public void addToJailList(Player player) {
         jailedPlayers.add(player);
-        player.addMoney(-50);
     }
 
     /**
