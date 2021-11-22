@@ -46,7 +46,6 @@ public class Jail extends Property{
                 jailedPlayers.remove(player);
                 jailedTurns[playerIndex] = 0;
             }
-            player.setJailed(true);
         }
         else {
             player.setJailed(false);
