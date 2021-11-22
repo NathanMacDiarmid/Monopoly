@@ -39,7 +39,6 @@ public class Jail extends Property{
     public void inJail(Player player, boolean isDoubles) {
         int playerIndex = jailedPlayers.indexOf(player);
 
-        jailedTurns[playerIndex]++;
         if (jailedTurns[playerIndex] < 3) {
             if (isDoubles) {
                 player.setJailed(false);
@@ -52,5 +51,6 @@ public class Jail extends Property{
             jailedPlayers.remove(player);
             jailedTurns[playerIndex] = 0;
         }
+        jailedTurns[playerIndex]++;
     }
 }
