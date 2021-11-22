@@ -228,6 +228,11 @@ public class Player {
                 '}';
     }
 
+    /**
+     * Returns the number of railroads a player owns.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public int getAmountofRailroads() {
         int count = 0;
         for (Property p: propertiesOwned) {
@@ -238,6 +243,11 @@ public class Player {
         return count;
     }
 
+    /**
+     * Returns the number of utilities a player owns.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public int getAmountOfUtilities() {
         int count = 0;
         for (Property p: propertiesOwned) {
@@ -248,6 +258,9 @@ public class Player {
         return count;
     }
 
+    /**
+     * Getter for the list of properties.
+     */
     public List<Property> getPropertiesOwned() {
         return propertiesOwned;
     }

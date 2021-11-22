@@ -102,11 +102,13 @@ public class MonopolyView extends JFrame {
         }
         propertyButtons.get(0).setText(buttonText);
 
-        //Add roll dice button to middle of board.
+        //Add player turn label to center of board
         JPanel centerPanel = new JPanel(new BorderLayout());
         turnLabel.setText(model.getPlayer().getName() + " it is your turn");
         centerPanel.setPreferredSize(new Dimension(400, 400));
-        centerPanel.add(turnLabel, BorderLayout.NORTH);
+        centerPanel.add(turnLabel, BorderLayout.CENTER);
+
+        //Add roll dice button to bottom of board.
         DiceController dc = new DiceController(model);
         JButton diceButton = new JButton("Roll Die");
         diceButton.addActionListener(dc);

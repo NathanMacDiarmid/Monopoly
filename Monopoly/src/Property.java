@@ -107,18 +107,30 @@ public class Property {
                 '}';
     }
 
+    /**
+     * Setter for hasHouse.
+     */
     public void setHasHouse(boolean hasHouse) {
         this.hasHouse = hasHouse;
     }
 
+    /**
+     * Getter for hasHouse.
+     */
     public boolean hasHouse(){
         return this.hasHouse;
     }
 
+    /**
+     * Setter for hasHotel.
+     */
     public void setHasHotel(boolean hasHotel) {
         this.hasHotel = hasHotel;
     }
 
+    /**
+     * Getter for hasHotel.
+     */
     public boolean hasHotel(){
         return this.hasHotel;
     }

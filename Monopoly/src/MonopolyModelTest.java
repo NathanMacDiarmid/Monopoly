@@ -7,6 +7,9 @@ public class MonopolyModelTest {
     /**
      * IMPORTANT NOTE the playTurn method is not tested as it requires the view, instead all of the methods that
      * playTurn calls are tested to ensure that it works properly.
+     *
+     * ALSO IMPORTANT NOTE inJailTest could fail sometimes specifically because the dice are random numbers.
+     * It will pass if there are no doubles rolled. It will fail if numbers ARE rolled.
      */
     private static MonopolyModel model;
 
