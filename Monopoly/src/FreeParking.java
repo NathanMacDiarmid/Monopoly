@@ -9,4 +9,15 @@ public class FreeParking extends Property {
     public FreeParking (String name, int cost, int rent) {
         super(name, cost, rent);
     }
+
+    /**
+     * Override toString() method
+     * Displays Property information in String format
+     * @return Property information including attributes and class type
+     */
+    @Override
+    public String toString() {
+        return "Free Parking{" +
+                "name='" + super.getName() + '\'' + "}";
+    }
 }

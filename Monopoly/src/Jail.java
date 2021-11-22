@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Jail extends Property{
@@ -52,5 +53,19 @@ public class Jail extends Property{
             jailedTurns[playerIndex] = 0;
         }
         jailedTurns[playerIndex]++;
+    }
+
+    /**
+     * Override toString() method
+     * Displays Property information in String format
+     * @return Property information including attributes and class type
+     */
+    @Override
+    public String toString() {
+        return "Jail{" +
+                jailedPlayers.toString() +
+                "\n" +
+                Arrays.toString(jailedTurns) +
+                '}';
     }
 }
