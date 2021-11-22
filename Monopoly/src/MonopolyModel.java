@@ -173,8 +173,8 @@ public class MonopolyModel {
     }
 
     /**
-     * Handles the empty properties that don't do anything at the moment.
-     * Current empties: Go and Free Parking
+     * Handles the squares that aren't normal properties.
+     * Current squares: Go, Free Parking, Jail, Go To Jail
      * @return boolean value whether a player landed on one of these properties.
      *
      * Created and documented by Nathan MacDiarmid - 101098993
@@ -184,6 +184,9 @@ public class MonopolyModel {
             return true;
         }
         else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof FreeParking) {
+            return true;
+        }
+        else if (this.board.getProperty(this.getPlayer().getPosition()) instanceof GoToJail) {
             return true;
         }
         else return this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Jail;
@@ -232,6 +235,12 @@ public class MonopolyModel {
         }
     }
 
+    /**
+     * This method handles the AI logic of a turn, the logic is very simple as the AI will attempt to buy
+     * whatever they land on.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void AITurn(){
         int AIRollValue = this.roll();
         this.getPlayer().addPosition(AIRollValue);

@@ -177,6 +177,13 @@ public class Player {
         return s ;
     }
 
+    /**
+     * This method returns a String representation of all the properties this Player owns but in a format for the
+     * HouseAndHotelController
+     * @return String of all the name of the properties this player owns
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public String getPropertiesForController(){
         String s = "";
 
@@ -226,6 +233,14 @@ public class Player {
         return propertiesOwned;
     }
 
+
+    /**
+     * This method allows the player to buy a house for one of their properties.
+     *
+     * @param propertyName
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void buyHouse(String propertyName){
        for(int i = 0; i < propertiesOwned.size(); i++){
            if(propertiesOwned.get(i).getName().equals(propertyName)){
@@ -235,6 +250,13 @@ public class Player {
        this.money -= 50;
     }
 
+    /**
+     * This method allows the player to buy a hotel for one of their properties.
+     *
+     * @param propertyName
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void buyHotel(String propertyName){
         for(int i = 0; i < propertiesOwned.size(); i++){
             if(propertiesOwned.get(i).getName().equals(propertyName)){

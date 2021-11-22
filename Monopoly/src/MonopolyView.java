@@ -304,6 +304,14 @@ public class MonopolyView extends JFrame {
         this.setVisible(false);
     }
 
+    /**
+     * Creates a JOptionPane displaying what properties the AI bought on their turn.
+     *
+     * @param playerName
+     * @param propertyName
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void AIBuy(String playerName, String propertyName){
         JOptionPane.showMessageDialog(this, playerName + " has bought " + propertyName);
     }

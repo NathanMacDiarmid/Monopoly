@@ -118,4 +118,8 @@ public class Property {
     public void setHasHotel(boolean hasHotel) {
         this.hasHotel = hasHotel;
     }
+
+    public boolean hasHotel(){
+        return this.hasHotel;
+    }
 }
