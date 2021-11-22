@@ -9,7 +9,9 @@ The goal of this team project is to reproduce a simplified version of the classi
 features like rolling dice, buying properties, renting properties. When a player rolls dice they move according to the number they rolled. If they land on an unowned property they have an option to purchase it. If the property is owned,
 the player has to pay rent to the owner.
 
-The team plans to implement additional features like: hotels, and special properties and squares such as: jail, “Go”, railroad, utility. Also, the ability to play against a number of “AI” players.
+Additional features like: hotels, and special properties and squares such as: jail, “Go”, railroad, utility have been implemented.
+
+The ability to play against a number of “AI” players has also been implemented.
 
 Usage:
 ______
