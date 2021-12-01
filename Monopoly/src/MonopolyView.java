@@ -252,10 +252,7 @@ public class MonopolyView extends JFrame {
      */
     public void checkAvailability() {
 
-        if(model.getPlayer().getPositionTracker() > BOARDSIZE) {
-            model.getPlayer().addMoney(200);
-            JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
-        }
+        passGo();
 
         if (model.checkProperty()) {
             int input = JOptionPane.showOptionDialog(this, "Would you like to buy this property?"
@@ -267,34 +264,20 @@ public class MonopolyView extends JFrame {
             }
 
             else {
-                if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Railroad) {
-                    model.setRailroadRent();
-                    JOptionPane.showMessageDialog(this, "Rent on your Railroads is: " + model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
-                }
+                checkRailroad();
                 JOptionPane.showMessageDialog(this, "You now have $" + model.getPlayer().getMoney());
             }
 
         }
         else if (!model.checkProperty()) {
-            if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
-                JOptionPane.showMessageDialog(this, "You just paid " +
-                        (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
-            } else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go) {
-                model.getPlayer().addMoney(200);
-                JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
-            }
+            payRent();
+            passGo();
         }
-        else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof GoToJail) {
-            if (model.getPlayer() instanceof AI) {
-                JOptionPane.showMessageDialog(this, model.getPlayer().getName() + " went to jail.");
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Go directly to jail! \nDo not pass Go and do not collect $200!" +
-                        "\nRoll doubles or wait three turns.");
-            }
+        else if (inJail()) {
+            PlayerJailed();
         }
 
-        else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Jail && model.getPlayer().getJailed()) {
+        else if (inJail()) {
             JOptionPane.showMessageDialog(this, "You did not roll doubles.");
         }
 
@@ -329,6 +312,82 @@ public class MonopolyView extends JFrame {
      */
     public void AIBuy(String playerName, String propertyName){
         JOptionPane.showMessageDialog(this, playerName + " has bought " + propertyName);
+    }
+
+    /**
+     * Creates a JOptionPane displaying that the player passed Go and collects $200.
+     * Reduces code smells.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void passGo() {
+        if(model.getPlayer().getPositionTracker() > BOARDSIZE) {
+            model.getPlayer().addMoney(200);
+            JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
+        }
+        else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go) {
+            model.getPlayer().addMoney(200);
+            JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
+        }
+    }
+
+    /**
+     * Checks and updates Railroad rent.
+     * Creates a JOptionPane letting the player know.
+     * Reduces code smells.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void checkRailroad() {
+        if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Railroad) {
+            model.setRailroadRent();
+            JOptionPane.showMessageDialog(this, "Rent on your Railroads is: " + model.getBoard().getProperty(model.getPlayer().getPosition()).getRent());
+        }
+    }
+
+    /**
+     * Displays a JOptionPan if a player has been sent to Jail.
+     * Reduces code smells.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void PlayerJailed() {
+        if (model.getPlayer() instanceof AI) {
+            JOptionPane.showMessageDialog(this, model.getPlayer().getName() + " went to jail.");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Go directly to jail! \nDo not pass Go and do not collect $200!" +
+                    "\nRoll doubles or wait three turns.");
+        }
+    }
+
+    /**
+     * Displays a JOptionPane if a player pays rent to another player or AI.
+     * Reduces code smells.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void payRent() {
+        if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
+            JOptionPane.showMessageDialog(this, "You just paid " +
+                    (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
+        }
+    }
+
+    /**
+     * Checks if a player is in Jail or landed on GoToJail.
+     * Reduces code smells.
+     *
+     * @return a boolean value whether or not a player is in or is going to Jail.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public boolean inJail() {
+        if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof GoToJail) {
+            return true;
+        }
+        else return model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Jail && model.getPlayer().getJailed();
+
     }
 
     public static void main(String[] args) {
