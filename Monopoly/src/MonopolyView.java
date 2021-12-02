@@ -166,40 +166,7 @@ public class MonopolyView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Invalid number of players, must be between 2 to 4 players");
             } else {
                 //Get the name of all of the players and add them to the game.
-                for (int i = 0; i < numberOfPlayers; i++) {
-                    if(i == 0) {
-                        JPanel playerAddPanel = new JPanel();
-
-                        JTextField enterPlayersName = new JTextField("Enter player name");
-                        enterPlayersName.setEditable(false);
-                        playerAddPanel.add(enterPlayersName);
-
-                        JTextField getName = new JTextField(10);
-                        playerAddPanel.add(getName);
-                        JOptionPane.showOptionDialog(this, playerAddPanel, "Add first player", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-                        model.addPlayer(getName.getText());
-                    }
-                    else{
-                        Object[] options = {"Add Player", "Add AI"};
-
-                        JPanel playerAddPanel = new JPanel();
-
-                        JTextField enterPlayersName = new JTextField("Enter player name");
-                        enterPlayersName.setEditable(false);
-                        playerAddPanel.add(enterPlayersName);
-
-                        JTextField getName = new JTextField(10);
-                        playerAddPanel.add(getName);
-                        int result = JOptionPane.showOptionDialog(this, playerAddPanel, "Add additional players", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-
-                        if(result == JOptionPane.YES_OPTION) {
-                            model.addPlayer(getName.getText());
-                        }
-                        else if(result == JOptionPane.NO_OPTION){
-                            model.addAI(getName.getText() + "_AI");
-                        }
-                    }
-                }
+                addPlayerNames(numberOfPlayers);
                 validSetup = true;
             }
         }
@@ -371,6 +338,51 @@ public class MonopolyView extends JFrame {
         if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
             JOptionPane.showMessageDialog(this, "You just paid " +
                     (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
+        }
+    }
+
+    /**
+     * This method handles the input of players' names.
+     * Reduces code smells.
+     *
+     * @param numberOfPlayers the amount of players that are playing.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public void addPlayerNames(int numberOfPlayers) {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            if(i == 0) {
+                JPanel playerAddPanel = new JPanel();
+
+                JTextField enterPlayersName = new JTextField("Enter player name");
+                enterPlayersName.setEditable(false);
+                playerAddPanel.add(enterPlayersName);
+
+                JTextField getName = new JTextField(10);
+                playerAddPanel.add(getName);
+                JOptionPane.showOptionDialog(this, playerAddPanel, "Add first player", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                model.addPlayer(getName.getText());
+            }
+            else{
+                Object[] options = {"Add Player", "Add AI"};
+
+                JPanel playerAddPanel = new JPanel();
+
+                JTextField enterPlayersName = new JTextField("Enter player name");
+                enterPlayersName.setEditable(false);
+                playerAddPanel.add(enterPlayersName);
+
+                JTextField getName = new JTextField(10);
+                playerAddPanel.add(getName);
+                int result = JOptionPane.showOptionDialog(this, playerAddPanel, "Add additional players", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+
+                if(result == JOptionPane.YES_OPTION) {
+                    model.addPlayer(getName.getText());
+                }
+                else if(result == JOptionPane.NO_OPTION){
+                    model.addAI(getName.getText() + "_AI");
+                }
+            }
         }
     }
 
