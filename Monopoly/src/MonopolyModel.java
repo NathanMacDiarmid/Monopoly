@@ -266,30 +266,19 @@ public class MonopolyModel {
     }
 
     /**
-     * This method handles the AI logic of a turn, the logic is very simple as the AI will attempt to buy
-     * whatever they land on.
+     * Checks if a player is in Jail or landed on GoToJail.
+     * Reduces code smells.
      *
-     * Created and documented by Matthew Belanger - 101144323
+     * @return a boolean value whether a player is in or is going to Jail.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
      */
-    public void AITurn(){
-        int AIRollValue = this.roll();
-        this.getPlayer().addPosition(AIRollValue);
-        this.setUtilityRent(AIRollValue);
-        this.goToJail();
-
-        if(this.getPlayer().getPositionTracker() >= 32) {
-            this.getPlayer().addMoney(200);
+    public boolean checkIfInJail() {
+        if (getBoard().getProperty(getPlayer().getPosition()) instanceof GoToJail) {
+            return true;
         }
+        else return getBoard().getProperty(getPlayer().getPosition()) instanceof Jail && getPlayer().getJailed();
 
-        if (this.checkProperty()) {
-            boolean successfulBuy = this.buyProperty(JOptionPane.YES_OPTION);
-            if(successfulBuy){
-                if (this.getBoard().getProperty(this.getPlayer().getPosition()) instanceof Railroad) {
-                    this.setRailroadRent();
-                }
-                this.view.AIBuy(this.getPlayer().getName(), this.board.getProperty(this.getPlayer().getPosition()).getName());
-            }
-        }
     }
 
     /**
@@ -305,7 +294,7 @@ public class MonopolyModel {
 
         do {
             if(this.getPlayer() instanceof AI){
-                this.AITurn();
+                ((AI) this.getPlayer()).AITurn(this, view);
             }
             else {
                 this.getPlayer().addPosition(rollValue);

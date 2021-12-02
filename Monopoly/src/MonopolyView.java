@@ -273,11 +273,11 @@ public class MonopolyView extends JFrame {
             payRent();
             passGo();
         }
-        else if (inJail()) {
+        else if (model.checkIfInJail()) {
             PlayerJailed();
         }
 
-        else if (inJail()) {
+        else if (model.checkIfInJail()) {
             JOptionPane.showMessageDialog(this, "You did not roll doubles.");
         }
 
@@ -372,22 +372,6 @@ public class MonopolyView extends JFrame {
             JOptionPane.showMessageDialog(this, "You just paid " +
                     (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
         }
-    }
-
-    /**
-     * Checks if a player is in Jail or landed on GoToJail.
-     * Reduces code smells.
-     *
-     * @return a boolean value whether or not a player is in or is going to Jail.
-     *
-     * Created and documented by Nathan MacDiarmid - 101098993
-     */
-    public boolean inJail() {
-        if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof GoToJail) {
-            return true;
-        }
-        else return model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Jail && model.getPlayer().getJailed();
-
     }
 
     public static void main(String[] args) {
