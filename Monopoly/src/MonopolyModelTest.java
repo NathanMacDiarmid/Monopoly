@@ -367,4 +367,12 @@ public class MonopolyModelTest {
 
     }
 
+    @Test
+    public void saveTest(){
+        MonopolyModel model = new MonopolyModel();
+        model.addPlayer("Dave");
+        model.addPlayer("Steve");
+        model.exportToXmlFile("saveMonopoly.xml");
+    }
+
 }

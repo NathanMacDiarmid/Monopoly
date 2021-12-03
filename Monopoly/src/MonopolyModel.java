@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -318,6 +321,27 @@ public class MonopolyModel {
             view.updateStatus();
 
         }while(this.getPlayer() instanceof AI);
+    }
+
+    public String toXML(){
+        String s = "<Monopoly>\n";
+        s += "\t" + this.board.toXML();
+        for(int i = 0; i < this.players.size(); i++){
+            s += "\t" + this.players.get(i).toXML();
+        }
+        s += "\t<playerTurn>" + this.playerTurn + "</playerTurn>\n";
+        s += "</Monopoly>";
+        return s;
+    }
+
+    public void exportToXmlFile(String fileName){
+        try {
+            Writer w = new FileWriter(fileName);
+            w.write(this.toXML());
+            w.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

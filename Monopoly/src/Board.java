@@ -130,4 +130,14 @@ public class Board {
         return this.properties.get(position);
     }
 
+    public String toXML(){
+        String s = "<Board>\n";
+
+        for(int i = 0; i < properties.size(); i++){
+            s += "\t" + properties.get(i).toXML();
+        }
+        s += "</Board>\n";
+        return s;
+    }
+
 }

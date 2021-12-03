@@ -1,0 +1,283 @@
+<Monopoly>
+	<Board>
+	<Property>
+	<name>Go</name>
+	<cost>0</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Loeb Building</name>
+	<cost>60</cost>
+	<rent>6</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Southam Hall</name>
+	<cost>60</cost>
+	<rent>6</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Taxi
+(Railroad)</name>
+	<cost>200</cost>
+	<rent>25</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Paterson Hall</name>
+	<cost>100</cost>
+	<rent>10</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Nesbitt Building</name>
+	<cost>100</cost>
+	<rent>10</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Makenzie Building</name>
+	<cost>120</cost>
+	<rent>12</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Jail</name>
+	<cost>0</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Azreli Theatre</name>
+	<cost>140</cost>
+	<rent>14</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Electric Company</name>
+	<cost>150</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Steacie Building</name>
+	<cost>140</cost>
+	<rent>14</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Tory Building</name>
+	<cost>160</cost>
+	<rent>16</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Tunnel Cart
+(Railroad)</name>
+	<cost>200</cost>
+	<rent>25</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Robertson Hall</name>
+	<cost>180</cost>
+	<rent>18</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Architecture Building</name>
+	<cost>180</cost>
+	<rent>18</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Canal Building</name>
+	<cost>200</cost>
+	<rent>20</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Free Parking</name>
+	<cost>0</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Glengarry House</name>
+	<cost>220</cost>
+	<rent>22</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Lennox & Addington House</name>
+	<cost>220</cost>
+	<rent>22</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Renfrew House</name>
+	<cost>240</cost>
+	<rent>24</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>OC Transpo
+(Railroad)</name>
+	<cost>200</cost>
+	<rent>25</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Lanark House</name>
+	<cost>260</cost>
+	<rent>26</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Grenville House</name>
+	<cost>260</cost>
+	<rent>26</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Water Works</name>
+	<cost>150</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Dundas House</name>
+	<cost>280</cost>
+	<rent>28</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Go To Jail</name>
+	<cost>0</cost>
+	<rent>0</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Prescott House</name>
+	<cost>300</cost>
+	<rent>30</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Frontenac House</name>
+	<cost>300</cost>
+	<rent>30</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Leeds House</name>
+	<cost>320</cost>
+	<rent>32</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>O Train
+(Railroad)</name>
+	<cost>200</cost>
+	<rent>25</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Nicol Building</name>
+	<cost>350</cost>
+	<rent>35</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+	<Property>
+	<name>Minto CASE</name>
+	<cost>400</cost>
+	<rent>40</rent>
+	<owner>null</owner>
+	<hasHouse>false</hasHouse>
+	<hasHotel>false</hasHotel>
+</Property>
+</Board>
+	<Player>
+	<name>Dave</name>
+	<money>1500</money>
+	<position>0</position>
+	<positionTracker>0</positionTracker>
+	<propertiesOwned>
+	</propertiesOwned>
+	<jailed>false</jailed>
+</Player>
+	<Player>
+	<name>Steve</name>
+	<money>1500</money>
+	<position>0</position>
+	<positionTracker>0</positionTracker>
+	<propertiesOwned>
+	</propertiesOwned>
+	<jailed>false</jailed>
+</Player>
+	<playerTurn>0</playerTurn>
+</Monopoly>

@@ -297,4 +297,20 @@ public class Player {
         }
         this.money -= 100;
     }
+
+    public String toXML() {
+        String s = "<Player>\n";
+        s += "\t<name>" + this.name + "</name>\n";
+        s += "\t<money>" + this.money + "</money>\n";
+        s += "\t<position>" + this.position + "</position>\n";
+        s += "\t<positionTracker>" + this.positionTracker + "</positionTracker>\n";
+        s += "\t<propertiesOwned>\n";
+        for(int i = 0; i < propertiesOwned.size(); i++){
+            s += "\t" + propertiesOwned.get(i).toXML();
+        }
+        s += "\t</propertiesOwned>\n";
+        s += "\t<jailed>" + this.jailed + "</jailed>\n";
+        s += "</Player>\n";
+        return s;
+    }
 }

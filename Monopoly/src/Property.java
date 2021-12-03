@@ -134,4 +134,16 @@ public class Property {
     public boolean hasHotel(){
         return this.hasHotel;
     }
+
+    public String toXML(){
+        String s = "<Property>\n";
+        s += "\t<name>" + this.name + "</name>\n";
+        s += "\t<cost>" + this.cost + "</cost>\n";
+        s += "\t<rent>" + this.rent + "</rent>\n";
+        s += "\t<owner>" + this.owner + "</owner>\n";
+        s += "\t<hasHouse>" + this.hasHouse + "</hasHouse>\n";
+        s += "\t<hasHotel>" + this.hasHotel + "</hasHotel>\n";
+        s += "</Property>\n";
+        return s;
+    }
 }
