@@ -12,6 +12,9 @@ public class MonopolyModelTest {
      * It will pass if there are no doubles rolled. It will fail if numbers ARE rolled.
      */
     private static MonopolyModel model;
+    private final static int CARLETON = 0;
+    private final static int CANADA = 1;
+    private final static int EUROPE = 2;
 
     /**
      * This method initializes the MonopolyModel as well as two players
@@ -20,7 +23,7 @@ public class MonopolyModelTest {
      */
     @BeforeEach
     public void initEach() {
-        model = new MonopolyModel();
+        model = new MonopolyModel(CARLETON);
         model.addPlayer("Player1");
         model.addPlayer("Player2");
     }
@@ -369,7 +372,7 @@ public class MonopolyModelTest {
 
     @Test
     public void saveTest(){
-        MonopolyModel model = new MonopolyModel();
+        MonopolyModel model = new MonopolyModel(CARLETON);
         model.addPlayer("Dave");
         model.addPlayer("Steve");
         model.exportToXmlFile("saveMonopoly.xml");

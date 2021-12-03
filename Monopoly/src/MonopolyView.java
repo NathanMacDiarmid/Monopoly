@@ -31,7 +31,7 @@ public class MonopolyView extends JFrame {
         pane = this.getContentPane();
         pane.setLayout(new BorderLayout());
 
-        model = new MonopolyModel();
+        model = new MonopolyModel(chooseBoardType());
 
         model.addMonopolyView(this);
         propertyButtons = new ArrayList<JButton>();
@@ -45,6 +45,24 @@ public class MonopolyView extends JFrame {
         this.createBoard();
 
         this.setVisible(true);
+    }
+
+    /**
+     * This method allows players to choose between three different board types.
+     *
+     * - Carleton
+     * - Canada
+     * - Europe
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public int chooseBoardType() {
+        String[] options = {"Carleton", "Canada", "Europe"};
+
+        int x = JOptionPane.showOptionDialog(null, "Please select the type of board you want to play!",
+                "Board Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options,
+                options[0]);
+        return x;
     }
 
     /**
@@ -232,7 +250,7 @@ public class MonopolyView extends JFrame {
 
             else {
                 checkRailroad();
-                JOptionPane.showMessageDialog(this, "You now have $" + model.getPlayer().getMoney());
+                JOptionPane.showMessageDialog(this, "You now have " + handleDifferentCurrencies() + " " + model.getPlayer().getMoney());
             }
 
         }
@@ -290,11 +308,11 @@ public class MonopolyView extends JFrame {
     public void passGo() {
         if(model.getPlayer().getPositionTracker() > BOARDSIZE) {
             model.getPlayer().addMoney(200);
-            JOptionPane.showMessageDialog(this, "You passed over Go! and collected 200$");
+            JOptionPane.showMessageDialog(this, "You passed over Go! and collected " + handleDifferentCurrencies() + "200");
         }
         else if (model.getBoard().getProperty(model.getPlayer().getPosition()) instanceof Go) {
             model.getPlayer().addMoney(200);
-            JOptionPane.showMessageDialog(this, "You landed on Go! and collected 200$");
+            JOptionPane.showMessageDialog(this, "You landed on Go! and collected " + handleDifferentCurrencies() + "200");
         }
     }
 
@@ -323,7 +341,8 @@ public class MonopolyView extends JFrame {
             JOptionPane.showMessageDialog(this, model.getPlayer().getName() + " went to jail.");
         }
         else {
-            JOptionPane.showMessageDialog(this, "Go directly to jail! \nDo not pass Go and do not collect $200!" +
+            JOptionPane.showMessageDialog(this, "Go directly to jail! \nDo not pass Go and do not collect " +
+                    handleDifferentCurrencies() + "200!" +
                     "\nRoll doubles or wait three turns.");
         }
     }
@@ -336,7 +355,7 @@ public class MonopolyView extends JFrame {
      */
     public void payRent() {
         if ((!model.handleEmptyProperties()) && (model.getPlayer() != model.getPropertyOwner())) {
-            JOptionPane.showMessageDialog(this, "You just paid " +
+            JOptionPane.showMessageDialog(this, "You just paid " + handleDifferentCurrencies() +
                     (model.getBoard().getProperty(model.getPlayer().getPosition()).getRent()) + " in rent to " + model.getPropertyOwner());
         }
     }
@@ -383,6 +402,24 @@ public class MonopolyView extends JFrame {
                     model.addAI(getName.getText() + "_AI");
                 }
             }
+        }
+    }
+
+    /**
+     * Handles the String output when playing different types of boards.
+     * @return a String type of the currency for said board.
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public String handleDifferentCurrencies() {
+        if (model.getBoard().getType() == 0) {
+            return "¢";
+        }
+        else if (model.getBoard().getType() == 1) {
+            return "$";
+        }
+        else {
+            return "€";
         }
     }
 

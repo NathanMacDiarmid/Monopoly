@@ -26,8 +26,8 @@ public class MonopolyModel {
     int playerTurn;
     private MonopolyView view;
 
-    public MonopolyModel() {
-        this.board = new Board();
+    public MonopolyModel(int boardType) {
+        this.board = new Board(boardType);
         this.die = new Dice();
         this.players = new ArrayList<>();
         this.playerTurn = 0;
