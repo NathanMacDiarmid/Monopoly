@@ -375,7 +375,7 @@ public class MonopolyModelTest {
         MonopolyModel model = new MonopolyModel(CARLETON);
         model.addPlayer("Dave");
         model.addPlayer("Steve");
-        model.exportToXmlFile("saveMonopoly.xml");
+        model.exportToXmlFile();
     }
 
 }

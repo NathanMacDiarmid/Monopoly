@@ -1,4 +1,6 @@
-public class Property {
+import java.io.Serializable;
+
+public class Property{
     /**
      * This is the Property class
      *
@@ -12,13 +14,21 @@ public class Property {
      * Created and documented by Nathan MacDiarmid - 101098993
      * Further formatted,assessed code and documentation edited by Mehedi Mostofa - 101154128
      */
-    private final String name;
-    private final int cost;
+    private String name;
+    private int cost;
     private int rent;
     private Player owner;
     private boolean hasHouse;
     private boolean hasHotel;
 
+    public Property(){
+        this.name = "";
+        this.cost = 0;
+        this.rent = 0;
+        this.owner = null;
+        this.hasHouse = false;
+        this.hasHotel = false;
+    }
     /**
      * Default constructor for
      * @param name is the String name of the Property
@@ -135,15 +145,34 @@ public class Property {
         return this.hasHotel;
     }
 
-    public String toXML(){
-        String s = "<Property>\n";
-        s += "\t<name>" + this.name + "</name>\n";
-        s += "\t<cost>" + this.cost + "</cost>\n";
-        s += "\t<rent>" + this.rent + "</rent>\n";
-        s += "\t<owner>" + this.owner + "</owner>\n";
-        s += "\t<hasHouse>" + this.hasHouse + "</hasHouse>\n";
-        s += "\t<hasHotel>" + this.hasHotel + "</hasHotel>\n";
-        s += "</Property>\n";
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
+
+    private String tabGenerator(int tabs){
+        String s = "";
+        for(int i = 0; i < tabs; i++){
+            s += "\t";
+        }
+        return s;
+    }
+
+    public String toXML(int tabs){
+        String s = tabGenerator(tabs) + "<Property>\n";
+        s += tabGenerator(tabs+1) + "<name>" + this.name + "</name>\n";
+        s += tabGenerator(tabs+1) + "<cost>" + this.cost + "</cost>\n";
+        s += tabGenerator(tabs+1) + "<rent>" + this.rent + "</rent>\n";
+        s += tabGenerator(tabs+1) + "<hasHouse>" + this.hasHouse + "</hasHouse>\n";
+        s += tabGenerator(tabs+1) + "<hasHotel>" + this.hasHotel + "</hasHotel>\n";
+        s += tabGenerator(tabs) + "</Property>\n";
         return s;
     }
 }

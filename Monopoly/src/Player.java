@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player{
     /**
     This is the Player class.
 
@@ -25,6 +26,14 @@ public class Player {
     private static final int BOARDSIZE = 32;
 
 
+    public Player(){
+        this.name = "";
+        this.money = 0;
+        this.position = 0;
+        this.propertiesOwned = new ArrayList<>();
+        this.positionTracker = 0;
+        boolean jailed = false;
+    }
     /**
      * Default constructor for Player
      * @param name the name of the Player
@@ -40,8 +49,28 @@ public class Player {
         boolean jailed = false;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void setPositionTracker(int positionTracker) {
+        this.positionTracker = positionTracker;
+    }
+
     public List<Property> getPropertiesArray() {
         return this.propertiesOwned;
+    }
+
+    public void addProperty(Property p){
+        this.propertiesOwned.add(p);
     }
 
     /**
@@ -298,19 +327,27 @@ public class Player {
         this.money -= 100;
     }
 
-    public String toXML() {
-        String s = "<Player>\n";
-        s += "\t<name>" + this.name + "</name>\n";
-        s += "\t<money>" + this.money + "</money>\n";
-        s += "\t<position>" + this.position + "</position>\n";
-        s += "\t<positionTracker>" + this.positionTracker + "</positionTracker>\n";
-        s += "\t<propertiesOwned>\n";
-        for(int i = 0; i < propertiesOwned.size(); i++){
-            s += "\t" + propertiesOwned.get(i).toXML();
+    private String tabGenerator(int tabs){
+        String s = "";
+        for(int i = 0; i < tabs; i++){
+            s += "\t";
         }
-        s += "\t</propertiesOwned>\n";
-        s += "\t<jailed>" + this.jailed + "</jailed>\n";
-        s += "</Player>\n";
+        return s;
+    }
+
+    public String toXML(int tabs) {
+        String s = tabGenerator(tabs) + "<Player>\n";
+        s += tabGenerator(tabs+1) + "<name>" + this.name + "</name>\n";
+        s += tabGenerator(tabs+1) + "<money>" + this.money + "</money>\n";
+        s += tabGenerator(tabs+1) + "<position>" + this.position + "</position>\n";
+        s += tabGenerator(tabs+1) + "<positionTracker>" + this.positionTracker + "</positionTracker>\n";
+        s += tabGenerator(tabs+1) + "<propertiesOwned>\n";
+        for(int i = 0; i < propertiesOwned.size(); i++){
+            s += "\t\t<Property>"+propertiesOwned.get(i).getName()+"</Property>";
+        }
+        s += tabGenerator(tabs+1) + "</propertiesOwned>\n";
+        s += tabGenerator(tabs+1) + "<jailed>" + this.jailed + "</jailed>\n";
+        s += tabGenerator(tabs) + "</Player>\n";
         return s;
     }
 }

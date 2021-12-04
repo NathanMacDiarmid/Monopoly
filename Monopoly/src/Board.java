@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+public class Board{
 
     /**
      * This is the Board class
@@ -46,6 +47,10 @@ public class Board {
             initEurope();
         }
 
+    }
+
+    public Board(List<Property> p){
+        this.properties = p;
     }
 
     /**
@@ -368,14 +373,21 @@ public class Board {
         return this.properties.get(position);
     }
 
-    public String toXML(){
-        String s = "<Board>\n";
-
-        for(int i = 0; i < properties.size(); i++){
-            s += "\t" + properties.get(i).toXML();
+    private String tabGenerator(int tabs){
+        String s = "";
+        for(int i = 0; i < tabs; i++){
+            s += "\t";
         }
-        s += "</Board>\n";
         return s;
     }
 
+    public String toXML(int tabs){
+        String s = tabGenerator(tabs) + "<Board>\n";
+        s += tabGenerator(tabs+1) + "<boardType>" + this.boardType + "</boardType>";
+        for(int i = 0; i < properties.size(); i++){
+            s += properties.get(i).toXML(tabs + 1);
+        }
+        s += tabGenerator(tabs) + "</Board>\n";
+        return s;
+    }
 }

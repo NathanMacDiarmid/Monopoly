@@ -1,11 +1,14 @@
+import org.xml.sax.SAXException;
+
 import javax.swing.*;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonopolyModel {
+public class MonopolyModel{
     /**
      * The Monopoly class
      *
@@ -325,23 +328,64 @@ public class MonopolyModel {
 
     public String toXML(){
         String s = "<Monopoly>\n";
-        s += "\t" + this.board.toXML();
+        s += this.board.toXML(1);
         for(int i = 0; i < this.players.size(); i++){
-            s += "\t" + this.players.get(i).toXML();
+            s += this.players.get(i).toXML(1);
         }
         s += "\t<playerTurn>" + this.playerTurn + "</playerTurn>\n";
         s += "</Monopoly>";
         return s;
     }
 
-    public void exportToXmlFile(String fileName){
+    public void exportToXmlFile(){
         try {
-            Writer w = new FileWriter(fileName);
-            w.write(this.toXML());
+            Writer w = new FileWriter("saveBoard.xml");
+            w.write(this.board.toXML(0));
             w.close();
+            Writer w2 = new FileWriter("savePlayers.xml");
+            for(int i = 0; i < this.players.size(); i++){
+                w2.write(this.players.get(i).toXML(0));
+            }
+            w2.close();
+            Writer w3 = new FileWriter("savePlayerTurn.xml");
+            w3.write(this.playerTurn);
+            w3.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void importFromXmlFile(){
+
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+
+        try {
+            InputStream is = new FileInputStream("saveBoard.xml");
+            SAXParser saxParser = factory.newSAXParser();
+
+            BoardSAXHandler handler = new BoardSAXHandler();
+
+            saxParser.parse(is, handler);
+
+            List<Property> properties = handler.getResult();
+
+            Board board = new Board(properties);
+
+            InputStream is2 = new FileInputStream("savePlayers.xml");
+            SAXParser saxParser2 = factory.newSAXParser();
+
+            PlayerSAXHandler handler2 = new PlayerSAXHandler(properties);
+
+            saxParser2.parse(is2, handler2);
+
+            List<Player> players = handler2.getResult();
+
+
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }
