@@ -28,6 +28,9 @@ public class MonopolyModel{
     private final Dice die;
     int playerTurn;
     private MonopolyView view;
+    private final static String SAVEBOARDFILE = "saveBoard.xml";
+    private final static String SAVEPLAYERSFILE = "savePlayers.xml";
+    private final static String SAVEPLAYERTURNFILE = "savePlayerTurn.xml";
 
     public MonopolyModel(int boardType) {
         this.board = new Board(boardType);
@@ -329,8 +332,8 @@ public class MonopolyModel{
     public String toXML(){
         String s = "<Monopoly>\n";
         s += this.board.toXML(1);
-        for(int i = 0; i < this.players.size(); i++){
-            s += this.players.get(i).toXML(1);
+        for (Player player : this.players) {
+            s += player.toXML(1);
         }
         s += "\t<playerTurn>" + this.playerTurn + "</playerTurn>\n";
         s += "</Monopoly>";
@@ -339,15 +342,15 @@ public class MonopolyModel{
 
     public void exportToXmlFile(){
         try {
-            Writer w = new FileWriter("saveBoard.xml");
+            Writer w = new FileWriter(SAVEBOARDFILE);
             w.write(this.board.toXML(0));
             w.close();
-            Writer w2 = new FileWriter("savePlayers.xml");
-            for(int i = 0; i < this.players.size(); i++){
-                w2.write(this.players.get(i).toXML(0));
+            Writer w2 = new FileWriter(SAVEPLAYERSFILE);
+            for (Player player : this.players) {
+                w2.write(player.toXML(0));
             }
             w2.close();
-            Writer w3 = new FileWriter("savePlayerTurn.xml");
+            Writer w3 = new FileWriter(SAVEPLAYERTURNFILE);
             w3.write(this.playerTurn);
             w3.close();
         } catch (IOException e) {
@@ -360,7 +363,7 @@ public class MonopolyModel{
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         try {
-            InputStream is = new FileInputStream("saveBoard.xml");
+            InputStream is = new FileInputStream(SAVEBOARDFILE);
             SAXParser saxParser = factory.newSAXParser();
 
             BoardSAXHandler handler = new BoardSAXHandler();
@@ -371,7 +374,7 @@ public class MonopolyModel{
 
             Board board = new Board(properties);
 
-            InputStream is2 = new FileInputStream("savePlayers.xml");
+            InputStream is2 = new FileInputStream(SAVEPLAYERSFILE);
             SAXParser saxParser2 = factory.newSAXParser();
 
             PlayerSAXHandler handler2 = new PlayerSAXHandler(properties);
