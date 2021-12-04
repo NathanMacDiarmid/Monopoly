@@ -7,6 +7,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MonopolyModel{
     /**
@@ -37,6 +38,13 @@ public class MonopolyModel{
         this.die = new Dice();
         this.players = new ArrayList<>();
         this.playerTurn = 0;
+    }
+
+    public MonopolyModel(Board b, ArrayList<Player> p, int pTurn){
+        this.board = b;
+        this.players = p;
+        this.playerTurn = pTurn;
+        this.die = new Dice();
     }
 
     /**
@@ -346,19 +354,23 @@ public class MonopolyModel{
             w.write(this.board.toXML(0));
             w.close();
             Writer w2 = new FileWriter(SAVEPLAYERSFILE);
+            w2.write("<Players>\n");
             for (Player player : this.players) {
-                w2.write(player.toXML(0));
+                w2.write(player.toXML(1));
             }
+            w2.write("</Players>\n");
             w2.close();
             Writer w3 = new FileWriter(SAVEPLAYERTURNFILE);
-            w3.write(this.playerTurn);
+            w3.write("<PlayerTurn>\n");
+            w3.write("<Turn>"+this.playerTurn+"</Turn>\n");
+            w3.write("</PlayerTurn>");
             w3.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void importFromXmlFile(){
+    public static MonopolyModel importFromXmlFile(){
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
@@ -383,12 +395,19 @@ public class MonopolyModel{
 
             List<Player> players = handler2.getResult();
 
+            InputStream is3 = new FileInputStream(SAVEPLAYERTURNFILE);
+            SAXParser saxParser3 = factory.newSAXParser();
+
+            TurnSAXHandler handler3 = new TurnSAXHandler();
+
+            saxParser3.parse(is3, handler3);
+
+            return new MonopolyModel(board, (ArrayList<Player>) players, handler3.getResult());
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-
-
+        return null;
     }
 
 }

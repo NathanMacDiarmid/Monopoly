@@ -97,7 +97,7 @@ public class Board{
         FreeParking FreeParking = new FreeParking("Free Parking", 0, 0);
 
         Property Glengarry = new Property("Glengarry House", 220, 22);
-        Property Lennox = new Property("Lennox & Addington House", 220, 22);
+        Property Lennox = new Property("Lennox House", 220, 22);
         Property Renfrew = new Property("Renfrew House", 240, 24);
 
         Railroad OCTranspo = new Railroad("OC Transpo", 200, 25);

@@ -1,18 +1,20 @@
-<Player>
-	<name>Dave</name>
-	<money>1500</money>
-	<position>0</position>
-	<positionTracker>0</positionTracker>
-	<propertiesOwned>
-	</propertiesOwned>
-	<jailed>false</jailed>
-</Player>
-<Player>
-	<name>Steve</name>
-	<money>1500</money>
-	<position>0</position>
-	<positionTracker>0</positionTracker>
-	<propertiesOwned>
-	</propertiesOwned>
-	<jailed>false</jailed>
-</Player>
+<Players>
+	<Player>
+		<name>Dave</name>
+		<money>1500</money>
+		<position>0</position>
+		<positionTracker>0</positionTracker>
+		<propertiesOwned>
+		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+	<Player>
+		<name>Steve</name>
+		<money>1500</money>
+		<position>0</position>
+		<positionTracker>0</positionTracker>
+		<propertiesOwned>
+		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+</Players>

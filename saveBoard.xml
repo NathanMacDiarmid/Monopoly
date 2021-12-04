@@ -128,7 +128,7 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Lennox & Addington House</name>
+		<name>Lennox House</name>
 		<cost>220</cost>
 		<rent>22</rent>
 		<hasHouse>false</hasHouse>
