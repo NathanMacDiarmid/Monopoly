@@ -9,6 +9,7 @@ public class BoardSAXHandler extends DefaultHandler {
     private StringBuilder currentValue = new StringBuilder();
     List<Property> result;
     Property currentProperty;
+    Jail jail;
 
     public List<Property> getResult() {
         return result;
@@ -40,6 +41,26 @@ public class BoardSAXHandler extends DefaultHandler {
                            String qName) {
 
         if (qName.equalsIgnoreCase("name")) {
+            if(currentValue.toString().equals("Go")){
+                currentProperty = new Go("Go", 0, 0);
+            }
+            else if(currentValue.toString().equals("Jail")){
+                currentProperty = new Jail("Jail", 0, 0);
+                this.jail = (Jail) currentProperty;
+            }
+            else if(currentValue.toString().equals("Go To Jail")){
+                currentProperty = new GoToJail("Go To Jail", 0, 0, jail);
+            }
+            else if(currentValue.toString().equals("Free Parking")){
+                currentProperty = new FreeParking("Free Parking", 0, 0);
+            }
+            else if(currentValue.toString().equals("Electric Company") || currentValue.toString().equals("Water Works")){
+                currentProperty = new Utilities("", 0, 0);
+            }
+            else if(currentValue.toString().equals("Taxi (Railroad)") || currentValue.toString().equals("Tunnel Cart (Railroad)")
+                    || currentValue.toString().equals("OC Transpo (Railroad)") || currentValue.toString().equals("O Train (Railroad)")){
+                currentProperty = new Railroad("", 0, 0);
+            }
             currentProperty.setName(currentValue.toString());
         }
         if (qName.equalsIgnoreCase("cost")) {

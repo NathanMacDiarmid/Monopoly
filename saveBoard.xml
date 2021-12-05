@@ -1,5 +1,5 @@
 <Board>
-	<boardType>0</boardType>	<Property>
+	<boardType>2</boardType>	<Property>
 		<name>Go</name>
 		<cost>0</cost>
 		<rent>0</rent>
@@ -7,43 +7,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Loeb Building</name>
+		<name>Moscow</name>
 		<cost>60</cost>
 		<rent>6</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Southam Hall</name>
+		<name>Berlin</name>
 		<cost>60</cost>
 		<rent>6</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Taxi
-(Railroad)</name>
+		<name>Taxi (Railroad)</name>
 		<cost>200</cost>
 		<rent>25</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Paterson Hall</name>
+		<name>Madrid</name>
 		<cost>100</cost>
 		<rent>10</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Nesbitt Building</name>
+		<name>Rome</name>
 		<cost>100</cost>
 		<rent>10</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Makenzie Building</name>
+		<name>Paris</name>
 		<cost>120</cost>
 		<rent>12</rent>
 		<hasHouse>false</hasHouse>
@@ -57,7 +56,7 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Azreli Theatre</name>
+		<name>Minsk</name>
 		<cost>140</cost>
 		<rent>14</rent>
 		<hasHouse>false</hasHouse>
@@ -66,48 +65,47 @@
 	<Property>
 		<name>Electric Company</name>
 		<cost>150</cost>
-		<rent>0</rent>
+		<rent>36</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Steacie Building</name>
+		<name>Budapest</name>
 		<cost>140</cost>
 		<rent>14</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Tory Building</name>
+		<name>Vienna</name>
 		<cost>160</cost>
 		<rent>16</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Tunnel Cart
-(Railroad)</name>
+		<name>Enterprise (Railroad)</name>
 		<cost>200</cost>
 		<rent>25</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Robertson Hall</name>
+		<name>Belgrade</name>
 		<cost>180</cost>
 		<rent>18</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Architecture Building</name>
+		<name>Munich</name>
 		<cost>180</cost>
 		<rent>18</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Canal Building</name>
+		<name>Milan</name>
 		<cost>200</cost>
 		<rent>20</rent>
 		<hasHouse>false</hasHouse>
@@ -121,43 +119,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Glengarry House</name>
+		<name>Sofia</name>
 		<cost>220</cost>
 		<rent>22</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Lennox House</name>
+		<name>Samara</name>
 		<cost>220</cost>
 		<rent>22</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Renfrew House</name>
+		<name>Ufa</name>
 		<cost>240</cost>
 		<rent>24</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>OC Transpo
-(Railroad)</name>
+		<name>Thalys (Railroad)</name>
 		<cost>200</cost>
 		<rent>25</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Lanark House</name>
+		<name>Brussels</name>
 		<cost>260</cost>
 		<rent>26</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Grenville House</name>
+		<name>Naples</name>
 		<cost>260</cost>
 		<rent>26</rent>
 		<hasHouse>false</hasHouse>
@@ -171,9 +168,9 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Dundas House</name>
-		<cost>280</cost>
-		<rent>28</rent>
+		<name>Athens</name>
+		<cost>320</cost>
+		<rent>32</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
@@ -185,43 +182,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Prescott House</name>
-		<cost>300</cost>
-		<rent>30</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Frontenac House</name>
-		<cost>300</cost>
-		<rent>30</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Leeds House</name>
-		<cost>320</cost>
-		<rent>32</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>O Train
-(Railroad)</name>
-		<cost>200</cost>
-		<rent>25</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Nicol Building</name>
+		<name>Palermo</name>
 		<cost>350</cost>
 		<rent>35</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Minto CASE</name>
+		<name>Valencia</name>
+		<cost>280</cost>
+		<rent>28</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Marseille</name>
+		<cost>300</cost>
+		<rent>30</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>EuroStar (Railroad)</name>
+		<cost>200</cost>
+		<rent>25</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Sevilla</name>
+		<cost>300</cost>
+		<rent>30</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Bristol</name>
 		<cost>400</cost>
 		<rent>40</rent>
 		<hasHouse>false</hasHouse>
