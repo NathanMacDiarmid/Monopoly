@@ -5,18 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TurnSAXHandler extends DefaultHandler {
+public class OtherInfoSAXHandler extends DefaultHandler {
 
     private StringBuilder currentValue = new StringBuilder();
-    int result;
+    private int turn;
+    private int boardType;
 
-    public int getResult() {
-        return result;
+    public int getTurn() {
+        return turn;
+    }
+
+    public int getBoardType() {
+        return boardType;
     }
 
     @Override
     public void startDocument() {
-        result = 0;
+        turn = 0;
+        boardType = 0;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class TurnSAXHandler extends DefaultHandler {
         currentValue.setLength(0);
 
         // start of loop
-        if (qName.equalsIgnoreCase("PlayerTurn")) {
+        if (qName.equalsIgnoreCase("OtherInfo")) {
         }
     }
 
@@ -39,7 +45,10 @@ public class TurnSAXHandler extends DefaultHandler {
                            String qName) {
 
         if (qName.equalsIgnoreCase("Turn")) {
-            result = Integer.parseInt(currentValue.toString());
+            turn = Integer.parseInt(currentValue.toString());
+        }
+        if (qName.equalsIgnoreCase("BoardType")) {
+            boardType = Integer.parseInt(currentValue.toString());
         }
     }
 

@@ -39,6 +39,9 @@ public class MonopolyView extends JFrame {
             propertyButtons = new ArrayList<JButton>();
 
             turnLabel = new JLabel();
+
+            this.createBoard();
+            this.updateStatus();
         }
         else {
 

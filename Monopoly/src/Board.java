@@ -58,8 +58,13 @@ public class Board{
 
     }
 
-    public Board(List<Property> p){
+    public Board(int b, List<Property> p){
+        this.boardType = b;
         this.properties = p;
+    }
+
+    public int getBoardType() {
+        return boardType;
     }
 
     /**
@@ -212,7 +217,12 @@ public class Board{
 
             List<Property> properties = handler.getResult();
 
-            return new Board(properties);
+            if(filename.equals(CANADABOARD)) {
+                return new Board(CANADA, properties);
+            }
+            else if(filename.equals(EUROPEBOARD)) {
+                return new Board(EUROPE, properties);
+            }
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();

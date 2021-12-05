@@ -7,7 +7,6 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class MonopolyModel{
     /**
@@ -31,7 +30,7 @@ public class MonopolyModel{
     private MonopolyView view;
     private final static String SAVEBOARDFILE = "saveBoard.xml";
     private final static String SAVEPLAYERSFILE = "savePlayers.xml";
-    private final static String SAVEPLAYERTURNFILE = "savePlayerTurn.xml";
+    private final static String OTHERINFOFILE = "otherInfo.xml";
 
     public MonopolyModel(int boardType) {
         this.board = new Board(boardType);
@@ -337,17 +336,12 @@ public class MonopolyModel{
         }while(this.getPlayer() instanceof AI);
     }
 
-    public String toXML(){
-        String s = "<Monopoly>\n";
-        s += this.board.toXML(1);
-        for (Player player : this.players) {
-            s += player.toXML(1);
-        }
-        s += "\t<playerTurn>" + this.playerTurn + "</playerTurn>\n";
-        s += "</Monopoly>";
-        return s;
-    }
-
+    /**
+     * This method exports the current Monopoly model into multiple xml files, first there is a file to save the board,
+     * next is a file to save the players, and finally a file to save the board type and whos turn it is.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public void exportToXmlFile(){
         try {
             Writer w = new FileWriter(SAVEBOARDFILE);
@@ -360,16 +354,28 @@ public class MonopolyModel{
             }
             w2.write("</Players>\n");
             w2.close();
-            Writer w3 = new FileWriter(SAVEPLAYERTURNFILE);
-            w3.write("<PlayerTurn>\n");
+            Writer w3 = new FileWriter(OTHERINFOFILE);
+            w3.write("<OtherInfo>\n");
             w3.write("<Turn>"+this.playerTurn+"</Turn>\n");
-            w3.write("</PlayerTurn>");
+            w3.write("<BoardType>"+this.board.getBoardType()+"</BoardType>\n");
+            w3.write("</OtherInfo>");
             w3.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * This method imports a saved version of monopolyModel from the saved files using the defined SAX handlers to
+     * parse the files. First the board file is parsed and a list of all the properties is returned. Next the player
+     * file is parsed and a list of all players is returned. Next all of the properties are assigned their current owner.
+     * Finally the other info file is parsed and the player turn and board type is returned. Now that we have all the
+     * required information a new model is created and returned.
+     *
+     * @return a MonopolyModel object
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public static MonopolyModel importFromXmlFile(){
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -384,8 +390,6 @@ public class MonopolyModel{
 
             List<Property> properties = handler.getResult();
 
-            Board board = new Board(properties);
-
             InputStream is2 = new FileInputStream(SAVEPLAYERSFILE);
             SAXParser saxParser2 = factory.newSAXParser();
 
@@ -395,14 +399,26 @@ public class MonopolyModel{
 
             List<Player> players = handler2.getResult();
 
-            InputStream is3 = new FileInputStream(SAVEPLAYERTURNFILE);
+            for(int i = 0; i < properties.size(); i++){
+                for(int j = 0; j < players.size(); j++){
+                    for(int k = 0; k < players.get(j).getPropertiesOwned().size(); k++){
+                        if(players.get(j).getPropertiesOwned().get(k).getName().equals(properties.get(i).getName())){
+                            properties.get(i).setOwner(players.get(j));
+                        }
+                    }
+                }
+            }
+
+            InputStream is3 = new FileInputStream(OTHERINFOFILE);
             SAXParser saxParser3 = factory.newSAXParser();
 
-            TurnSAXHandler handler3 = new TurnSAXHandler();
+            OtherInfoSAXHandler handler3 = new OtherInfoSAXHandler();
 
             saxParser3.parse(is3, handler3);
 
-            return new MonopolyModel(board, (ArrayList<Player>) players, handler3.getResult());
+            Board board = new Board(handler3.getBoardType(), properties);
+
+            return new MonopolyModel(board, (ArrayList<Player>) players, handler3.getTurn());
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
