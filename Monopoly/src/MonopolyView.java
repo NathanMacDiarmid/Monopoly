@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MonopolyView extends JFrame {
+public class MonopolyView extends JFrame implements ActionListener {
 
     /**
      * The MonopolyView class
@@ -15,6 +17,9 @@ public class MonopolyView extends JFrame {
     private final MonopolyModel model;
     private final Container pane;
     private final JLabel turnLabel;
+    private final JMenuBar menubar;
+    private final JMenu menu;
+    private final JMenuItem save;
     private final ArrayList<JButton> propertyButtons;
     private final int BOARDLENGTH = 8;
     private static final int BOARDSIZE = 32;
@@ -56,6 +61,18 @@ public class MonopolyView extends JFrame {
             this.createBoard();
         }
 
+
+        menubar = new JMenuBar();
+        this.setJMenuBar(menubar);
+
+        menu = new JMenu("Menu");
+        menubar.add(menu);
+
+        save = new JMenuItem("Save Game");
+        save.addActionListener(this);
+        save.setEnabled(true);
+        menu.add(save);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 1200);
 
@@ -95,6 +112,34 @@ public class MonopolyView extends JFrame {
                 "Load Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
                 options[0]);
         return z;
+    }
+
+    /**
+     *This method allows players to save the current game
+     *
+     * @return selected option
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int saveGame() {
+        String[] options = {"YES", "NO"};
+
+        int s = JOptionPane.showOptionDialog(null, "Would like to save this game?",
+                "Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+                options[0]);
+        return s;
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String selectedMenu = e.getActionCommand();
+
+        if(selectedMenu == "Save Game"){
+            if (this.saveGame() == JOptionPane.YES_OPTION) {
+                model.exportToXmlFile();
+            }
+        }
     }
 
 
