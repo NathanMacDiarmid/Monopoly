@@ -21,7 +21,7 @@ public class Board{
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
-    private final List<Property> properties;
+    private List<Property> properties;
     private int boardType;
     private final static int CARLETON = 0;
     private final static int CANADA = 1;
@@ -58,7 +58,7 @@ public class Board{
 
     }
 
-    public Board(int b, List<Property> p){
+    public void setBoard(int b, List<Property> p){
         this.boardType = b;
         this.properties = p;
     }
@@ -204,7 +204,7 @@ public class Board{
         return s;
     }
 
-    public Board importXMLBoard(String filename) {
+    public void importXMLBoard(String filename) {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         try {
@@ -218,17 +218,14 @@ public class Board{
             List<Property> properties = handler.getResult();
 
             if(filename.equals(CANADABOARD)) {
-                return new Board(CANADA, properties);
+                setBoard(CANADA, properties);
             }
             else if(filename.equals(EUROPEBOARD)) {
-                return new Board(EUROPE, properties);
+                setBoard(EUROPE, properties);
             }
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-        Board board = new Board(CARLETON);
-        System.out.println("The board you selected couldn't be imported. \n Carleton has been loaded instead.");
-        return board;
     }
 }
