@@ -58,11 +58,24 @@ public class Board{
 
     }
 
-    public void setBoard(int b, List<Property> p){
+    /**
+     * Basic setter for the properties and boardType
+     * Private as it is only used internally
+     * @param b
+     * @param p
+     *
+     * Created by Matthew Belanger - 101144323
+     * Enhanced and documented by Nathan MacDiarmid - 1010198993
+     */
+    private void setBoard(int b, List<Property> p){
         this.boardType = b;
         this.properties = p;
     }
 
+    /**
+     * Basic getter for boardType.
+     * @return
+     */
     public int getBoardType() {
         return boardType;
     }
@@ -204,6 +217,12 @@ public class Board{
         return s;
     }
 
+    /**
+     * Allows different types of board to be imported from XML files.
+     * @param filename the name of the XML file
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
     public void importXMLBoard(String filename) {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 

@@ -399,11 +399,11 @@ public class MonopolyModel{
 
             List<Player> players = handler2.getResult();
 
-            for(int i = 0; i < properties.size(); i++){
-                for(int j = 0; j < players.size(); j++){
-                    for(int k = 0; k < players.get(j).getPropertiesOwned().size(); k++){
-                        if(players.get(j).getPropertiesOwned().get(k).getName().equals(properties.get(i).getName())){
-                            properties.get(i).setOwner(players.get(j));
+            for (Property property : properties) {
+                for (Player player : players) {
+                    for (int k = 0; k < player.getPropertiesOwned().size(); k++) {
+                        if (player.getPropertiesOwned().get(k).getName().equals(property.getName())) {
+                            property.setOwner(player);
                         }
                     }
                 }
