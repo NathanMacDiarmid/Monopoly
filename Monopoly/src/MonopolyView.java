@@ -24,6 +24,7 @@ public class MonopolyView extends JFrame {
      * playerSetup and createBoard to handle most of the GUI creation.
      *
      * Created and documented by Matthew Belanger - 101144323
+     *
      */
     public MonopolyView(){
         super("Monopoly");
@@ -31,18 +32,29 @@ public class MonopolyView extends JFrame {
         pane = this.getContentPane();
         pane.setLayout(new BorderLayout());
 
-        model = new MonopolyModel(chooseBoardType());
+        if (this.loadSavedGame() == JOptionPane.YES_OPTION) {
+            model = MonopolyModel.importFromXmlFile();
 
-        model.addMonopolyView(this);
-        propertyButtons = new ArrayList<JButton>();
+            model.addMonopolyView(this);
+            propertyButtons = new ArrayList<JButton>();
+
+            turnLabel = new JLabel();
+        }
+        else {
+
+            model = new MonopolyModel(chooseBoardType());
+
+            model.addMonopolyView(this);
+            propertyButtons = new ArrayList<JButton>();
+
+            turnLabel = new JLabel();
+
+            this.playerSetup();
+            this.createBoard();
+        }
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 1200);
-
-        turnLabel = new JLabel();
-
-        this.playerSetup();
-        this.createBoard();
 
         this.setVisible(true);
     }
@@ -64,6 +76,24 @@ public class MonopolyView extends JFrame {
                 options[0]);
         return x;
     }
+
+
+    /**
+     *This method allows players to choose between continuing an old game and starting a new one
+     *
+     * @return selected option
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int loadSavedGame() {
+        String[] options = {"Load", "New Game"};
+
+        int z = JOptionPane.showOptionDialog(null, "Would you like to continue the previously saved game?",
+                "Load Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+                options[0]);
+        return z;
+    }
+
 
     /**
      * This method handles the creation of the GUI board.

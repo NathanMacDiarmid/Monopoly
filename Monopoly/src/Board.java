@@ -120,6 +120,7 @@ public class Board{
 
         Property Minto = new Property("Minto CASE", 400, 40);
 
+
         // adds properties to property list
 
         this.properties.add(Go);

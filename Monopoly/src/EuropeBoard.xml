@@ -1,547 +1,228 @@
 <?xml version="1.0"?>
 <Board>
+    <boardType>2</boardType>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Go</name>
+        <cost>0</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Moscow</name>
+        <cost>60</cost>
+        <rent>6</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Berlin</name>
+        <cost>60</cost>
+        <rent>6</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Taxi (Railroad)</name>
+        <cost>200</cost>
+        <rent>25</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Madrid</name>
+        <cost>100</cost>
+        <rent>10</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Rome</name>
+        <cost>100</cost>
+        <rent>10</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Paris</name>
+        <cost>120</cost>
+        <rent>12</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Jail</name>
+        <cost>0</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Minsk</name>
+        <cost>140</cost>
+        <rent>14</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Electric Company</name>
+        <cost>150</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Budapest</name>
+        <cost>140</cost>
+        <rent>14</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Vienna</name>
+        <cost>160</cost>
+        <rent>16</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Enterprise (Railroad)</name>
+        <cost>200</cost>
+        <rent>25</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Belgrade</name>
+        <cost>180</cost>
+        <rent>18</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Munich</name>
+        <cost>180</cost>
+        <rent>18</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Milan</name>
+        <cost>200</cost>
+        <rent>20</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Free Parking</name>
+        <cost>0</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Sofia</name>
+        <cost>220</cost>
+        <rent>22</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Samara</name>
+        <cost>220</cost>
+        <rent>22</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Ufa</name>
+        <cost>240</cost>
+        <rent>24</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Thalys (Railroad)</name>
+        <cost>200</cost>
+        <rent>25</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Brussels</name>
+        <cost>260</cost>
+        <rent>26</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Naples</name>
+        <cost>260</cost>
+        <rent>26</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Water Works</name>
+        <cost>150</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Athens</name>
+        <cost>320</cost>
+        <rent>32</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Go To Jail</name>
+        <cost>0</cost>
+        <rent>0</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Palermo</name>
+        <cost>350</cost>
+        <rent>35</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Valencia</name>
+        <cost>280</cost>
+        <rent>28</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Marseille</name>
+        <cost>300</cost>
+        <rent>30</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>EuroStar (Railroad)</name>
+        <cost>200</cost>
+        <rent>25</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Sevilla</name>
+        <cost>300</cost>
+        <rent>30</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>
-
-        </name>
-        <cost>
-
-        </cost>
-        <rent>
-
-        </rent>
-        <hasHouse>
-
-        </hasHouse>
-        <hasHotel>
-
-        </hasHotel>
+        <name>Bristol</name>
+        <cost>400</cost>
+        <rent>40</rent>
+        <hasHouse>false</hasHouse>
+        <hasHotel>false</hasHotel>
     </Property>
 </Board>
