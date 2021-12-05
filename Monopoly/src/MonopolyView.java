@@ -29,7 +29,7 @@ public class MonopolyView extends JFrame implements ActionListener {
      * playerSetup and createBoard to handle most of the GUI creation.
      *
      * Created and documented by Matthew Belanger - 101144323
-     *
+     * Refactored by Tao Lufula - 101164153
      */
     public MonopolyView(){
         super("Monopoly");

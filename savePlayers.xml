@@ -1,18 +1,37 @@
 <Players>
 	<Player>
-		<name>Dave</name>
-		<money>1500</money>
-		<position>0</position>
-		<positionTracker>0</positionTracker>
+		<name>Mehedi</name>
+		<money>1188</money>
+		<position>20</position>
+		<positionTracker>20</positionTracker>
 		<propertiesOwned>
-		</propertiesOwned>
+		<Property>Azreli Theatre</Property>		<Property>OC Transpo
+(Railroad)</Property>		</propertiesOwned>
 		<jailed>false</jailed>
 	</Player>
 	<Player>
-		<name>Steve</name>
+		<name>Matthew</name>
+		<money>1272</money>
+		<position>15</position>
+		<positionTracker>15</positionTracker>
+		<propertiesOwned>
+		<Property>Canal Building</Property>		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+	<Player>
+		<name>Nathan</name>
+		<money>1380</money>
+		<position>6</position>
+		<positionTracker>6</positionTracker>
+		<propertiesOwned>
+		<Property>Makenzie Building</Property>		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+	<Player>
+		<name>Tao</name>
 		<money>1500</money>
-		<position>0</position>
-		<positionTracker>0</positionTracker>
+		<position>7</position>
+		<positionTracker>7</positionTracker>
 		<propertiesOwned>
 		</propertiesOwned>
 		<jailed>false</jailed>
