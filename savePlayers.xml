@@ -1,20 +1,20 @@
 <Players>
 	<Player>
-		<name>Matt</name>
-		<money>1050</money>
-		<position>15</position>
-		<positionTracker>15</positionTracker>
+		<name>a</name>
+		<money>940</money>
+		<position>17</position>
+		<positionTracker>17</positionTracker>
 		<propertiesOwned>
-		<Property>Rome</Property>		<Property>Electric Company</Property>		<Property>Milan</Property>		</propertiesOwned>
+		<Property>Taxi (Railroad)</Property>		<Property>Minsk</Property>		<Property>Sofia</Property>		</propertiesOwned>
 		<jailed>false</jailed>
 	</Player>
 	<Player>
-		<name>Jeff</name>
+		<name>_AI</name>
 		<money>1360</money>
-		<position>7</position>
-		<positionTracker>7</positionTracker>
+		<position>10</position>
+		<positionTracker>10</positionTracker>
 		<propertiesOwned>
 		<Property>Budapest</Property>		</propertiesOwned>
-		<jailed>true</jailed>
+		<jailed>false</jailed>
 	</Player>
 </Players>

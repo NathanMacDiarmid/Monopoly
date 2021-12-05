@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MonopolyView extends JFrame implements ActionListener {
+public class MonopolyView extends JFrame {
 
     /**
      * The MonopolyView class
@@ -17,9 +15,6 @@ public class MonopolyView extends JFrame implements ActionListener {
     private final MonopolyModel model;
     private final Container pane;
     private final JLabel turnLabel;
-    private final JMenuBar menubar;
-    private final JMenu menu;
-    private final JMenuItem save;
     private final ArrayList<JButton> propertyButtons;
     private final int BOARDLENGTH = 8;
     private static final int BOARDSIZE = 32;
@@ -40,6 +35,7 @@ public class MonopolyView extends JFrame implements ActionListener {
         if (this.loadSavedGame() == JOptionPane.YES_OPTION) {
             model = MonopolyModel.importFromXmlFile();
 
+            assert model != null;
             model.addMonopolyView(this);
             propertyButtons = new ArrayList<JButton>();
 
@@ -61,87 +57,13 @@ public class MonopolyView extends JFrame implements ActionListener {
             this.createBoard();
         }
 
-
-        menubar = new JMenuBar();
-        this.setJMenuBar(menubar);
-
-        menu = new JMenu("Menu");
-        menubar.add(menu);
-
-        save = new JMenuItem("Save Game");
-        save.addActionListener(this);
-        save.setEnabled(true);
-        menu.add(save);
+        setupSave();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 1200);
 
         this.setVisible(true);
     }
-
-    /**
-     * This method allows players to choose between three different board types.
-     *
-     * - Carleton
-     * - Canada
-     * - Europe
-     *
-     * Created and documented by Nathan MacDiarmid - 101098993
-     */
-    public int chooseBoardType() {
-        String[] options = {"Carleton", "Canada", "Europe"};
-
-        int x = JOptionPane.showOptionDialog(null, "Please select the type of board you want to play!",
-                "Board Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options,
-                options[0]);
-        return x;
-    }
-
-
-    /**
-     *This method allows players to choose between continuing an old game and starting a new one
-     *
-     * @return selected option
-     *
-     * Created and documented by Tao Lufula - 101164153
-     */
-    public int loadSavedGame() {
-        String[] options = {"Load", "New Game"};
-
-        int z = JOptionPane.showOptionDialog(null, "Would you like to continue the previously saved game?",
-                "Load Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
-                options[0]);
-        return z;
-    }
-
-    /**
-     *This method allows players to save the current game
-     *
-     * @return selected option
-     *
-     * Created and documented by Tao Lufula - 101164153
-     */
-    public int saveGame() {
-        String[] options = {"YES", "NO"};
-
-        int s = JOptionPane.showOptionDialog(null, "Would like to save this game?",
-                "Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
-                options[0]);
-        return s;
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String selectedMenu = e.getActionCommand();
-
-        if(selectedMenu == "Save Game"){
-            if (this.saveGame() == JOptionPane.YES_OPTION) {
-                model.exportToXmlFile();
-            }
-        }
-    }
-
 
     /**
      * This method handles the creation of the GUI board.
@@ -269,6 +191,75 @@ public class MonopolyView extends JFrame implements ActionListener {
     }
 
     /**
+     * Sets up the JMenuItem that allows the ability to save the game.
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public void setupSave() {
+        JMenuBar menubar = new JMenuBar();
+        this.setJMenuBar(menubar);
+
+        JMenu menu = new JMenu("Menu");
+        menubar.add(menu);
+
+        JMenuItem save = new JMenuItem("Save Game");
+        MonopolyViewController mvc = new MonopolyViewController(model, this);
+        save.addActionListener(mvc);
+        save.setEnabled(true);
+        menu.add(save);
+    }
+
+    /**
+     * This method allows players to choose between three different board types.
+     *
+     * - Carleton
+     * - Canada
+     * - Europe
+     *
+     * Created and documented by Nathan MacDiarmid - 101098993
+     */
+    public int chooseBoardType() {
+        String[] options = {"Carleton", "Canada", "Europe"};
+
+        int x = JOptionPane.showOptionDialog(null, "Please select the type of board you want to play!",
+                "Board Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options,
+                options[0]);
+        return x;
+    }
+
+    /**
+     *This method allows players to save the current game
+     *
+     * @return selected option
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int saveGame() {
+        String[] options = {"YES", "NO"};
+
+        int s = JOptionPane.showOptionDialog(null, "Would like to save this game?",
+                "Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+                options[0]);
+        return s;
+    }
+
+    /**
+     *This method allows players to choose between continuing an old game and starting a new one
+     *
+     * @return selected option
+     *
+     * Created and documented by Tao Lufula - 101164153
+     */
+    public int loadSavedGame() {
+        String[] options = {"Load", "New Game"};
+
+        int z = JOptionPane.showOptionDialog(null, "Would you like to continue the previously saved game?",
+                "Load Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+                options[0]);
+        return z;
+    }
+
+    /**
      * This method updates the view of board, it will change the label of whos turn it is, as well as where the players
      * are on the board.
      *
@@ -344,25 +335,6 @@ public class MonopolyView extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "You did not roll doubles.");
         }
 
-    }
-
-    /**
-     * This method displays a JOptionPane which displays the message that the current player has been eliminated.
-     *
-     * Created and documented by Matthew Belanger - 101144323
-     */
-    public void playerEliminated(){
-        JOptionPane.showMessageDialog(this, "You have been eliminated from the game");
-    }
-
-    /**
-     * This method displays a JOptionPane which displays the message that the current player has won.
-     *
-     * Created and documented by Matthew Belanger - 101144323
-     */
-    public void playerWin(){
-        JOptionPane.showMessageDialog(this, model.getPlayer().getName()+ " has won Monopoly!!!");
-        this.setVisible(false);
     }
 
     /**
@@ -499,6 +471,25 @@ public class MonopolyView extends JFrame implements ActionListener {
         else {
             return "€";
         }
+    }
+
+    /**
+     * This method displays a JOptionPane which displays the message that the current player has been eliminated.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void playerEliminated(){
+        JOptionPane.showMessageDialog(this, "You have been eliminated from the game");
+    }
+
+    /**
+     * This method displays a JOptionPane which displays the message that the current player has won.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public void playerWin(){
+        JOptionPane.showMessageDialog(this, model.getPlayer().getName()+ " has won Monopoly!!!");
+        this.setVisible(false);
     }
 
     public static void main(String[] args) {

@@ -32,6 +32,13 @@ public class MonopolyModel{
     private final static String SAVEPLAYERSFILE = "savePlayers.xml";
     private final static String OTHERINFOFILE = "otherInfo.xml";
 
+    /**
+     * Default constructor for the MonopolyModel
+     * @param boardType the type of board players want to play on.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     * Enhanced and re-documented by Nathan MacDiarmid - 101098993
+     */
     public MonopolyModel(int boardType) {
         this.board = new Board(boardType);
         this.die = new Dice();
@@ -39,6 +46,13 @@ public class MonopolyModel{
         this.playerTurn = 0;
     }
 
+    /**
+     * This constructor is for when a player is loading a saved game.
+     * Created and documented by Matthew Belanger - 101144323
+     * @param b
+     * @param p
+     * @param pTurn
+     */
     public MonopolyModel(Board b, ArrayList<Player> p, int pTurn){
         this.board = b;
         this.players = p;
