@@ -431,7 +431,7 @@ public class MonopolyModel{
             InputStream is3 = new FileInputStream(OTHERINFOFILE);
             SAXParser saxParser3 = factory.newSAXParser();
 
-            OtherInfoSAXHandler handler3 = new OtherInfoSAXHandler();
+            PlayerTurnAndBoardType handler3 = new PlayerTurnAndBoardType();
 
             saxParser3.parse(is3, handler3);
 

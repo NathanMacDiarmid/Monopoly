@@ -65,7 +65,7 @@
 	<Property>
 		<name>Electric Company</name>
 		<cost>150</cost>
-		<rent>40</rent>
+		<rent>32</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
@@ -163,7 +163,7 @@
 	<Property>
 		<name>Water Works</name>
 		<cost>150</cost>
-		<rent>40</rent>
+		<rent>32</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>

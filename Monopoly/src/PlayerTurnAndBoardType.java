@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OtherInfoSAXHandler extends DefaultHandler {
+public class PlayerTurnAndBoardType extends DefaultHandler {
     /**
      * This class handles SAX events that are generated when parsing the other info xml file.
      *
