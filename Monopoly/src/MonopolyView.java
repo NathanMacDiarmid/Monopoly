@@ -465,10 +465,10 @@ public class MonopolyView extends JFrame {
      * Created and documented by Nathan MacDiarmid - 101098993
      */
     public String handleDifferentCurrencies() {
-        if (model.getBoard().getType() == 0) {
+        if (model.getBoard().getBoardType() == 0) {
             return "¢";
         }
-        else if (model.getBoard().getType() == 1) {
+        else if (model.getBoard().getBoardType() == 1) {
             return "$";
         }
         else {
