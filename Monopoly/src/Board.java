@@ -69,14 +69,6 @@ public class Board{
     }
 
     /**
-     * Getter for boardType
-     * @return
-     */
-    public int getType() {
-        return this.boardType;
-    }
-
-    /**
      * Default getter for a specific property in property list
      * @param position the int index of a property
      * @return information on Property of type Property
