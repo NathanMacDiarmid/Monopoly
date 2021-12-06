@@ -211,11 +211,12 @@ public class MonopolyView extends JFrame {
 
 
     /**
-     * This method allows players to choose between three different board types.
+     * This method allows players to choose between four different board types.
      *
      * - Carleton
      * - Canada
      * - Europe
+     * - World
      *
      * Created and documented by Nathan MacDiarmid - 101098993
      */
