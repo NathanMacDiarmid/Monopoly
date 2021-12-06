@@ -21,5 +21,10 @@ public class MonopolyViewController implements ActionListener {
                 model.exportToXmlFile();
             }
         }
+        if(selectedMenu == "Load Previous Game"){
+            if (view.loadSavedGame() == JOptionPane.YES_OPTION) {
+                model.importFromXmlFile();
+            }
+        }
     }
 }

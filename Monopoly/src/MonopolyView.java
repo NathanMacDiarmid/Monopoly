@@ -207,7 +207,14 @@ public class MonopolyView extends JFrame {
         save.addActionListener(mvc);
         save.setEnabled(true);
         menu.add(save);
+
+        JMenuItem load = new JMenuItem("Load Previous Game");
+        MonopolyViewController mvl = new MonopolyViewController(model, this);
+        load.addActionListener(mvl);
+        load.setEnabled(true);
+        menu.add(load);
     }
+
 
     /**
      * This method allows players to choose between three different board types.
@@ -237,7 +244,7 @@ public class MonopolyView extends JFrame {
     public int saveGame() {
         String[] options = {"YES", "NO"};
 
-        int s = JOptionPane.showOptionDialog(null, "Would like to save this game?",
+        int s = JOptionPane.showOptionDialog(null, "Would you like to save this game?",
                 "Saved Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
                 options[0]);
         return s;
