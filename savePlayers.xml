@@ -1,22 +1,22 @@
 <Players>
 	<Player>
 		<isAI>false</isAI>
-		<name>Matt</name>
-		<money>930</money>
-		<position>14</position>
-		<positionTracker>14</positionTracker>
+		<name>a</name>
+		<money>1500</money>
+		<position>0</position>
+		<positionTracker>0</positionTracker>
 		<propertiesOwned>
-		<Property>Steacie</Property>		<Property>OC Transpo</Property>		<Property>Water Works</Property>		<Property>Loeb</Property>		<Property>Architecture</Property>		</propertiesOwned>
+		</propertiesOwned>
 		<jailed>false</jailed>
 	</Player>
 	<Player>
 		<isAI>true</isAI>
-		<name>Jeff_AI</name>
-		<money>970</money>
-		<position>17</position>
-		<positionTracker>17</positionTracker>
+		<name>_AI</name>
+		<money>1500</money>
+		<position>0</position>
+		<positionTracker>0</positionTracker>
 		<propertiesOwned>
-		<Property>Electric Company</Property>		<Property>Glengarry</Property>		<Property>Minto</Property>		</propertiesOwned>
+		</propertiesOwned>
 		<jailed>false</jailed>
 	</Player>
 </Players>
