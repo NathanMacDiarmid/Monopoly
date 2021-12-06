@@ -15,6 +15,7 @@ public class MonopolyModelTest {
     private final static int CARLETON = 0;
     private final static int CANADA = 1;
     private final static int EUROPE = 2;
+    private final static int WORLD = 3;
 
     /**
      * This method initializes the MonopolyModel as well as two players

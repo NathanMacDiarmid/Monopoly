@@ -26,9 +26,13 @@ public class Board{
     private final static int CARLETON = 0;
     private final static int CANADA = 1;
     private final static int EUROPE = 2;
+    private final static int WORLD = 3;
     private final static String CARLETONBOARD = "CarletonBoard.xml";
     private final static String CANADABOARD = "CanadaBoard.xml";
     private final static String EUROPEBOARD = "EuropeBoard.xml";
+    private final static String WORLDBOARD = "WorldBoard.xml";
+
+
 
     /**
      * Default constructor for Board class
@@ -136,6 +140,10 @@ public class Board{
 
         else if (boardType == EUROPE) {
             filename = EUROPEBOARD;
+        }
+
+        else if (boardType == WORLD) {
+            filename = WORLDBOARD;
         }
 
         try {

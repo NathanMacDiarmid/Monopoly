@@ -219,7 +219,7 @@ public class MonopolyView extends JFrame {
      * Created and documented by Nathan MacDiarmid - 101098993
      */
     public int chooseBoardType() {
-        String[] options = {"Carleton", "Canada", "Europe"};
+        String[] options = {"Carleton", "Canada", "Europe", "World"};
 
         int x = JOptionPane.showOptionDialog(null, "Please select the type of board you want to play!",
                 "Board Selection", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options,
