@@ -1,4 +1,3 @@
-import java.io.Serializable;
 
 public class Property{
     /**
@@ -145,18 +144,38 @@ public class Property{
         return this.hasHotel;
     }
 
+    /**
+     * Default setter for name.
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Default setter for cost.
+     * @param cost
+     */
     public void setCost(int cost) {
         this.cost = cost;
     }
 
+    /**
+     * Default setter for rent.
+     * @param rent
+     */
     public void setRent(int rent) {
         this.rent = rent;
     }
 
+    /**
+     * Creates tabs for the toXML method.
+     *
+     * @param tabs
+     * @return tabs
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     private String tabGenerator(int tabs){
         String s = "";
         for(int i = 0; i < tabs; i++){
@@ -165,6 +184,14 @@ public class Property{
         return s;
     }
 
+    /**
+     * This method returns a xml representation of the property.
+     *
+     * @param tabs
+     * @return a String xml representation
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public String toXML(int tabs){
         String s = tabGenerator(tabs) + "<Property>\n";
         s += tabGenerator(tabs+1) + "<name>" + this.name + "</name>\n";

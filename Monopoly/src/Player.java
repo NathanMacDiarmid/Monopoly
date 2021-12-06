@@ -49,26 +49,50 @@ public class Player{
         boolean jailed = false;
     }
 
+    /**
+     * Default setter for name.
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Default setter for money.
+     * @param money
+     */
     public void setMoney(int money) {
         this.money = money;
     }
 
+    /**
+     * Default setter for position.
+     * @param position
+     */
     public void setPosition(int position) {
         this.position = position;
     }
 
+    /**
+     * Default setter for positionTracker.
+     * @param positionTracker
+     */
     public void setPositionTracker(int positionTracker) {
         this.positionTracker = positionTracker;
     }
 
+    /**
+     * Default getter for propertiesOwned.
+     * @return
+     */
     public List<Property> getPropertiesArray() {
         return this.propertiesOwned;
     }
 
+    /**
+     * Default setter for propertiesOwned.
+     * @param p
+     */
     public void addProperty(Property p){
         this.propertiesOwned.add(p);
     }
@@ -327,6 +351,14 @@ public class Player{
         this.money -= 100;
     }
 
+    /**
+     * Creates tabs for the toXML method.
+     *
+     * @param tabs
+     * @return tabs
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     private String tabGenerator(int tabs){
         String s = "";
         for(int i = 0; i < tabs; i++){
@@ -335,8 +367,17 @@ public class Player{
         return s;
     }
 
-    public String toXML(int tabs) {
+    /**
+     * This method returns a xml representation of the player.
+     *
+     * @param tabs
+     * @return a String xml representation
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    public String toXML(int tabs, boolean isAI) {
         String s = tabGenerator(tabs) + "<Player>\n";
+        s += tabGenerator(tabs+1) + "<isAI>" + isAI + "</isAI>\n";
         s += tabGenerator(tabs+1) + "<name>" + this.name + "</name>\n";
         s += tabGenerator(tabs+1) + "<money>" + this.money + "</money>\n";
         s += tabGenerator(tabs+1) + "<position>" + this.position + "</position>\n";

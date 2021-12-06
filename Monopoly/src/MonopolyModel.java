@@ -364,7 +364,12 @@ public class MonopolyModel{
             Writer w2 = new FileWriter(SAVEPLAYERSFILE);
             w2.write("<Players>\n");
             for (Player player : this.players) {
-                w2.write(player.toXML(1));
+                if(player instanceof AI) {
+                    w2.write(player.toXML(1, true));
+                }
+                else{
+                    w2.write(player.toXML(1, false));
+                }
             }
             w2.write("</Players>\n");
             w2.close();

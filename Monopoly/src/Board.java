@@ -82,6 +82,14 @@ public class Board{
         return this.properties.get(position);
     }
 
+    /**
+     * Creates tabs for the toXML method.
+     *
+     * @param tabs
+     * @return tabs
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     private String tabGenerator(int tabs){
         String s = "";
         for(int i = 0; i < tabs; i++){
@@ -90,6 +98,14 @@ public class Board{
         return s;
     }
 
+    /**
+     * This method returns a xml representation of the board.
+     *
+     * @param tabs
+     * @return a String xml representation
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
     public String toXML(int tabs){
         String s = tabGenerator(tabs) + "<Board>\n";
         s += tabGenerator(tabs+1) + "<boardType>" + this.boardType + "</boardType>";

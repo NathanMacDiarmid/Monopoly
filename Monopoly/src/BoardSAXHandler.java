@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardSAXHandler extends DefaultHandler {
+    /**
+     * This class handles SAX events that are generated when parsing the board xml file.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
 
     private StringBuilder currentValue = new StringBuilder();
     List<Property> result;

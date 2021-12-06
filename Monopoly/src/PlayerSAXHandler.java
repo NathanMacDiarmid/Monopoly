@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerSAXHandler extends DefaultHandler {
+    /**
+     * This class handles SAX events that are generated when parsing the players xml file.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
 
     private StringBuilder currentValue = new StringBuilder();
     List<Player> result;
@@ -44,6 +49,11 @@ public class PlayerSAXHandler extends DefaultHandler {
                            String localName,
                            String qName) {
 
+        if (qName.equalsIgnoreCase("isAI")) {
+            if(Boolean.parseBoolean(currentValue.toString())){
+                currentPlayer = new AI("");
+            }
+        }
         if (qName.equalsIgnoreCase("name")) {
             currentPlayer.setName(currentValue.toString());
         }
