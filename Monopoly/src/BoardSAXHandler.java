@@ -63,7 +63,10 @@ public class BoardSAXHandler extends DefaultHandler {
                 currentProperty = new Utilities("", 0, 0);
             }
             else if(currentValue.toString().equals("Taxi (Railroad)") || currentValue.toString().equals("Tunnel Cart (Railroad)")
-                    || currentValue.toString().equals("OC Transpo (Railroad)") || currentValue.toString().equals("O Train (Railroad)")){
+                    || currentValue.toString().equals("OC Transpo (Railroad)") || currentValue.toString().equals("O Train (Railroad)")
+                    || currentValue.toString().equals("Enterprise (Railroad)") || currentValue.toString().equals("Thalys (Railroad)")
+                    || currentValue.toString().equals("EuroStar (Railroad)") || currentValue.toString().equals("Train (Railroad)")
+                    || currentValue.toString().equals("Plane (Railroad)") || currentValue.toString().equals("Boat (Railroad)")){
                 currentProperty = new Railroad("", 0, 0);
             }
             currentProperty.setName(currentValue.toString());

@@ -436,6 +436,7 @@ public class MonopolyModel{
             saxParser3.parse(is3, handler3);
 
             Board board = new Board(handler3.getBoardType());
+            board.setBoard(handler3.getBoardType(), properties);
 
             return new MonopolyModel(board, (ArrayList<Player>) players, handler3.getTurn());
 

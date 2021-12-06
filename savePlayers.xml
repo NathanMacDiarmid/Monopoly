@@ -2,19 +2,19 @@
 	<Player>
 		<isAI>false</isAI>
 		<name>Matt</name>
-		<money>1200</money>
-		<position>12</position>
-		<positionTracker>12</positionTracker>
+		<money>1360</money>
+		<position>10</position>
+		<positionTracker>10</positionTracker>
 		<propertiesOwned>
-		<Property>Delta</Property>		<Property>Tunnel Cart (Railroad)</Property>		</propertiesOwned>
+		<Property>Steacie</Property>		</propertiesOwned>
 		<jailed>false</jailed>
 	</Player>
 	<Player>
 		<isAI>true</isAI>
 		<name>Jeff_AI</name>
 		<money>1350</money>
-		<position>16</position>
-		<positionTracker>16</positionTracker>
+		<position>9</position>
+		<positionTracker>9</positionTracker>
 		<propertiesOwned>
 		<Property>Electric Company</Property>		</propertiesOwned>
 		<jailed>false</jailed>

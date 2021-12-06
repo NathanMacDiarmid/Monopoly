@@ -86,7 +86,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>Tunnel Cart</name>
+        <name>Tunnel Cart (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>
@@ -142,7 +142,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>OC Transpo</name>
+        <name>OC Transpo (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>
@@ -205,7 +205,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>O-Train</name>
+        <name>O-Train (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>

@@ -371,4 +371,25 @@ public class MonopolyModelTest {
 
     }
 
+    /**
+     * This test checks if the load and save feature works in MonopolyModel. It checks if the players are saved correctly
+     * as well as if the properties are saved correctly.
+     *
+     * Created and documented by Matthew Belanger - 101144323
+     */
+    @Test
+    public void loadSaveTest(){
+        MonopolyModel model = new MonopolyModel(CARLETON);
+        model.addPlayer("player1");
+        model.addPlayer("player2");
+        model.exportToXmlFile();
+        MonopolyModel model2 = MonopolyModel.importFromXmlFile();
+
+        assertTrue(model.getPlayers().get(0).getName().equals(model2.getPlayers().get(0).getName()));
+        assertTrue(model.getPlayers().get(1).getName().equals(model2.getPlayers().get(1).getName()));
+
+        for(int i = 0; i < model.getBoard().getProperties().size(); i++){
+            assertTrue(model.getBoard().getProperties().get(i).getName().equals(model2.getBoard().getProperties().get(i).getName()));
+        }
+    }
 }

@@ -49,14 +49,13 @@ public class Board{
 
     /**
      * Basic setter for the properties and boardType
-     * Private as it is only used internally
      * @param b
      * @param p
      *
      * Created by Matthew Belanger - 101144323
      * Enhanced and documented by Nathan MacDiarmid - 1010198993
      */
-    private void setBoard(int b, List<Property> p){
+    public void setBoard(int b, List<Property> p){
         this.boardType = b;
         this.properties = p;
     }
@@ -162,5 +161,13 @@ public class Board{
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Getter for properties, only used for testing.
+     * @return
+     */
+    public List<Property> getProperties() {
+        return properties;
     }
 }
