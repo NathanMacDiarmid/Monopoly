@@ -319,7 +319,8 @@ public class MonopolyView extends JFrame {
 
             else {
                 checkRailroad();
-                JOptionPane.showMessageDialog(this, "You now have " + handleDifferentCurrencies() + " " + model.getPlayer().getMoney());
+                JOptionPane.showMessageDialog(this, "You now have " + handleDifferentCurrencies()
+                        + " " + model.getPlayer().getMoney());
             }
 
         }

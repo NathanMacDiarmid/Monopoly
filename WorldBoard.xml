@@ -58,14 +58,14 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>SaudiArabia</name>
+        <name>Saudi Arabia</name>
         <cost>140</cost>
         <rent>14</rent>
         <hasHouse>false</hasHouse>
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>UnitedKingdom</name>
+        <name>Electric Company</name>
         <cost>150</cost>
         <rent>0</rent>
         <hasHouse>false</hasHouse>
@@ -86,7 +86,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>Tunnel Cart (Railroad)</name>
+        <name>Train (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>
@@ -107,7 +107,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>China</name>
+        <name>Brazil</name>
         <cost>200</cost>
         <rent>20</rent>
         <hasHouse>false</hasHouse>
@@ -142,7 +142,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>OC Transpo (Railroad)</name>
+        <name>Plane (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>
@@ -184,7 +184,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>Brazil</name>
+        <name>Argentina</name>
         <cost>300</cost>
         <rent>30</rent>
         <hasHouse>false</hasHouse>
@@ -205,7 +205,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>O Train (Railroad)</name>
+        <name>Boat (Railroad)</name>
         <cost>200</cost>
         <rent>25</rent>
         <hasHouse>false</hasHouse>
@@ -219,7 +219,7 @@
         <hasHotel>false</hasHotel>
     </Property>
     <Property>
-        <name>Maldives</name>
+        <name>United Kingdom</name>
         <cost>400</cost>
         <rent>40</rent>
         <hasHouse>false</hasHouse>
