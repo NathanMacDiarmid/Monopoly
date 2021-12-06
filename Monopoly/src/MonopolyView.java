@@ -468,11 +468,11 @@ public class MonopolyView extends JFrame {
         if (model.getBoard().getBoardType() == 0) {
             return "¢";
         }
-        else if (model.getBoard().getBoardType() == 1) {
-            return "$";
+        else if (model.getBoard().getBoardType() == 2) {
+            return "€";
         }
         else {
-            return "€";
+            return "$";
         }
     }
 
