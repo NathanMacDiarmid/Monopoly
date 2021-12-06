@@ -207,12 +207,6 @@ public class MonopolyView extends JFrame {
         save.addActionListener(mvc);
         save.setEnabled(true);
         menu.add(save);
-
-        JMenuItem load = new JMenuItem("Load Previous Game");
-        MonopolyViewController mvl = new MonopolyViewController(model, this);
-        load.addActionListener(mvl);
-        load.setEnabled(true);
-        menu.add(load);
     }
 
 
