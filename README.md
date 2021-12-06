@@ -11,7 +11,9 @@ the player has to pay rent to the owner.
 
 Additional features like: hotels, and special properties and squares such as: jail, “Go”, railroad, utility have been implemented.
 
-The ability to play against a number of “AI” players has also been implemented.
+The ability to play against a number of “AI” players, load international versions with custom street names, values and currencies has also been implemented.
+
+Players can save the game and continue where they left off by loading the saved game.
 
 Usage:
 ______
@@ -19,8 +21,8 @@ ______
 When prompted, enter the  number of players, then the name of all the players that will be playing the game.
 Commands include roll die, player info, and purchase-related commands.
 There is error control  -- if you start a game with less than two or more than four players, the program prompts you to enter the correct number of players.
--- if you type an unknown command, the program tells you there is no such command and prompts you again.
-Clicking  the quit command ends the game (program).
+-- if you type an invalid input, the program prompts you again to enter a valid one.
+To end the game (program), simply click on the eXit button.
 
 
 Credits:
