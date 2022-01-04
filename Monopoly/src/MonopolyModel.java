@@ -28,9 +28,9 @@ public class MonopolyModel{
     private final Dice die;
     int playerTurn;
     private MonopolyView view;
-    private final static String SAVEBOARDFILE = "saveBoard.xml";
-    private final static String SAVEPLAYERSFILE = "savePlayers.xml";
-    private final static String OTHERINFOFILE = "otherInfo.xml";
+    private final static String SAVEBOARDFILE = "SaveFiles/saveBoard.xml";
+    private final static String SAVEPLAYERSFILE = "SaveFiles/savePlayers.xml";
+    private final static String OTHERINFOFILE = "SaveFiles/otherInfo.xml";
 
     /**
      * Default constructor for the MonopolyModel

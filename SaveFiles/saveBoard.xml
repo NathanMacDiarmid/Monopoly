@@ -1,5 +1,5 @@
 <Board>
-	<boardType>3</boardType>	<Property>
+	<boardType>0</boardType>	<Property>
 		<name>Go</name>
 		<cost>0</cost>
 		<rent>0</rent>
@@ -7,14 +7,14 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>America</name>
+		<name>Loeb</name>
 		<cost>60</cost>
 		<rent>6</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Canada</name>
+		<name>Southam</name>
 		<cost>60</cost>
 		<rent>6</rent>
 		<hasHouse>false</hasHouse>
@@ -28,21 +28,21 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>China</name>
+		<name>Paterson</name>
 		<cost>100</cost>
 		<rent>10</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Russia</name>
+		<name>Nesbitt</name>
 		<cost>100</cost>
 		<rent>10</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>France</name>
+		<name>Mackenzie</name>
 		<cost>120</cost>
 		<rent>12</rent>
 		<hasHouse>false</hasHouse>
@@ -56,7 +56,7 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Saudi Arabia</name>
+		<name>Azreli</name>
 		<cost>140</cost>
 		<rent>14</rent>
 		<hasHouse>false</hasHouse>
@@ -70,42 +70,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Denmark</name>
+		<name>Steacie</name>
 		<cost>140</cost>
 		<rent>14</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Qatar</name>
+		<name>Tory</name>
 		<cost>160</cost>
 		<rent>16</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Train (Railroad)</name>
+		<name>Tunnel Cart (Railroad)</name>
 		<cost>200</cost>
 		<rent>25</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Turkey</name>
+		<name>Robertson</name>
 		<cost>180</cost>
 		<rent>18</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Portugal</name>
+		<name>Architecture</name>
 		<cost>180</cost>
 		<rent>18</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Brazil</name>
+		<name>Canal</name>
 		<cost>200</cost>
 		<rent>20</rent>
 		<hasHouse>false</hasHouse>
@@ -119,42 +119,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Malaysia</name>
+		<name>Glengarry</name>
 		<cost>220</cost>
 		<rent>22</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Singapore</name>
+		<name>Lennox</name>
 		<cost>220</cost>
 		<rent>22</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Dubai</name>
+		<name>Renfrew</name>
 		<cost>240</cost>
 		<rent>24</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Plane (Railroad)</name>
+		<name>OC Transpo (Railroad)</name>
 		<cost>200</cost>
 		<rent>25</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Germany</name>
+		<name>Lanark</name>
 		<cost>260</cost>
 		<rent>26</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Vietnam</name>
+		<name>Grenville</name>
 		<cost>260</cost>
 		<rent>26</rent>
 		<hasHouse>false</hasHouse>
@@ -168,9 +168,9 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Italy</name>
-		<cost>280</cost>
-		<rent>28</rent>
+		<name>Dundas</name>
+		<cost>320</cost>
+		<rent>32</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
@@ -182,42 +182,42 @@
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>Argentina</name>
-		<cost>300</cost>
-		<rent>30</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Japan</name>
-		<cost>300</cost>
-		<rent>30</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Netherlands</name>
-		<cost>320</cost>
-		<rent>32</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Boat (Railroad)</name>
-		<cost>200</cost>
-		<rent>25</rent>
-		<hasHouse>false</hasHouse>
-		<hasHotel>false</hasHotel>
-	</Property>
-	<Property>
-		<name>Kuwait</name>
+		<name>Prescott</name>
 		<cost>350</cost>
 		<rent>35</rent>
 		<hasHouse>false</hasHouse>
 		<hasHotel>false</hasHotel>
 	</Property>
 	<Property>
-		<name>United Kingdom</name>
+		<name>Frontenac</name>
+		<cost>280</cost>
+		<rent>28</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Leeds</name>
+		<cost>300</cost>
+		<rent>30</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>O-Train (Railroad)</name>
+		<cost>200</cost>
+		<rent>25</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Nicol</name>
+		<cost>300</cost>
+		<rent>30</rent>
+		<hasHouse>false</hasHouse>
+		<hasHotel>false</hasHotel>
+	</Property>
+	<Property>
+		<name>Minto</name>
 		<cost>400</cost>
 		<rent>40</rent>
 		<hasHouse>false</hasHouse>

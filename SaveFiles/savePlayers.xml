@@ -1,0 +1,22 @@
+<Players>
+	<Player>
+		<isAI>false</isAI>
+		<name>a</name>
+		<money>1400</money>
+		<position>5</position>
+		<positionTracker>5</positionTracker>
+		<propertiesOwned>
+		<Property>Nesbitt</Property>		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+	<Player>
+		<isAI>true</isAI>
+		<name>b_AI</name>
+		<money>1400</money>
+		<position>4</position>
+		<positionTracker>4</positionTracker>
+		<propertiesOwned>
+		<Property>Paterson</Property>		</propertiesOwned>
+		<jailed>false</jailed>
+	</Player>
+</Players>

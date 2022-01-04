@@ -27,10 +27,10 @@ public class Board{
     private final static int CANADA = 1;
     private final static int EUROPE = 2;
     private final static int WORLD = 3;
-    private final static String CARLETONBOARD = "CarletonBoard.xml";
-    private final static String CANADABOARD = "CanadaBoard.xml";
-    private final static String EUROPEBOARD = "EuropeBoard.xml";
-    private final static String WORLDBOARD = "WorldBoard.xml";
+    private final static String CARLETONBOARD = "Boards/CarletonBoard.xml";
+    private final static String CANADABOARD = "Boards/CanadaBoard.xml";
+    private final static String EUROPEBOARD = "Boards/EuropeBoard.xml";
+    private final static String WORLDBOARD = "Boards/WorldBoard.xml";
 
 
 
